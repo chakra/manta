@@ -1,0 +1,1 @@
+INVOICE REJECTED - ${account.name} has rejected Invoice Number ${invoiceNumber} - Sent ${sent.date}

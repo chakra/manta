@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.espendwise.manta.model.entity.StoreListEntity" table="CLW_BUS_ENTITY" lazy="false">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <id name="storeId" type="java.lang.Long"><column name="BUS_ENTITY_ID"/></id>
+        <property name="storeName" type="string"><column name="SHORT_DESC" /></property>
+        <property name="status" type="string"><column name="BUS_ENTITY_STATUS_CD" /></property>
+        <property name="busEntityTypeCd" type="string"><column name="BUS_ENTITY_TYPE_CD" /></property>
+        <property name="globalEntityId" insert="false" update="false" type="java.lang.Long"><column name="BUS_ENTITY_ID"/></property>
+        <bag name="addresses" lazy="false" >
+            <key><column name="BUS_ENTITY_ID" sql-type="number" /></key>
+            <one-to-many class="com.espendwise.manta.model.data.AddressData" />
+        </bag>
+
+    </class>
+
+    <class name="com.espendwise.manta.model.entity.UserStoreListEntity" table="CLW_USER_ASSOC" lazy="false">
+
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+
+        <id name="userAssocId" type="java.lang.Long"><column name="USER_ASSOC_ID" /></id>
+        <property name="userId" type="java.lang.Long"><column name="USER_ID" unique="true" /></property>
+        <property name="userAssocCd" type="string"><column name="USER_ASSOC_CD" /></property>
+        <many-to-one   lazy="false"  name="stores" column="BUS_ENTITY_ID"  class="com.espendwise.manta.model.entity.StoreListEntity" />
+    </class>
+
+    <class name="com.espendwise.manta.model.entity.StoreMessageListEntity" table="CLW_STORE_MESSAGE" lazy="false">
+
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <id name="storeMessageId"  type="java.lang.Long"><column name="STORE_MESSAGE_ID" precision="38" scale="0" sql-type="number" /> </id>
+        <property name="messageTitle" type="string"><column name="MESSAGE_TITLE" not-null="true" /></property>
+        <property name="shortDesc" type="string"><column name="SHORT_DESC" /></property>
+        <property name="messageType" type="string"><column name="MESSAGE_TYPE" /></property>
+        <property name="postedDate" type="timestamp"><column name="POSTED_DATE"  /></property>
+        <property name="endDate" type="timestamp"><column name="END_DATE"  /></property>
+        <property name="forcedRead" type="string"><column name="FORCED_READ" /></property>
+        <property name="howManyTimes" type="java.lang.Long"><column name="HOW_MANY_TIMES" sql-type="number" /></property>
+        <property name="published" type="string"><column name="PUBLISHED" /></property>
+        <property name="languageCd" type="string"><column name="LANGUAGE_CD" not-null="true" /></property>
+        <property name="country" type="string"><column name="COUNTRY" /></property>
+        <property name="modBy" type="string"><column name="MOD_BY" /></property>
+        <property name="messageAuthor" type="string"><column name="MESSAGE_AUTHOR"  not-null="true" />
+        </property>
+        <property name="messageAbstract" type="string"> <column name="MESSAGE_ABSTRACT"  not-null="true" /></property>
+        <property name="messageBody" type="string"><column name="MESSAGE_BODY"  /></property>
+        <property name="storeMessageStatusCd" type="string">
+            <column name="STORE_MESSAGE_STATUS_CD" not-null="true" />
+        </property>
+
+    </class>
+
+    <class name="com.espendwise.manta.model.entity.BusEntityMessageAssocEntity" table="CLW_STORE_MESSAGE_ASSOC" lazy="false">
+
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+
+        <id name="storeMessageAssocId" type="java.lang.Long">
+            <column name="STORE_MESSAGE_ASSOC_ID" />
+        </id>
+
+        <property name="busEntityId" type="java.lang.Long" insert="false" update="false"><column name="BUS_ENTITY_ID"  /></property>
+        <property name="storeMessageId" type="java.lang.Long" insert="false" update="false"><column name="STORE_MESSAGE_ID"  /></property>
+        <property name="storeMessageAssocCd" type="java.lang.String"><column name="STORE_MESSAGE_ASSOC_CD" /></property>
+
+        <many-to-one lazy="false"  name="messages" insert="false" update="false" column="STORE_MESSAGE_ID"  class="com.espendwise.manta.model.entity.StoreMessageListEntity" />
+    </class>
+
+    <class name="com.espendwise.manta.model.entity.EntityContactEntity" table="CLW_BUS_ENTITY" lazy="false">
+
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+
+        <id name="busEntityId" type="java.lang.Long"><column name="BUS_ENTITY_ID"/></id>
+        <set name="address" lazy="false">
+            <key><column name="BUS_ENTITY_ID" sql-type="number" /></key>
+            <one-to-many class="com.espendwise.manta.model.data.AddressData" />
+        </set>
+        <set name="phone" lazy="false" >
+            <key><column name="BUS_ENTITY_ID" sql-type="number" /></key>
+            <one-to-many class="com.espendwise.manta.model.data.PhoneData" />
+        </set>
+        <set name="email" lazy="false" >
+            <key><column name="BUS_ENTITY_ID" sql-type="number" /></key>
+            <one-to-many class="com.espendwise.manta.model.data.EmailData" />
+        </set>
+    </class>
+
+    <class name="com.espendwise.manta.model.entity.BudgetEntity" table="CLW_BUDGET" lazy="false">
+
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+
+        <id name="budgetId" type="java.lang.Long"><column name="BUDGET_ID"/></id>
+        <bag name="details" lazy="false" fetch="join">
+            <key><column name="BUDGET_ID" sql-type="number"  /></key>
+            <one-to-many  class="com.espendwise.manta.model.data.BudgetDetailData" />
+        </bag>
+        <many-to-one lazy="false" name="budget" insert="false" update="false" column="BUDGET_ID" class="com.espendwise.manta.model.data.BudgetData" unique="true" />
+    </class>
+    
+    <class name="com.espendwise.manta.model.entity.StoreMessageEntity" table="CLW_STORE_MESSAGE" lazy="false">
+
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+
+        <id name="storeMessageId" type="java.lang.Long"><column name="STORE_MESSAGE_ID"/></id>
+        <bag name="details" lazy="false" fetch="join">
+            <key><column name="STORE_MESSAGE_ID" sql-type="number"  /></key>
+            <one-to-many  class="com.espendwise.manta.model.data.StoreMessageDetailData" />
+        </bag>
+        <many-to-one lazy="false" name="message" insert="false" update="false" column="STORE_MESSAGE_ID" class="com.espendwise.manta.model.data.StoreMessageData" unique="true" />
+    </class>
+
+    <class name="com.espendwise.manta.model.entity.CurrencyEntity" table="CLW_CURRENCY" lazy="false">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <id name="currencyId"  type="java.lang.Long"><column name="CURRENCY_ID" precision="38" scale="0" sql-type="number" /> </id>
+        <property name="locale" type="string"><column name="LOCALE" not-null="true" /></property>
+        <property name="shortDesc" type="string"><column name="SHORT_DESC" /></property>
+        <property name="localCode" type="string"><column name="LOCAL_CODE" /></property>
+        <property name="currencyPositionCd" type="string"><column name="CURRENCY_POSITION_CD"  /></property>
+        <property name="decimals" type="java.lang.Long"><column name="DECIMALS" not-null="true" precision="2" scale="0"  sql-type="number" /></property>
+        <property name="globalCode" type="string"><column name="GLOBAL_CODE" not-null="true" /></property>
+    </class>
+
+    <class name="com.espendwise.manta.model.entity.TradingPartnerEntity" table="CLW_TRADING_PARTNER" lazy="false">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <id name="tradingPartnerId"  type="java.lang.Long"><column name="TRADING_PARTNER_ID" precision="38" scale="0" sql-type="number" /> </id>
+        <property name="shortDesc" type="string"><column name="SHORT_DESC" /></property>
+        <property name="tradingTypeCd" type="string"><column name="TRADING_TYPE_CD" /></property>
+        <property name="tradingPartnerTypeCd" type="string"><column name="TRADING_PARTNER_TYPE_CD" /></property>
+        <property name="tradingPartnerStatusCd" type="string"><column name="TRADING_PARTNER_STATUS_CD" /></property>
+        <property name="skuTypeCd" type="string"><column name="SKU_TYPE_CD" /></property>
+        <property name="uomConversionTypeCd" type="string"><column name="UOM_CONVERSION_TYPE_CD" /></property>
+        <property name="siteIdentifierTypeCd" type="string"><column name="SITE_IDENTIFIER_TYPE_CD" /></property>
+        <property name="validateContractPrice" type="string"><column name="VALIDATE_CONTRACT_PRICE" /></property>
+        <property name="poNumberType" type="string"><column name="PO_NUMBER_TYPE" /></property>
+        <property name="accountIdentifierInbound" type="string"><column name="ACCOUNT_IDENTIFIER_INBOUND" /></property>
+    </class>
+
+    <class name="com.espendwise.manta.model.entity.CatalogEntity" table="CLW_CATALOG" lazy="false">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <id name="catalogId"  type="java.lang.Long"><column name="CATALOG_ID" precision="38" scale="0" sql-type="number" /> </id>
+        <property name="shortDesc" type="string"><column name="SHORT_DESC" not-null="true" /></property>
+        <property name="shippingMessage" type="string"><column name="SHIPPING_MESSAGE" /></property>
+        <property name="catalogStatusCd" type="string"><column name="CATALOG_STATUS_CD" not-null="true" /></property>
+        <property name="catalogTypeCd" type="string"><column name="CATALOG_TYPE_CD" not-null="true" /></property>
+        <property name="effectiveDate" type="timestamp"><column name="EFF_DATE"  /></property>
+        <property name="expirationDate" type="timestamp"><column name="EXP_DATE"  /></property>
+        <property name="rankWeight" type="java.lang.Long"><column name="RANK_WEIGHT" precision="38" scale="0" sql-type="number" /></property>
+        <property name="loaderField" type="string"><column name="LOADER_FIELD" /></property>
+    </class>
+
+    <class name="com.espendwise.manta.model.entity.CatalogStructureEntity" table="CLW_CATALOG_STRUCTURE" lazy="false">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <id name="catalogStructureId"  type="java.lang.Long"><column name="CATALOG_STRUCTURE_ID" precision="38" scale="0" sql-type="number" /> </id>
+        <property name="catalogId" type="java.lang.Long"><column name="CATALOG_ID" precision="38" scale="0" sql-type="number" not-null="true" /></property>
+        <property name="busEntityId" type="java.lang.Long"><column name="BUS_ENTITY_ID" precision="38" scale="0" sql-type="number" /></property>
+        <property name="catalogStructureCd" type="string"><column name="CATALOG_STRUCTURE_CD" not-null="true" /></property>
+        <property name="itemId" type="java.lang.Long"><column name="ITEM_ID" precision="38" scale="0" sql-type="number" not-null="true" /></property>
+        <property name="customerSkuNum" type="string"><column name="CUSTOMER_SKU_NUM" /></property>
+        <property name="shortDesc" type="string"><column name="SHORT_DESC" /></property>
+        <property name="effectiveDate" type="timestamp"><column name="EFF_DATE"  /></property>
+        <property name="expirationDate" type="timestamp"><column name="EXP_DATE"  /></property>
+        <property name="statusCd" type="string"><column name="STATUS_CD" /></property>
+        <property name="costCenterId" type="java.lang.Long"><column name="COST_CENTER_ID" precision="38" scale="0" sql-type="number" /></property>
+        <property name="taxExempt" type="string"><column name="TAX_EXEMPT" /></property>
+        <property name="itemGroupId" type="java.lang.Long"><column name="ITEM_GROUP_ID" precision="38" scale="0" sql-type="number" /></property>
+        <property name="specialPermission" type="string"><column name="SPECIAL_PERMISSION" /></property>
+        <property name="sortOrder" type="java.lang.Long"><column name="SORT_ORDER" precision="5" scale="0" sql-type="number" /></property>
+    </class>
+
+    <class name="com.espendwise.manta.model.entity.ShoppingControlEntity" table="CLW_SHOPPING_CONTROL" lazy="false">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <id name="shoppingControlId"  type="java.lang.Long"><column name="SHOPPING_CONTROL_ID" precision="38" scale="0" sql-type="number" /> </id>
+        <property name="locationId" type="java.lang.Long"><column name="SITE_ID" precision="38" scale="0" sql-type="number" /></property>
+        <property name="itemId" type="java.lang.Long"><column name="ITEM_ID" precision="38" scale="0" sql-type="number" /></property>
+        <property name="maxOrderQty" type="java.lang.Long"><column name="MAX_ORDER_QTY" precision="38" scale="0" sql-type="number" /></property>
+        <property name="controlStatusCd" type="string"><column name="CONTROL_STATUS_CD" /></property>
+        <property name="accountId" type="java.lang.Long"><column name="ACCOUNT_ID" precision="38" scale="0" sql-type="number" /></property>
+        <property name="restrictionDays" type="java.lang.Long"><column name="RESTRICTION_DAYS" precision="38" scale="0" sql-type="number" /></property>
+        <property name="historyOrderQty" type="java.lang.Long"><column name="HISTORY_ORDER_QTY" precision="38" scale="0" sql-type="number" /></property>
+        <property name="actualMaxQty" type="java.lang.Long"><column name="ACTUAL_MAX_QTY" precision="38" scale="0" sql-type="number" /></property>
+        <property name="expirationDate" type="timestamp"><column name="EXP_DATE"  /></property>
+        <property name="actionCd" type="string"><column name="ACTION_CD" /></property>
+    </class>
+    
+</hibernate-mapping>

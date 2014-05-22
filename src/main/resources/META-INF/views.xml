@@ -1,0 +1,1690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.espendwise.manta.model.view.UiOptionView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="logo" type="java.lang.String"/>
+        <property name="title" type="java.lang.String"/>
+        <property name="footer" type="java.lang.String"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.StoreUiOptionView">
+        <meta attribute="extends" inherit="false">UiOptionView</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="storeId" type="java.lang.Long"/>
+        <property name="logoBinaryData" type="byte[]"/>
+        <property name="homeViewType" type="com.espendwise.manta.util.HomeViewType"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.LogonOptionView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="domain" type="java.lang.String"/>
+        <property name="storeId" type="java.lang.Long"/>
+        <property name="datasource" type="java.lang.String"/>
+        <property name="uiOption" type="com.espendwise.manta.model.view.UiOptionView"/>
+        <property name="locale" type="java.util.Locale"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.DomainView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="domainId" type="java.lang.Long"/>
+        <property name="storeId" type="java.lang.Long"/>
+        <property name="domainName" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.StoreMsgAccountConfigView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="busEntityIdId" type="java.lang.Long"/>
+        <property name="statusCd" type="java.lang.Long"/>
+        <property name="shortDesc" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.DisplaySettingsView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="wideScreen" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.AccountListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="accountId" type="java.lang.Long"/>
+        <property name="accountName" type="string"/>
+        <property name="type" type="string"/>
+        <property name="status" type="string"/>
+        <property name="billingAddress1" type="string"/>
+        <property name="billingCity" type="string"/>
+        <property name="billingState" type="string"/>
+        <property name="refNumber" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.InstanceView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.entity.StoreListEntity</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.view.MainStoreIdentView</meta>
+        <id name="primaryEntityId" type="java.lang.Long"/>
+        <property name="primaryEntityName" type="string"/>
+        <property name="store" type="com.espendwise.manta.model.entity.StoreListEntity"/>
+        <property name="mainStoreIdent" type="com.espendwise.manta.model.view.MainStoreIdentView"/>
+        <property name="dataSourceIdent" type="com.espendwise.manta.auth.AuthDataSourceIdent"/>
+        <property name="unitName" type="string"/>
+        <property name="alive" type="boolean"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.ContactView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.PhoneData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.EmailData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.AddressData</meta>
+        <id name="address" type="com.espendwise.manta.model.data.AddressData"/>
+        <property name="phone" type="com.espendwise.manta.model.data.PhoneData"/>
+        <property name="faxPhone" type="com.espendwise.manta.model.data.PhoneData"/>
+        <property name="mobilePhone" type="com.espendwise.manta.model.data.PhoneData"/>
+        <property name="email" type="com.espendwise.manta.model.data.EmailData"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.SiteContactView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.PhoneData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.AddressData</meta>
+        <id name="address" type="com.espendwise.manta.model.data.AddressData"/>
+        <property name="phone" type="com.espendwise.manta.model.data.PhoneData"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.AccountContactView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.AddressData</meta>
+        <id name="accountId" type="java.lang.Long"/>
+        <property name="billingAddress" type="com.espendwise.manta.model.data.AddressData"/>
+        <property name="primaryContact" type="com.espendwise.manta.model.view.ContactView"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.AccountIdentPropertiesView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.PropertyData</meta>
+        <id name="accountId" type="java.lang.Long"/>
+        <property name="distributorReferenceNumber" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="budgetType" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="accountType" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="defaultProperties" type="List&lt;PropertyData&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.AccountIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.BusEntityData</meta>
+        <id name="busEntityData" type="com.espendwise.manta.model.data.BusEntityData"/>
+        <property name="accountContact" type="com.espendwise.manta.model.view.AccountContactView"/>
+        <property name="properties" type="com.espendwise.manta.model.view.AccountIdentPropertiesView"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.CountryView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="countryId" type="java.lang.Long"/>
+        <property name="shortDesc" type="string"/>
+        <property name="uiName" type="string"/>
+        <property name="countryCode" type="string"/>
+        <property name="localeCd" type="string"/>
+        <property name="inputDateFormat" type="string"/>
+        <property name="inputTimeFormat" type="string"/>
+        <property name="inputDayMonthFormat" type="string"/>
+        <property name="usesState" type="string"/>
+        
+    </class>
+    <class name="com.espendwise.manta.model.view.EmailTemplateListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="templateId" type="java.lang.Long"/>
+        <property name="busEntityId" type="java.lang.Long"/>
+        <property name="name" type="string"/>
+        <property name="emailType" type="string"/>
+        <property name="emailTypeCd" type="string"/>
+        <property name="locale" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.MainStoreIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="id" type="java.lang.Long"/>
+        <property name="shortDesc" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.EntityHeaderView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="id" type="java.lang.Long"/>
+        <property name="shortDesc" type="string"/>
+    </class>
+        <class name="com.espendwise.manta.model.view.FiscalReportIntersectResView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="busEntityId" type="java.lang.Long"/>
+        <property name="mmdd" type="string"/>
+        <property name="effDate" type="java.util.Date"/>
+        <property name="fiscalYear" type="int"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.SiteHeaderView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="siteId" type="java.lang.Long"/>
+        <property name="siteName" type="string"/>
+        <property name="accountId" type="java.lang.Long"/>
+        <property name="accountName" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.UserHeaderView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="id" type="java.lang.Long"/>
+        <property name="userName" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.EmailTemplateIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.TemplatePropertyData</meta>
+       <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="templateData" type="com.espendwise.manta.model.data.TemplateData"/>
+        <property name="properties" type="List&lt;TemplatePropertyData&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.FiscalCalendarListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="fiscalCalendarId" type="java.lang.Long"/>
+        <property name="busEntityId" type="java.lang.Long"/>
+        <property name="fiscalYear" type="java.lang.Integer"/>
+        <property name="numOfPeriods" type="java.lang.Long"/>
+        <property name="effDate" type="java.util.Date"/>
+        <property name="expDate" type="java.util.Date"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.FiscalCalendarIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.FiscalCalenderData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.FiscalCalenderDetailData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="fiscalCalendarData" type="com.espendwise.manta.model.data.FiscalCalenderData"/>
+        <property name="periods" type="List&lt;com.espendwise.manta.model.data.FiscalCalenderDetailData&gt;"/>
+        <property name="serviceScheduleCalendar" type="boolean"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.FiscalCalendarPhysicalView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.FiscalCalenderData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.FiscalCalenderDetailData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="fiscalCalendarId" type="java.lang.Long"/>
+        <property name="busEntityId" type="java.lang.Long"/>
+        <property name="calendatFiscalYear" type="java.lang.Integer"/>
+        <property name="physicalFiscalYear" type="int"/>
+        <property name="effDate" type="java.util.Date"/>
+        <property name="expDate" type="java.util.Date"/>
+        <property name="periods" type="List&lt;com.espendwise.manta.model.data.FiscalCalenderDetailData&gt;"/>
+        <property name="serviceScheduleCalendar" type="boolean"/>
+
+    </class>
+    <class name="com.espendwise.manta.model.view.SiteBudgetYearView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.FiscalCalenderData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.FiscalCalenderDetailData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="fiscalCalendar" type="FiscalCalendarPhysicalView"/>
+        <property name="accountId" type="java.lang.Long"/>
+        <property name="siteId" type="java.lang.Long"/>
+        <property name="costCenterBudgets" type="List&lt;CostCenterBudgetView&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.UserListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="userId" type="java.lang.Long"/>
+        <property name="userName" type="string"/>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="role" type="string"/>
+        <property name="type" type="string"/>
+        <property name="status" type="string"/>
+        <property name="notifyUserName" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.SiteListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="siteId" type="java.lang.Long"/>
+        <property name="siteName" type="string"/>
+        <property name="accountId" type="java.lang.Long"/>
+        <property name="accountName" type="string"/>
+        <property name="status" type="string"/>
+        <property name="address1" type="string"/>
+        <property name="address2" type="string"/>
+        <property name="address3" type="string"/>
+        <property name="address4" type="string"/>
+        <property name="countryCd" type="string"/>
+        <property name="countyCd" type="string"/>
+        <property name="city" type="string"/>
+        <property name="state" type="string"/>
+        <property name="postalCode" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.UserIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.UserAssocData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.PropertyData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.GroupAssocData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.view.AllStoreIdentificationView</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="userData" type="com.espendwise.manta.model.data.UserData"/>
+        <property name="emailData" type="com.espendwise.manta.model.data.EmailData"/>
+        <property name="addressData" type="com.espendwise.manta.model.data.AddressData"/>
+        <property name="phoneData" type="com.espendwise.manta.model.data.PhoneData"/>
+        <property name="faxPhoneData" type="com.espendwise.manta.model.data.PhoneData"/>
+        <property name="mobilePhoneData" type="com.espendwise.manta.model.data.PhoneData"/>
+        <property name="escalationEmailData" type="com.espendwise.manta.model.data.EmailData"/>
+        <property name="smsEmailData" type="com.espendwise.manta.model.data.EmailData"/>
+        <property name="userAssocs" type="List&lt;UserAssocData&gt;"/>
+        <property name="userProperties" type="List&lt;PropertyData&gt;"/>
+        <property name="userStoreAssocs" type="List&lt;AllStoreIdentificationView&gt;"/>
+        <property name="userGroupAssocs" type="List&lt;GroupAssocData&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.AllStoreIdentificationView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="mainStoreId" type="java.lang.Long"/>
+        <property name="storeId" type="java.lang.Long"/>
+        <property name="storeName" type="string"/>
+        <property name="dsName" type="string"/>
+        <property name="alive" type="boolean"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.SiteIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.PropertyData</meta>
+        <id name="busEntityData" type="com.espendwise.manta.model.data.BusEntityData"/>
+        <property name="accountId" type="java.lang.Long"/>
+        <property name="accountName" type="string"/>
+        <property name="contact" type="com.espendwise.manta.model.view.ContactView"/>
+        <property name="properties" type="List&lt;PropertyData&gt;"/>
+        <property name="corporateScheduleCorporate" type="com.espendwise.manta.model.view.CorporateScheduleView"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.SiteAccountView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="busEntityData" type="com.espendwise.manta.model.data.BusEntityData"/>
+        <property name="accountId" type="java.lang.Long"/>
+        <property name="accountName" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.SiteIdentPropertiesView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="siteId" type="java.lang.Long"/>
+        <property name="allowCorporateScheduledOrder" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="byPassOrderRouting" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="consolidatedOrderWarehouse" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="distrSiteRefNumber" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="enableInventory" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="inventoryShoppingType" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="shareBuyerOrderGuides" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="showRebillOrder" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="siteReferenceNumber" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="taxable" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="targetFicilityRank" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="productBundle" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="locationLineLevelCode" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="locationComments" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="locationShipMsg" type="com.espendwise.manta.model.data.PropertyData"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.ScheduleOrderDatesView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.util.PhysicalInventoryPeriod</meta>
+        <id name="nextOrderDelivery" type="java.util.Date"/>
+        <property name="nextOrderCutoff" type="java.util.Date"/>
+        <property name="nextOrderCutoffTime" type="java.util.Date"/>
+        <property name="physicalInventoryPeriods" type="List&lt;PhysicalInventoryPeriod&gt;"/>
+        <property name="inventoryCartAccessInterva" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.SiteDeliveryScheduleView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="siteId" type="java.lang.Long"/>
+        <property name="siteName" type="string"/>
+        <property name="siteStatusCd" type="string"/>
+        <property name="siteScheduleType" type="string"/>
+        <property name="city" type="string"/>
+        <property name="state" type="string"/>
+        <property name="postalCode" type="string"/>
+        <property name="county" type="string"/>
+        <property name="week1ofMonth" type="boolean"/>
+        <property name="week2ofMonth" type="boolean"/>
+        <property name="week3ofMonth" type="boolean"/>
+        <property name="week4ofMonth" type="boolean"/>
+        <property name="lastWeekofMonth" type="boolean"/>
+        <property name="intervWeek" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.ScheduleJoinView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ScheduleDetailData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ScheduleData</meta>
+        <id name="schedule" type="ScheduleData "/>
+        <property name="scheduleDetail" type="List&lt;ScheduleDetailData&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.CorporateScheduleView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="scheduleId" type="java.lang.Long "/>
+        <property name="scheduleName" type="string"/>
+        <property name="intervalHour" type="string"/>
+        <property name="nextDeliveryDate" type="java.util.Date"/>
+        <property name="cutoffTime" type="string"/>
+        <property name="alsoDates" type="List&lt;String&gt;"/>
+        <property name="scheduleStatus" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.AllUserIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.UserStoreData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="allUserData" type="com.espendwise.manta.model.data.AllUserData"/>
+        <property name="userStoreAssoc" type="List&lt;UserStoreData&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.BudgetView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.BudgetData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.BudgetDetailData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.Collection</meta>
+        <id name="budgetData" type="BudgetData"/>
+        <property name="budgetDetails" type="Collection&lt;BudgetDetailData&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.CostCenterBudgetView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.CostCenterData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.entity.BudgetEntity</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="costCenter" type="CostCenterData"/>
+        <property name="accountBudget" type="BudgetEntity "/>
+        <property name="siteBudget" type="BudgetEntity"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.BudgetSiteSpendView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="siteId" type="java.lang.Long"/>
+        <property name="accountId" type="java.lang.Long "/>
+        <property name="allocateFreight" type="boolean"/>
+        <property name="costCenterTaxType" type="string"/>
+        <property name="costCenterId" type="java.lang.Long"/>
+        <property name="costCenterName" type="string"/>
+        <property name="budgetYear" type="java.lang.Integer"/>
+        <property name="budgetPeriod" type="java.lang.Integer"/>
+        <property name="currentBudgetYear" type="java.lang.Integer"/>
+        <property name="currentBudgetPeriod" type="java.lang.Integer"/>
+        <property name="budgetSpends" type="List&lt;BudgetSpendView&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.BudgetSpendView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.math.BigDecimal</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="budgetId" type="java.lang.Long"/>
+        <property name="amountSpent" type="BigDecimal "/>
+        <property name="amountAllocated" type="BigDecimal"/>
+        <property name="unlimitedBudget" type="boolean"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.CatalogAssocView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.CatalogData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.CatalogAssocData</meta>
+        <id name="catalog" type="CatalogData"/>
+        <property name="assoc" type="CatalogAssocData "/>
+    </class>
+    <class name="com.espendwise.manta.model.view.GroupView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.GroupData</meta>
+        <id name="group" type="GroupData"/>
+        <property name="assocStoreId" type="java.lang.Long"/>
+        <property name="assocStoreName" type="string"/>
+    </class>
+    
+    <class name="com.espendwise.manta.model.view.GroupListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="groupId" type="java.lang.Long"/>
+        <property name="groupName" type="string"/>
+        <property name="groupType" type="string"/>
+        <property name="groupStatus" type="string"/>
+        <property name="assocStoreName" type="string"/>
+    </class>
+    
+    <class name="com.espendwise.manta.model.view.GroupReportListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="reportId" type="java.lang.Long"/>
+        <property name="reportName" type="string"/>
+    </class>
+
+	<class name="com.espendwise.manta.model.view.GroupFunctionListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id  name="functionName" type="string"/>
+        <property name="functionGroup" type="string"/>
+    </class>
+    
+    <class name="com.espendwise.manta.model.view.GroupConfigListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id  name="Id" type="java.lang.Long"/>
+        <property name="name" type="string"/>
+        <property name="address" type="string"/>
+        <property name="city" type="string"/>
+        <property name="stateProvince" type="string"/>
+        <property name="postalCode" type="string"/>
+        <property name="status" type="string"/>
+        <property name="firstName" type="string"/>
+        <property name="LastName" type="string"/>
+        <property name="userType" type="string"/>
+    </class>
+    
+    <class name="com.espendwise.manta.model.view.GroupConfigAllListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id  name="groupConfigView" type="GroupConfigListView"/>
+        <property name="assocStoreName" type="string"/>
+        <property name="assocStoreNames" type="string"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.ApplicationFunctionView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="applicationFunction" type="string"/>
+        <property name="groups" type="List&lt;GroupView&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.UserGroupInformationView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.GroupData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.GenericReportData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="group" type="GroupData"/>
+        <property name="applicationFunctionNames" type="List&lt;String&gt;"/>
+        <property name="reports" type="List&lt;GenericReportData&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.UserGroupInfLineView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="groupId" type="java.lang.Long"/>
+        <property name="groupDescription" type="string"/>
+        <property name="groupPermission" type="string"/>
+        <property name="reportName" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.SiteHierarchyView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="siteHierarchyId" type="java.lang.Long"/>
+        <property name="siteHierarchyNum" type="string"/>
+        <property name="siteHierarchyName" type="string"/>
+        <property name="valueId" type="java.lang.Long"/>
+        <property name="valueName" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.ContentManagementView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="busEntityId" type="java.lang.Long"/>
+        <property name="displayGenericContent" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="customContentURL" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="customContentEditor" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="customContentViewer" type="com.espendwise.manta.model.data.PropertyData"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.CMSView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="primaryEntityId" type="java.lang.Long"/>
+        <property name="primaryEntityName" type="string"/>
+        <property name="contentManagementProperties" type="com.espendwise.manta.model.view.ContentManagementView"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.SiteHierarchyTotalReportView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="siteHierarchyLevel1Id" type="java.lang.Long"/>
+        <property name="siteHierarchyLevel1Name" type="string"/>
+        <property name="siteHierarchyLevel2Id" type="java.lang.Long"/>
+        <property name="siteHierarchyLevel2Name" type="string"/>
+        <property name="siteHierarchyLevel3Id" type="java.lang.Long"/>
+        <property name="siteHierarchyLevel3Name" type="string"/>
+        <property name="siteHierarchyLevel4Id" type="java.lang.Long"/>
+        <property name="siteHierarchyLevel4Name" type="string"/>
+        <property name="totalOfSites" type="java.lang.Long"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.GenericReportColumnView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="columnName" type="string"/>
+        <property name="columnClass" type="string"/>
+        <property name="columnType" type="string"/>
+        <property name="columnPrecision" type="int"/>
+        <property name="columnScale" type="java.lang.Integer"/>
+        <property name="columnWidth" type="string"/>
+        <property name="totalRequestFlag" type="boolean"/>
+        <property name="columnFormat" type="string"/>
+        <property name="columnHeaderStyleName" type="string"/>
+        <property name="columnDataStyleName" type="string"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.GenericReportResultView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <meta attribute="extra-import" inherit="false">java.util.Map</meta>
+        <id name="name" type="string"/>
+        <property name="columnCount" type="int"/>
+        <property name="header" type="List&lt;GenericReportColumnView&gt;"/>
+        <property name="table" type="List"/>
+        <property name="width" type="string"/>
+        <property name="fancyDisplay" type="boolean"/>
+        <property name="timeZone" type="string"/>
+        <property name="paperOrientation" type="string"/>
+        <property name="paperSize" type="string"/>
+        <property name="title" type="List&lt;GenericReportColumnView&gt;"/>
+        <property name="userStyle" type="Map"/>
+        <property name="siteHierarchyLevel4Name" type="string"/>
+        <property name="rawOutput" type="byte[]"/>
+        <property name="reportFormat" type="string"/>
+        <property name="widthFactor" type="double"/>
+        <property name="freezePositionRow" type="int"/>
+        <property name="freezePositionColumn" type="int"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.GenericReportStyleView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="styleName" type="string"/>
+        <property name="dataCategory" type="string"/>
+        <property name="dataFormat" type="string"/>
+        <property name="fontName" type="string"/>
+        <property name="fontSize" type="int"/>
+        <property name="fontType" type="string"/>
+        <property name="fontColor" type="string"/>
+        <property name="fillColor" type="string"/>
+        <property name="alignment" type="string"/>
+        <property name="wrap" type="boolean"/>
+        <property name="mergeRegion" type="int[]"/>
+        <property name="dataClass" type="string"/>
+        <property name="width" type="string"/>
+        <property name="scale" type="int"/>
+    </class>    
+
+    <class name="com.espendwise.manta.model.view.GenericReportCellView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="styleName" type="string"/>
+        <property name="dataValue" type="object"/>
+    </class>    
+    
+    <class name="com.espendwise.manta.model.view.StoreMessageListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="StoreMessageId" type="java.lang.Long" />
+		<property name="StoreMessageDetailId" type="java.lang.Long"/>
+		<property name="ShortDesc" type="String"/>
+		<property name="StoreMessageStatusCd" type="String"/>
+		<property name="Published" type="String"/>
+		<property name="MessageTitle" type="String"/>
+		<property name="MessageAbstract" type="String"/>
+		<property name="MessageBody" type="String"/>
+		<property name="MessageType" type="String"/>
+		<property name="PostedDate" type="java.util.Date"/>
+		<property name="EndDate" type="java.util.Date"/>
+		<property name="ForcedReadCount" type="java.lang.Long"/>
+		<property name="DisplayOrder" type="java.lang.Long"/>
+		<property name="LanguageCd" type="String"/>
+		<property name="Country" type="String"/>
+		<property name="MessageAuthor" type="String"/>
+		<property name="MessageDetailTypeCd" type="String"/>
+		<property name="AddBy" type="String"/>
+		<property name="AddDate" type="java.util.Date"/>
+		<property name="ModBy" type="String"/>
+		<property name="ModDate" type="java.util.Date"/>
+        
+</class>
+
+
+<class name="com.espendwise.manta.model.view.StoreMessageListTestView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="StoreMessageId" type="java.lang.Long" />
+		
+</class>
+
+    <class name="com.espendwise.manta.model.view.CatalogView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="catalogId" type="java.lang.Long"/>
+        <property name="catalogName" type="string"/>
+        <property name="catalogStatus" type="string"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.ItemView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="itemId" type="java.lang.Long"/>
+        <property name="catalogId" type="java.lang.Long"/>
+        <property name="shortDesc" type="string"/>
+        <property name="longDesc" type="string"/>
+        <property name="itemStatusCd" type="string"/>
+        <property name="itemTypeCd" type="string"/>
+        <property name="itemSkuNum" type="string"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.ProductListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+       	<id name="itemId" type="java.lang.Long"/>
+       	<property name="accountId" type="java.lang.Long"/>
+       	<property name="catalogId" type="java.lang.Long"/>
+        <property name="itemCategoryId" type="java.lang.Long"/>
+        <property name="itemManufacturerId" type="java.lang.Long"/>
+        <property name="itemSku" type="string"/>
+        <property name="itemName" type="string"/>
+        <property name="itemUom" type="string"/>
+        <property name="itemPack" type="string"/>
+        <property name="itemCategoryName" type="string"/>
+        <property name="itemManufacturerName" type="string"/>
+        <property name="itemManufacturerSku" type="string"/>
+        <property name="itemDistributorSku" type="string"/>
+        <property name="catalogDistId" type="java.lang.Long"/>
+        <property name="itemMappingDistId" type="java.lang.Long"/>
+        <property name="itemStatusCd" type="string"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.ManufacturerPropertiesView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="manufacturerId" type="java.lang.Long"/>
+        <property name="msdsPlugin" type="com.espendwise.manta.model.data.PropertyData"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.ManufacturerIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.BusEntityData</meta>
+        <id name="busEntityData" type="com.espendwise.manta.model.data.BusEntityData"/>
+        <property name="properties" type="com.espendwise.manta.model.view.ManufacturerPropertiesView"/>
+    </class>
+
+	<class name="com.espendwise.manta.model.view.ManufacturerListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="manufacturerId" type="java.lang.Long"/>
+        <property name="manufacturerName" type="string"/>
+        <property name="status" type="string"/>
+    </class>
+    
+    <class name="com.espendwise.manta.model.view.DistributorIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.BusEntityData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.PropertyData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.TradingPartnerData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="busEntityData" type="com.espendwise.manta.model.data.BusEntityData"/>
+        <property name="contact" type="com.espendwise.manta.model.view.ContactView"/>
+        <property name="properties" type="List&lt;PropertyData&gt;"/>
+        <property name="tradingPartners" type="List&lt;TradingPartnerData&gt;"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.DistributorInfoView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.BusEntityData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.AddressData</meta>
+        <id name="busEntityData" type="com.espendwise.manta.model.data.BusEntityData"/>
+        <property name="primaryAddress" type="AddressData"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.DistributorIdentPropertiesView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="distributorId" type="java.lang.Long"/>
+        <property name="displayName" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="type" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="callCenterHours" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="companyCode" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="customerReferenceCode" type="com.espendwise.manta.model.data.PropertyData"/>
+    </class>
+
+	<class name="com.espendwise.manta.model.view.DistributorListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="distributorId" type="java.lang.Long"/>
+        <property name="distributorName" type="string"/>
+        <property name="status" type="string"/>
+        <property name="address1" type="string"/>
+        <property name="address2" type="string"/>
+        <property name="address3" type="string"/>
+        <property name="address4" type="string"/>
+        <property name="countryCd" type="string"/>
+        <property name="countyCd" type="string"/>
+        <property name="city" type="string"/>
+        <property name="state" type="string"/>
+        <property name="postalCode" type="string"/>
+    </class>
+    
+    <class name="com.espendwise.manta.model.view.DistributorConfigurationView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="distributorId" type="java.lang.Long"/>
+        <property name="performSalesTaxCheck" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="exceptionOnOverchargedFreight" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="invoiceLoadingPricingModel" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="allowFreightOnBackOrders" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="cancelBackorderedLines" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="disallowInvoiceEdits" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="receivingSystemTypeCode" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="rejectedInvoiceEmailNotification" type="com.espendwise.manta.model.data.EmailData"/>
+        <property name="ignoreOrderMinimumForFreight" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="invoiceAmountPercentUndercharge" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="invoiceAmountPercentOvercharge" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="invoiceMaximumFreightAllowance" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="inboundInvoiceHoldDays" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="printCustomerContactInfoOnPurchaseOrder" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="requireManualPurchaseOrderAcknowledgement" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="purchaseOrderComments" type="com.espendwise.manta.model.data.PropertyData"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.CostCenterListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="costCenterId" type="java.lang.Long"/>
+        <property name="costCenterName" type="string"/>
+        <property name="costCenterType" type="string"/>
+        <property name="status" type="string"/>
+        <property name="taxType" type="string"/>
+        <property name="allocateFreight" type="string"/>
+        <property name="allocateDiscount" type="string"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.CostCenterView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.CostCenterData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="costCenterData" type="com.espendwise.manta.model.data.CostCenterData"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.CostCenterHeaderView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="costCenterId" type="java.lang.Long"/>
+        <property name="costCenterName" type="string"/>
+    </class>
+
+
+    <class name="com.espendwise.manta.model.view.CatalogListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="catalogId" type="java.lang.Long"/>
+        <property name="catalogName" type="string"/>
+        <property name="type" type="string"/>
+        <property name="status" type="string"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.CatalogStructureListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="catalogStructureId" type="java.lang.Long"/>
+        <property name="catalogId" type="java.lang.Long"/>
+        <property name="busEntityId" type="java.lang.Long"/>
+        <property name="catalogStructureCd" type="string"/>
+        <property name="itemId" type="java.lang.Long"/>
+        <property name="customerSkuNum" type="string"/>
+        <property name="shortDesc" type="string"/>
+        <property name="effectiveDate" type="java.util.Date"/>
+        <property name="expirationDate" type="java.util.Date"/>
+        <property name="statusCd" type="string"/>
+        <property name="costCenterId" type="java.lang.Long"/>
+        <property name="taxExempt" type="string"/>
+        <property name="itemGroupId" type="java.lang.Long"/>
+        <property name="specialPermission" type="string"/>
+        <property name="sortOrder" type="java.lang.Long"/>
+    </class>
+
+	<class name="com.espendwise.manta.model.view.TradingPartnerListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="tradingPartnerId" type="java.lang.Long"/>
+        <property name="shortDesc" type="string"/>
+        <property name="tradingTypeCd" type="string"/>
+        <property name="tradingPartnerTypeCd" type="string"/>
+        <property name="tradingPartnerStatusCd" type="string"/>
+        <property name="skuTypeCd" type="string"/>
+        <property name="uomConversionTypeCd" type="string"/>
+        <property name="siteIdentifierTypeCd" type="string"/>
+        <property name="validateContractPrice" type="string"/>
+        <property name="poNumberType" type="string"/>
+        <property name="accountIdentifierInbound" type="string"/>
+    </class>
+    
+    <class name="com.espendwise.manta.model.view.ShoppingControlItemView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="shoppingControlId" type="java.lang.Long"/>
+        <property name="itemId" type="java.lang.Long"/>
+      	<property name="itemShortDesc" type="string"/>
+        <property name="itemSku" type="string"/>
+        <property name="itemUom" type="string"/>
+        <property name="itemPack" type="string"/>
+        <property name="itemSize" type="string"/>
+        <property name="shoppingControlStoreId" type="java.lang.Long"/>
+        <property name="shoppingControlStoreName" type="string"/>
+        <property name="shoppingControlAccountId" type="java.lang.Long"/>
+        <property name="shoppingControlAccountName" type="string"/>
+        <property name="shoppingControlLocationId" type="java.lang.Long"/>
+        <property name="shoppingControlLocationName" type="string"/>
+        <property name="shoppingControlMaxOrderQty" type="string"/>
+        <property name="shoppingControlRestrictionDays" type="string"/>
+        <property name="shoppingControlAction" type="string"/>
+        <property name="shoppingControlOriginalMaxOrderQty" type="string"/>
+        <property name="shoppingControlOriginalRestrictionDays" type="string"/>
+        <property name="shoppingControlOriginalAction" type="string"/>
+        <property name="groupType" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.GroupHeaderView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="groupId" type="java.lang.Long"/>
+        <property name="groupName" type="string"/>
+        <property name="groupType" type="string"/>
+    </class>
+
+
+    <class name="com.espendwise.manta.model.view.SiteWorkflowListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.WorkflowRuleData</meta>
+        <id name="workflowId" type="java.lang.Long"/>
+        <property name="workflowName" type="string"/>
+        <property name="assign" type="string"/>
+        <property name="type" type="string"/>
+        <property name="status" type="string"/>
+        <property name="rules" type="List&lt;WorkflowRuleData&gt;"/>
+    </class>
+    
+    <class name="com.espendwise.manta.model.view.ProfilePasswordMgrView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="storeId" type="java.lang.Long"/>
+        <property name="allowChangePassword" type="boolean"/>
+        <property name="reqPasswordResetUponInitLogin" type="boolean"/>
+        <property name="reqPasswordResetInDays" type="boolean"/>
+        <property name="expiryInDays" type="string"/>
+        <property name="notifyExpiryInDays" type="string"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.OrderListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="orderId" type="java.lang.Long"/>
+        <property name="accountName" type="string"/>
+        <property name="distName" type="string"/>
+        <property name="webOrderNum" type="string"/>
+        <property name="originalOrderDate" type="java.util.Date"/>
+        <property name="revisedOrderDate" type="java.util.Date"/>
+        <property name="orderDate" type="java.util.Date"/>
+        <property name="customerPoNum" type="string"/>
+        <property name="siteName" type="string"/>
+        <property name="address1" type="string"/>
+        <property name="city" type="string"/>
+        <property name="stateProvince" type="string"/>
+        <property name="postalCode" type="string"/>
+        <property name="orderStatus" type="string"/>
+        <property name="orderSource" type="string"/>
+        <property name="placedBy" type="string"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.ItemListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+       	<id name="itemId" type="java.lang.Long"/>
+        <property name="itemName" type="string"/>
+        <property name="sku" type="string"/>
+        <property name="size" type="string"/>
+        <property name="pack" type="string"/>
+        <property name="uom" type="string"/>
+        <property name="color" type="string"/>
+        <property name="category" type="string"/>
+        <property name="manufacturer" type="string"/>
+        <property name="manufacturerSku" type="string"/>
+        <property name="distributor" type="string"/>
+        <property name="distributorSku" type="string"/>
+        <property name="status" type="string"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.ItemIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ItemData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ItemAssocData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ItemMappingData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ItemMetaData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.CatalogStructureData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="itemData" type="com.espendwise.manta.model.data.ItemData"/>
+        <property name="catalogStructureData" type="com.espendwise.manta.model.data.CatalogStructureData"/>
+        <property name="itemAssocs" type="List&lt;ItemAssocData&gt;"/>
+        <property name="itemMapping" type="List&lt;ItemMappingData&gt;"/>
+        <property name="itemMeta" type="List&lt;ItemMetaData&gt;"/>
+    </class>
+    
+    <class name="com.espendwise.manta.model.view.EntityPropertiesView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.PropertyData</meta>
+        <id name="busEntityId" type="java.lang.Long"/>
+        <property name="properties" type="List&lt;PropertyData&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.UserGroupsView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.BusEntityData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.GroupData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.UserData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="user" type="com.espendwise.manta.model.data.UserData"/>
+        <property name="userStores" type="List&lt;BusEntityData&gt;"/>
+        <property name="assignedGroups" type="List&lt;GroupData&gt;"/>
+        <property name="unassignedGroups" type="List&lt;GroupData&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.ScheduleView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ScheduleData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ScheduleDetailData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="schedule" type="com.espendwise.manta.model.data.ScheduleData"/>
+        <property name="scheduleDetails" type="List&lt;ScheduleDetailData&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.UploadFileListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+       	<id name="uploadId" type="java.lang.Long"/>
+        <property name="uploadFileName" type="string"/>
+        <property name="addDate" type="java.util.Date"/>
+        <property name="modifiedDate" type="java.util.Date"/>
+        <property name="status" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.OrderHeaderView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="id" type="java.lang.Long"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.OrderExtraInfoView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="orderId" type="java.lang.Long"/>
+        <property name="accountId" type="java.lang.Long"/>
+        <property name="accountName" type="string"/>
+        <property name="locationId" type="java.lang.Long"/>
+        <property name="locationName" type="string"/>
+        <property name="locationAddress1" type="string"/>
+        <property name="locationAddress2" type="string"/>
+        <property name="locationAddress3" type="string"/>
+        <property name="locationAddress4" type="string"/>
+        <property name="locationCity" type="string"/>
+        <property name="locationState" type="string"/>
+        <property name="locationCountry" type="string"/>
+        <property name="locationZip" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.ReplacedOrderItemView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="orderItemId" type="java.lang.Long"/>
+        <property name="orderId" type="java.lang.Long"/>
+        <property name="itemId" type="java.lang.Long"/>
+        <property name="itemSkuNum" type="java.lang.Long"/>
+        <property name="custItemSkuNum" type="string"/>
+        <property name="itemShortDesc" type="string"/>
+        <property name="custItemShortDesc" type="string"/>
+        <property name="orderItemStatusCd" type="string"/>
+        <property name="manuItemSkuNum" type="string"/>
+        <property name="distItemSkuNum" type="string"/>
+        <property name="quantity" type="java.lang.Long"/>
+        <property name="quantityS" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.ReplacedOrderView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <meta attribute="extra-import" inherit="false">java.util.Date</meta>
+        <id name="orderId" type="java.lang.Long"/>
+        <property name="orderNum" type="string"/>
+        <property name="refOrderNum" type="string"/>
+        <property name="requestPoNum" type="string"/>
+        <property name="orderDate" type="Date"/>
+        <property name="orderSiteName" type="string"/>
+        <property name="items" type="List&lt;ReplacedOrderItemView&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.OrderIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderItemData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderPropertyData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderMetaData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderAddressData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderCreditCardData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="orderData" type="OrderData"/>
+        <property name="orderExtras" type="com.espendwise.manta.model.view.OrderExtraInfoView"/>
+        <property name="orderProperties" type="List&lt;OrderPropertyData&gt;"/>
+        <property name="orderMeta" type="List&lt;OrderMetaData&gt;"/>
+        <property name="orderItems" type="List&lt;OrderItemData&gt;"/>
+        <property name="replacedOrders" type="List&lt;ReplacedOrderView&gt;"/>
+        <property name="shippingForThisOrder" type="List&lt;FreightHandlerView&gt;"/>
+        <property name="referenceNums" type="List&lt;OrderPropertyData&gt;"/>
+        <property name="distShippingOptions" type="List&lt;DistOptionsForShippingView&gt;"/>
+        <property name="consolidatedOrder" type="OrderData"/>
+        <property name="refOrder" type="OrderData"/>
+        <property name="orderCreditCard" type="OrderCreditCardData"/>
+        <property name="shipTo" type="OrderAddressData"/>
+        <property name="billTo" type="OrderAddressData"/>
+        <property name="customerShipTo" type="OrderAddressData"/>
+        <property name="customerBillTo" type="OrderAddressData"/>
+        <property name="newSiteId" type="java.lang.Long"/>
+        <property name="accountId" type="java.lang.Long"/>
+        <property name="accountName" type="string"/>
+        <property name="erpOrderNum" type="string"/>
+        <property name="shipFromName" type="string"/>
+        <property name="received" type="boolean"/>
+        <property name="autoOrder" type="boolean"/>
+        <property name="ackOnHold" type="boolean"/>
+        <property name="shipped" type="boolean"/>
+        <property name="allowModification" type="boolean"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.OrderItemIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderPropertyData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.PurchaseOrderData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderFreightData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderAddOnChargeData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.InvoiceCustDetailData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.InvoiceDistDetailData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.InvoiceDistData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ItemSubstitutionData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ItemData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.AssetData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderItemActionData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ShoppingInfoData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.ReturnRequestDetailData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <meta attribute="extra-import" inherit="false">java.util.Date</meta>
+        <meta attribute="extra-import" inherit="false">java.math.BigDecimal</meta>
+        <id name="orderItem" type="com.espendwise.manta.model.data.OrderItemData"/>
+        <property name="orderItemNotes" type="List&lt;OrderPropertyData&gt;"/>
+        <property name="invoiceCustDetails" type="List&lt;InvoiceCustDetailData&gt;"/>
+        <property name="invoiceDistDatas" type="List&lt;InvoiceDistData&gt;"/>
+        <property name="invoiceDistDetails" type="List&lt;InvoiceDistDetailData&gt;"/>
+        <property name="orderItemSubstitutions" type="List&lt;ItemSubstitutionData&gt;"/>
+        <property name="shoppingHistory" type="List&lt;ShoppingInfoData&gt;"/>
+        <property name="orderItemActions" type="List&lt;OrderItemActionData&gt;"/>
+        <property name="orderItemActionDescs" type="List&lt;OrderItemActionDescView&gt;"/>
+        <property name="purchaseOrder" type="PurchaseOrderData"/>
+        <property name="orderFreight" type="OrderFreightData"/>
+        <property name="orderHandling" type="OrderFreightData"/>
+        <property name="orderDiscount" type="OrderAddOnChargeData"/>
+        <property name="orderFuelSurcharge" type="OrderAddOnChargeData"/>
+        <property name="orderSmallOrderFee" type="OrderAddOnChargeData"/>
+        <property name="itemInfo" type="ItemData"/>
+        <property name="assetInfo" type="AssetData"/>
+        <property name="newAssetView" type="AssetListView"/>
+        <property name="distPoNote" type="OrderPropertyData"/>
+        <property name="returnRequestDetail" type="ReturnRequestDetailData"/>
+        <property name="distId" type="Long"/>
+        <property name="standardProductListFlag" type="string"/>
+        <property name="distRuntimeDisplayName" type="string"/>
+        <property name="distName" type="string"/>
+        <property name="newDistView" type="DistributorListView"/>
+        <property name="newDistName" type="string"/>
+        <property name="newDistId" type="string"/>
+        <property name="newAssetName" type="string"/>
+        <property name="assetIdS" type="string"/>
+        <property name="newServiceName" type="string"/>
+        <property name="newServiceView" type="ServiceListView"/>
+        <property name="openLineStatusCd" type="string"/>
+        <property name="taxExempt" type="boolean"/>
+        <property name="newInvoiceDistDetail" type="InvoiceDistDetailData"/>
+        <property name="itemQuantity" type="string"/>
+        <property name="newCwCostView" type="ItemContractCostView"/>
+        <property name="newCwCost" type="string"/>
+        <property name="distLineNum" type="string"/>
+        <property name="newItemView" type="ProductListView"/>
+        <property name="newItemSkuNum" type="string"/>
+        <property name="newItemId" type="string"/>
+        <property name="orderItemIdStr" type="string"/>
+        <property name="lineTotal" type="string"/>
+        <property name="newItemPrice" type="string"/>
+        <property name="targetShipDateStr" type="string"/>
+        <property name="shipStatus" type="string"/>
+        <property name="qtyReturned" type="string"/>
+        <property name="deliveryDate" type="Date"/>
+        <property name="newItemStatus" type="string"/>
+        <property name="newPoItemStatus" type="string"/>
+        <property name="calculatedSalesTax" type="BigDecimal"/>
+        <property name="catalogItemSkuNum" type="string"/>
+        <property name="newOrderItemActionQtyStr" type="string"/>
+        <property name="targetShipDate" type="Date"/>
+        <property name="newOrderItemActionQty" type="Integer"/>
+        <property name="workingInvoiceDistDetail" type="InvoiceDistDetailData"/>
+        <property name="itemQuantityReceived" type="string"/>
+        <property name="actualCost" type="BigDecimal"/>
+        <property name="actualQty" type="Integer"/>
+        <property name="reSale" type="boolean"/>
+        <property name="hasNote" type="boolean"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.OrderItemActionDescView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderItemActionData</meta>
+        <meta attribute="extra-import" inherit="false">java.math.BigDecimal</meta>
+        <id name="orderItemAction" type="OrderItemActionData"/>
+        <property name="itemSkuNum" type="java.lang.Integer"/>
+        <property name="itemPack" type="string"/>
+        <property name="distItemSkuNum" type="string"/>
+        <property name="itemShortDesc" type="string"/>
+        <property name="itemUom" type="string"/>
+        <property name="itemDistCost" type="BigDecimal"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.CumulativeSummaryView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.Date</meta>
+        <id name="id" type="java.lang.Long"/>
+        <property name="lastDate" type="Date"/>
+        <property name="ordered" type="java.lang.Long"/>
+        <property name="accepted" type="java.lang.Long"/>
+        <property name="backordered" type="java.lang.Long"/>
+        <property name="substituted" type="java.lang.Long"/>
+        <property name="invoiced" type="java.lang.Long"/>
+        <property name="returned" type="java.lang.Long"/>
+        <property name="shipped" type="java.lang.Long"/>
+    </class>    
+     <class name="com.espendwise.manta.model.view.BatchOrderView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="eventId" type="java.lang.Long"/>
+        <property name="storeId" type="java.lang.Long"/>
+        <property name="storeName" type="string"/>
+        <property name="fileName" type="string"/>
+        <property name="orderCount" type="int"/>
+        <property name="applyToBudget" type="string"/>
+        <property name="sendConfirmation" type="string"/>
+        <property name="processOn" type="string"/>
+        <property name="dateFormat" type="string"/>
+        <property name="processWhen" type="string"/>
+        <property name="fileBinaryData" type="byte[]"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.EventEmailView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.EventData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.EventEmailData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.util.FileAttach</meta>
+        <id name="eventData" type="com.espendwise.manta.model.data.EventData"/>
+        <property name="eventEmail" type="com.espendwise.manta.model.data.EventEmailData"/>
+        <property name="fileAttachments" type="com.espendwise.manta.util.FileAttach[]"/>        
+    </class>
+    
+    <class name="com.espendwise.manta.model.view.FreightHandlerView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.BusEntityData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.AddressData</meta>
+        <id name="busEntityData" type="BusEntityData"/>
+        <property name="storeId" type="java.lang.Long"/>
+        <property name="ediRoutingCd" type="string"/>
+        <property name="acceptFreightOnInvoice" type="string"/>
+        <property name="primaryAddress" type="AddressData"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.DistOptionsForShippingView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.BusEntityData</meta>
+        <id name="distributor" type="BusEntityData"/>
+        <property name="freightHandler" type="BusEntityData"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.NoteJoinView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.NoteData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.NoteTextData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.NoteAttachmentData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="note" type="NoteData"/>
+        <property name="noteText" type="List&lt;NoteTextData&gt;"/>
+        <property name="noteAttachment" type="List&lt;NoteAttachmentData&gt;"/>
+        <property name="select" type="Boolean"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.InvoiceCustView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.InvoiceCustData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.InvoiceCustDetailData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="invoiceCustData" type="InvoiceCustData"/>
+        <property name="orderData" type="OrderData"/>
+        <property name="invoiceCustDetails" type="List&lt;InvoiceCustDetailData&gt;"/>
+        <property name="invoiceCustInfoViews" type="List&lt;InvoiceCustInfoView&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.InvoiceCustInfoView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.NoteData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.NoteTextData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.NoteAttachmentData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <meta attribute="extra-import" inherit="false">java.math.BigDecimal</meta>
+        <id name="id" type="Long"/>
+        <property name="invoiceDetailStatusCd" type="string"/>
+        <property name="shipStatusCd" type="string"/>
+        <property name="lineNumber" type="Long"/>
+        <property name="itemSkuNum" type="Long"/>
+        <property name="itemShortDesc" type="string"/>
+        <property name="itemUom" type="string"/>
+        <property name="itemQuantity" type="Long"/>
+        <property name="custContractPrice" type="BigDecimal"/>
+        <property name="lineTotal" type="BigDecimal"/>
+        <property name="distItemSkuNum" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.DistributionSummaryView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="orderId" type="Long"/>
+        <property name="orderStatus" type="string"/>
+        <property name="allowChangeToShipping" type="boolean"/>
+        <property name="distSummaryLines" type="List&lt;DistSummaryLineView&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.DistSummaryLineView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.math.BigDecimal</meta>
+        <id name="distId" type="Long"/>
+        <property name="distName" type="string"/>
+        <property name="distErpNum" type="string"/>
+        <property name="distShipOption" type="DistOptionsForShippingView"/>
+        <property name="distTotal" type="BigDecimal"/>
+        <property name="distLineItemCount" type="Long"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.ItemContractCostView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.math.BigDecimal</meta>
+        <id name="itemId" type="Long"/>
+        <property name="distId" type="Long"/>
+        <property name="contractId" type="Long"/>
+        <property name="catalogId" type="Long"/>
+        <property name="itemCost" type="BigDecimal"/>
+        <property name="distDesc" type="string"/>
+        <property name="contractDesc" type="string"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.StoreIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.BusEntityData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.PropertyData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.AddressData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.PhoneData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.EmailData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.CountryPropertyData</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="storeData" type="BusEntityData"/>
+        <property name="storePrefix" type="PropertyData"/>
+        <property name="storeType" type="PropertyData"/>
+        <property name="customerServiceEmail" type="EmailData"/>
+        <property name="contactUsEmail" type="EmailData"/>
+        <property name="defaultEmail" type="EmailData"/>
+        <property name="primaryEmail" type="EmailData"/>
+        <property name="primaryAddress" type="AddressData"/>
+        <property name="primaryPhone" type="PhoneData"/>
+        <property name="primaryFax" type="PhoneData"/>
+        <property name="storePrimaryWebAddress" type="PropertyData"/>
+        <property name="storeBusinessName" type="PropertyData"/>
+        <property name="callHours" type="PropertyData"/>
+        <property name="miscProperties" type="List&lt;PropertyData&gt;"/>
+        <property name="countryProperties" type="List&lt;CountryPropertyData&gt;"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.OrderChangeRequestView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.util.Date</meta>
+        <meta attribute="extra-import" inherit="false">java.math.BigDecimal</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="orderInfo" type="OrderIdentView"/>
+        <property name="orderItems" type="List&lt;OrderItemIdentView&gt;"/>
+        <property name="orderItemsDelete" type="List&lt;Long&gt;"/>
+        <property name="userName" type="String"/>
+        <property name="newOrderDate" type="Date"/>
+        <property name="newSiteId" type="Long"/>
+        <property name="rebillOrder" type="boolean"/>
+        <property name="totalFreightCostValue" type="BigDecimal"/>
+        <property name="totalMiscCostValue" type="BigDecimal"/>
+        <property name="smallOrderFeeAmountValue" type="BigDecimal"/>
+        <property name="fuelSurchargeAmountValue" type="BigDecimal"/>
+        <property name="discountAmountValue" type="BigDecimal"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.AssetListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="assetId" type="Long"/>
+        <property name="assetName" type="String"/>
+        <property name="assetType" type="String"/>
+        <property name="assetNum" type="String"/>
+        <property name="serialNum" type="String"/>
+        <property name="assetStatus" type="String"/>
+        <property name="siteId" type="Long"/>
+        <property name="siteName" type="String"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.ServiceListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="serviceId" type="Long"/>
+        <property name="serviceName" type="String"/>
+        <property name="serviceStatus" type="String"/>
+    </class>
+   
+    <class name="com.espendwise.manta.model.view.UploadSkuView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.UploadSkuData</meta>
+        <id name="uploadSkuData" type="UploadSkuData"/>
+        <property name="skuNum" type="String"/>
+    </class>
+    
+    <class name="com.espendwise.manta.model.view.UserUploadView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="lineNumber" type="int"/>
+        <property name="versionNumber" type="String"/>
+        <property name="action" type="String"/>
+        <property name="storeId" type="Long"/>
+        <property name="storeName" type="String"/>
+        <property name="accountRefNumber" type="String"/>
+        <property name="accountName" type="String"/>
+        <property name="siteName" type="String"/>
+        <property name="distrSiteRefNumber" type="String"/>
+        <property name="userName" type="String"/>
+        <property name="password" type="String"/>
+        <property name="updatePassword" type="boolean"/>
+        <property name="preferredLanguage" type="String"/>
+        <property name="firstName" type="String"/>
+        <property name="lastName" type="String"/>
+        <property name="address1" type="String"/>
+        <property name="address2" type="String"/>
+        <property name="city" type="String"/>
+        <property name="state" type="String"/>
+        <property name="postalCode" type="String"/>
+        <property name="country" type="String"/>
+        <property name="phone" type="String"/>
+        <property name="email" type="String"/>
+        <property name="fax" type="String"/>
+        <property name="mobile" type="String"/>
+        <property name="approver" type="boolean"/>
+        <property name="needsApproval" type="boolean"/>
+        <property name="wasApproved" type="boolean"/>
+        <property name="wasRejected" type="boolean"/>
+        <property name="wasModified" type="boolean"/>
+        <property name="orderDetailNotification" type="boolean"/>
+        <property name="shippingNotification" type="boolean"/>
+        <property name="cutoffTimeReminder" type="boolean"/>   
+        <property name="cutoffTimeEmailReminderCnt" type="Integer"/>
+        <property name="phyInvNonCompLocations" type="boolean"/>
+        <property name="phyInvCountsPastDue" type="boolean"/>	    
+        <property name="corporateUser" type="boolean"/>
+        <property name="onAccount" type="boolean"/>
+        <property name="creditCard" type="boolean"/>
+        <property name="otherPayment" type="boolean"/>
+        <property name="poNumRequired" type="boolean"/>
+        <property name="showPrice" type="boolean"/>
+        <property name="browseOnly" type="boolean"/>
+        <property name="noReporting" type="boolean"/>
+        <property name="groupID" type="String"/>
+        <property name="siteIds" type="String"/>
+        <property name="userId" type="Long"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.OrderGuideListView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="orderGuideId" type="java.lang.Long"/>
+        <property name="orderGuideName" type="string"/>
+        <property name="catalogName" type="string"/>
+        <property name="catalogStatus" type="string"/>
+        <property name="orderGuideType" type="string"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.OrderGuideIdentView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderGuideData</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.view.OrderGuideIdentView</meta>
+        <meta attribute="extra-import" inherit="false">java.util.List</meta>
+        <id name="orderGuideData" type="OrderGuideData"/>
+        <property name="catalogName" type="string"/>
+        <property name="shareBuyerOrderGuides" type="com.espendwise.manta.model.data.PropertyData"/>
+        <property name="items" type="List&lt;OrderGuideItemView&gt;"/>
+    </class>
+
+    <class name="com.espendwise.manta.model.view.OrderGuideItemView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.data.OrderGuideStructureData</meta>
+        <meta attribute="extra-import" inherit="false">java.math.BigDecimal</meta>
+        <id name="orderGuideStructureId" type="java.lang.Long"/>
+        <property name="orderGuideId" type="java.lang.Long"/>
+        <property name="itemId" type="java.lang.Long"/>
+        <property name="categoryItemId" type="java.lang.Long"/>
+        <property name="custCategory" type="string"/>
+        <property name="sortOrder" type="java.lang.Long"/>
+        <property name="quantity" type="java.lang.Long"/>
+        <property name="quantityStr" type="string"/>
+        <property name="itemPrice" type="BigDecimal"/>
+        <property name="extendedPrice" type="BigDecimal"/>
+        <property name="productName" type="string"/>
+        <property name="itemSkuNum" type="string"/>
+        <property name="custItemSkuNum" type="string"/>
+        <property name="itemSize" type="string"/>
+        <property name="pack" type="string"/>
+        <property name="uom" type="string"/>
+        <property name="mfg" type="string"/>
+        <property name="mfgSku" type="string"/>
+        <property name="catalogDistId" type="java.lang.Long"/>
+        <property name="itemMappingDistId" type="java.lang.Long"/>
+        <property name="distSku" type="string"/>
+        <property name="category" type="string"/> 
+    </class>
+     <class name="com.espendwise.manta.model.view.CatalogManagerView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+		<meta attribute="extra-import" inherit="false">java.util.Date</meta>
+        <id name="eventId" type="java.lang.Long"/>
+        <property name="storeId" type="java.lang.Long"/>
+        <property name="storeName" type="string"/>
+        <property name="fileName" type="string"/>
+        <property name="catalogCount" type="int"/>
+        <property name="effectiveDate" type="string"/>
+        <property name="dateFormat" type="string"/>
+         <property name="timeZone" type="string"/>
+         <property name="effDateD" type="Date"/>
+        <property name="fileBinaryData" type="byte[]"/>
+    </class>
+    <class name="com.espendwise.manta.model.view.UpdateCatalogUploadView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <meta attribute="extra-import" inherit="false">java.math.BigDecimal</meta>
+         <id name="lineNumberId" type="int"/>
+        <property name="versionNumber" type="String"/>
+        <property name="action" type="String"/>
+        <property name="lineNumber" type="Integer"/>
+        <property name="catalogIds" type="java.util.List"/>
+        <property name="itemId" type="Long"/>
+        <property name="storeSku" type="Integer"/>
+        <property name="price" type="BigDecimal"/>
+        <property name="cost" type="BigDecimal"/>
+        <property name="category" type="String"/>
+        <property name="distName" type="String"/>
+        <property name="distId" type="Long"/>
+        <property name="distSku" type="String"/>
+        <property name="distUom" type="String"/>
+        <property name="distPack" type="Integer"/>
+        <property name="orderGuideNames" type="java.util.List"/>
+        <property name="orderGuideIds" type="java.util.List"/>
+        <property name="taxExempt" type="Boolean"/>
+        <property name="customerSku" type="String"/>
+        <property name="standardProductList" type="Boolean"/>
+        
+      </class>
+         <class name="com.espendwise.manta.model.view.ItemLoaderView">
+        <meta attribute="extends" inherit="false">ValueObject</meta>
+        <meta attribute="use-in-tostring" inherit="false">true</meta>
+        <meta attribute="extra-import" inherit="false">com.espendwise.manta.model.ValueObject</meta>
+        <id name="itemId" type="Long"/>
+        <property name="catalogId" type="Long"/>
+        <property name="itemStatusCd" type="String"/>
+        <property name="itemTypeCd" type="String"/>
+        <property name="storeSku" type="String"/>
+        <property name="distId" type="Long"/>
+        <property name="distSku" type="String"/>
+        <property name="distUom" type="String"/>
+        
+      </class>
+      
+</hibernate-mapping>

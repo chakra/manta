@@ -1,0 +1,10 @@
+<hr>
+<br>
+This is an automated email.  Do not reply to this email.<br/>
+<br/>
+Location ${location.siteName} has automatically accepted your scheduled date for 
+<a href="${link.serviceTicket}">Service Ticket ${serviceTicketNumber}</a>
+for ${serviceType.name} to be performed on ${scheduleDate}.<br/>
+<br/>
+Thank you.<br/>
+<br/>

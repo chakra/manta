@@ -1,0 +1,17 @@
+body { font-family: Arial, Helvetica, Sans-Serif; background-color: #ffffff; background-layer-color: #ffffff; font-size: 12px;  }
+
+a.blueBtnLarge {display: block; float: left; background: right top no-repeat url("../images/blueBtnLarge-Right.gif"); height: 33px;  margin-left: 10px;line-height: 12px !important}
+a.blueBtnLarge span {display: block; background: left top no-repeat url("../images/blueBtnLarge-Left.gif"); height: 24px; font-size: 13px; color: #fff; padding: 9px 12px 0 12px;cursor: pointer}
+a.blueBtnLarge:hover { background-position: right -33px; text-decoration: none }
+
+a.blueBtnLarge:hover span {background-position: left -33px}
+div#coverLayer { position: absolute; top: 0; left: 0; z-index: 9997; visibility: hidden; background: #000; filter: alpha(opacity = 50);  opacity: .5 }
+div.popUpWindow {  position: absolute !important; top: 0; left: 0; visibility: hidden ;   z-index: 9999;}
+div.popUpMedium {  width: 513px }
+div.popUpMedium div.popUpTop { background: left top no-repeat url("../images/popup/popUpMedium-Top.png"); display: block;  width: 513px;  height: 8px;font-size: 1px}
+
+div.popUpMedium div.popUpContent {   background: left bottom repeat-y url("../images/popup/popUpMedium-Bg.png"); display: block; width: 473px; padding: 18px 20px 8px 20px }
+div.popUpMedium div.popUpBottom,div.popUpBottom {background: left top no-repeat url("../images/popup/popUpMedium-Bottom.png"); display: block; width: 513px;  height: 8px;  font-size: 1px}
+body.popUpMedium {  padding: 10px 20px 10px 20px; background: #fcfcfc }
+div.buttonRow a.closePopUpBtn {   float: right;margin-right: 10px}
+div.popUpMedium iframe{  width: 473px;   margin-bottom: 10px ; height: 325px;}

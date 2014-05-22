@@ -1,0 +1,913 @@
+<!-- Project definition file for ANT for the MANTA Project -->
+<project name="manta" default="deploy" >
+
+    <!-- Compiler options  -->
+
+    <property file="build.properties"/>
+    <property file="local.properties"/>
+
+    <property name="libdir"                        value="${basedir}/lib"/>
+    <property name="tools"                         value="${basedir}/tools"/>
+    <property name="gencode"                       value="${tools}/gencode"/>
+    <property name="package.target"                value="target"/>
+    <property name="target"                        value="${package.target}"/>
+    <property name="artifactDir"                   value="target/dist/"/>
+    <property name="build"                         value="${target}/build"/>
+    <property name="resources"                     value="${basedir}/src/main/resources"/>
+    <property name="hbmcfgpath"                    value="${resources}/META-INF"/>
+    <property name="manta.project.path"            value="src/main"/>
+    <property name="manta.project.src"             value="${manta.project.path}/java"/>
+    <property name="manta.project.web"             value="${manta.project.path}/webapp"/>
+    <property name="manta.project.resource"        value="${manta.project.path}/resources"/>
+    <property name="ocean.lib.dir"                 value="${tools}/ocean"/>
+
+    <property name="src.dirBranchPath" value="tools/getBranchPath/src"/>
+    <property name="package.targetBranchPath" value="tools/getBranchPath/target"/>
+    <property name="targetBranchPath" value="${package.targetBranchPath}"/>
+    <property name="classes.dirBranchPath" value="tools/getBranchPath/bin/BranchPath"/>
+    <property name="jar.dirBranchPath" value="${targetBranchPath}"/>
+    <property name="main-classBranchPath"  value="BranchPath.getBranchPath"/>
+
+    <patternset id="ignored.files">
+        <exclude name="**/CVS/**"/>
+        <exclude name="**/SCCS/**"/>
+        <exclude name="**/RCS/**"/>
+        <exclude name="**/rcs/**"/>
+        <exclude name="**/.DS_Store/**"/>
+        <exclude name="**/.svn/**"/>
+        <exclude name="**/.pyc/**"/>
+        <exclude name="**/.pyo/**"/>
+        <exclude name="**/*.pyc/**"/>
+        <exclude name="**/*.pyo/**"/>
+        <exclude name="**/.git/**"/>
+        <exclude name="**/*.hprof/**"/>
+        <exclude name="**/_svn/**"/>
+        <exclude name="**/.hg/**"/>
+        <exclude name="**/*.lib/**"/>
+        <exclude name="**/*~/**"/>
+        <exclude name="**/__pycache__/**"/>
+        <exclude name="**/.bundle/**"/>
+        <exclude name="**/*.rbc/**"/>
+        <exclude name="**/vssver.scc/**"/>
+        <exclude name="**/vssver2.scc/**"/>
+        <exclude name="**/.bzr/**"/>
+    </patternset>
+
+    <patternset id="library.patterns">
+        <include name="*.war"/>
+        <include name="*.ear"/>
+        <include name="*.apk"/>
+        <include name="*.zip"/>
+        <include name="*.swc"/>
+        <include name="*.egg"/>
+        <include name="*.jar"/>
+    </patternset>
+
+    <patternset id="compiler.resources">
+        <include name="**/?*.properties"/>
+        <include name="**/?*.xml"/>
+        <include name="**/?*.gif"/>
+        <include name="**/?*.png"/>
+        <include name="**/?*.jpeg"/>
+        <include name="**/?*.jpg"/>
+        <include name="**/?*.html"/>
+        <include name="**/?*.dtd"/>
+        <include name="**/?*.tld"/>
+        <include name="**/?*.ftl"/>
+    </patternset>
+
+    <path id="manta.module.sourcepath">
+        <dirset dir="">
+            <include name="${manta.project.src}"/>
+        </dirset>
+    </path>
+
+    <path id="manta.tiles.path">
+        <fileset dir="${tools}/tiles-2">
+            <include  name="tiles-2.2.2/tiles-core-2.2.2.jar"/>
+            <include  name="tiles-2.2.2/tiles-api-2.2.2.jar"  />
+            <include  name="tiles-2.2.2/tiles-servlet-2.2.2.jar" />
+            <include  name="tiles-2.2.2/tiles-jsp-2.2.2.jar" />
+            <include  name="tiles-2.2.2/lib/commons-digester-2.0.jar" />
+            <include  name="tiles-2.2.2/lib/commons-beanutils-1.8.0.jar"/>
+            <include  name="tiles-2.2.2/tiles-template-2.2.2.jar" />
+        </fileset>
+    </path>
+
+    <path id="manta.project.path">
+        <fileset dir="${libdir}"><include name="**/*.jar"/></fileset>
+        <fileset dir="${ocean.lib.dir}"><include name="**/*.jar"/></fileset>
+        <pathelement location="tools/j2ee-apis/servlet-api.jar" />
+        <pathelement location="tools/j2ee-apis/jsp-api.jar" />
+    </path>
+
+    <path id="manta.app.path">
+        <path refid="manta.project.path"/>
+        <path refid="manta.tiles.path"/>
+    </path>
+
+    <path id="manta.gencode.sourcepath">
+        <dirset dir="${gencode}">
+            <include name="src"/>
+            <include name="**/*.jar"/>
+        </dirset>
+    </path>
+
+    <!-- The class path used for build tools -->
+    <path id="manta.project.class.tools">
+        <pathelement path="${build}/tools" />
+        <pathelement location="${build}" />
+    </path>
+
+    <path id="hbm.tools.lib">
+        <fileset dir="${libdir}">
+            <include name="**/*.jar"/>
+            <exclude name="hibernate-core-4.0.0.Final.jar"/>
+        </fileset>
+        <path location="${tools}/hbm-tools/hibernate-tools-3.2.2.jar" />
+        <path location="${tools}/hbm-tools/hibernate-core.jar" />
+        <path location="${tools}/hbm-tools/freemarker.jar" />
+        <path location="${tools}/hbm-tools/jtidy-r918.jar" />
+        <path location="${tools}/ocean/eSpendwiseOceanCommon.jar" />
+    </path>
+
+    <path id = "log4jproperties">
+        <path location="log4jproperties.jar" />
+    </path>
+
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="tools/ant-contrib/lib/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+
+
+    <!-- ====================================================================== -->
+    <!-- Default target.  Builds all artifacts                                  -->
+    <!-- ====================================================================== -->
+    <target name="build.all">
+        <antcall target="build.database.properties"/>
+        <antcall target="build.entity"/>
+        <antcall target="eSpendwiseOceanCommon.jar"/>
+     </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="prepare.tools.gencode" depends="init">
+
+        <mkdir dir="${build}/tools"/>
+        <tstamp/>
+
+        <javac srcdir="${gencode}/src"
+               destdir="${build}/tools"
+               fork="true"
+               debug="${compiler.debug}">
+            <classpath refid="manta.gencode.sourcepath"/>
+            <classpath refid="hbm.tools.lib"/>
+            <classpath>
+                <pathelement location="${libdir}/log4j-1.2.15.jar"/>
+                <pathelement location="${libdir}/commons-logging.jar"/>
+            </classpath>
+        </javac>
+
+        <taskdef name="dbbaseconfiguration"
+                 classname="com.espendwise.tools.gencode.tasks.DbBaseXmlConfigurationTask">
+            <classpath refid="hbm.tools.lib"/>
+            <classpath>
+                <path refid="log4jproperties"/>
+                <pathelement path="${build}/tools"/>
+                <pathelement location="${libdir}/log4j-1.2.15.jar"/>
+                <pathelement location="${libdir}/commons-logging.jar"/>
+            </classpath>
+        </taskdef>
+
+        <taskdef name="copychangedfiles" classname="com.espendwise.tools.gencode.tasks.CopyChangedFiles">
+            <classpath refid="hbm.tools.lib"/>
+            <classpath>
+                <path refid="log4jproperties"/>
+                <pathelement path="${build}/tools"/>
+                <pathelement location="${libdir}/log4j-1.2.15.jar"/>
+                <pathelement location="${libdir}/commons-logging.jar"/>
+            </classpath>
+        </taskdef>
+
+        <taskdef name="hibernatetool" classname="com.espendwise.tools.gencode.tasks.DbBaseHbmToolTask">
+            <classpath refid="hbm.tools.lib"/>
+            <classpath>
+                <path refid="log4jproperties"/>
+                <pathelement path="${build}/tools"/>
+                <pathelement location="${libdir}/log4j-1.2.15.jar"/>
+                <pathelement location="${libdir}/commons-logging.jar"/>
+            </classpath>
+        </taskdef>
+
+        <taskdef name="Db2Hbm" classname="com.espendwise.tools.gencode.tasks.DbXml2Hbm">
+            <classpath refid="hbm.tools.lib"/>
+            <classpath>
+                <path refid="log4jproperties"/>
+                <pathelement path="${build}/tools"/>
+                <pathelement location="${libdir}/log4j-1.2.15.jar"/>
+                <pathelement location="${libdir}/commons-logging.jar"/>
+            </classpath>
+        </taskdef>
+
+        <taskdef name="joindbbasexml" classname="com.espendwise.tools.gencode.tasks.JoinDbBaseXML">
+            <classpath refid="hbm.tools.lib"/>
+            <classpath>
+                <path refid="log4jproperties"/>
+                <pathelement path="${build}/tools"/>
+                <pathelement location="${libdir}/log4j-1.2.15.jar"/>
+                <pathelement location="${libdir}/commons-logging.jar"/>
+            </classpath>
+        </taskdef>
+
+        <taskdef name="dbconfig" classname="com.espendwise.tools.gencode.tasks.CreateDataAccessConfig">
+            <classpath refid="hbm.tools.lib"/>
+            <classpath>
+                <path refid="log4jproperties"/>
+                <pathelement path="${build}/tools"/>
+                <pathelement location="${libdir}/log4j-1.2.15.jar"/>
+                <pathelement location="${libdir}/commons-logging.jar"/>
+            </classpath>
+        </taskdef>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="build.database.properties" depends="prepare.tools.gencode">
+        <property name="database.datasources.count" value=""/>
+        <dbconfig outDataAccessXmlFile="${resources}/META-INF/spring/app-data-access.xml"
+                  outPersistenceXmlFile="${hbmcfgpath}/persistence.xml"
+                  outDbProperiesFile="${resources}/META-INF/spring/database.properties"
+                  outDataAccessJavaFile="${basedir}/${manta.project.src}/com/espendwise/manta/service/DatabaseAccess.java"
+                  datasourcesCount="${database.datasources.count}"
+                />
+
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="db2data" depends="prepare.tools.gencode">
+        <mkdir  dir="${build}/db2hbm"/>
+
+        <hibernatetool destdir="${build}/db2hbm">
+            <dbbaseconfiguration
+                    dialect="org.hibernate.dialect.Oracle10gDialect"
+                    xmlfile="${tools}/db/dbBaseOrca.xml,${tools}/db/dbBaseStJohn.xml,${tools}/db/dbBaseMain.xml"
+                    namesStrategyFiles="${tools}/gencode/src/com/espendwise/tools/gencode/hbmxml/cfg/nameStrategy.xml"
+                    namesStrategy="com.espendwise.tools.gencode.hbmxml.single.SingleReferenceNamesStrategy"/>
+            <hbmtemplate template="hbm/persistentclass.hbm.ftl" exporterclass="org.hibernate.tool.hbm2x.HibernateMappingExporter" />
+
+            <hbmtemplate exporterclass="com.espendwise.tools.gencode.hbmxml.AppConfigurationExporter" filepattern=".">
+                <property key="entities.hbm.xml" value="datas.hbm.xml" />
+                <property key="destdir" value="${hbmcfgpath}" />
+            </hbmtemplate>
+        </hibernatetool>
+
+        <delete dir="${build}/db2hbm"/>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="db2fullentity" depends="prepare.tools.gencode">
+        <mkdir  dir="${build}/db2hbm"/>
+
+        <hibernatetool destdir="${build}/db2hbm">
+            <dbbaseconfiguration
+                    dialect="org.hibernate.dialect.Oracle10gDialect"
+                    xmlfile="${tools}/db/dbBaseOrca.xml,${tools}/db/dbBaseStJohn.xml,${tools}/db/dbBaseMain.xml"
+                    namesStrategyFiles="${tools}/gencode/src/com/espendwise/tools/gencode/hbmxml/cfg/nameStrategy.xml"
+                    namesStrategy="com.espendwise.tools.gencode.hbmxml.multi.MultiReferenceNamesStrategy"/>
+            <hbmtemplate template="hbm/persistentclass.hbm.ftl"
+                         exporterclass="org.hibernate.tool.hbm2x.HibernateMappingExporter" />
+            <hbmtemplate exporterclass="com.espendwise.tools.gencode.hbmxml.AppConfigurationExporter"
+                         filepattern=".">
+                <property key="entities.hbm.xml" value="full.entities.hbm.xml" />
+                <property key="destdir" value="${hbmcfgpath}" />
+            </hbmtemplate>
+        </hibernatetool>
+
+        <delete dir="${build}/db2hbm"/>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="db2hbm" depends="prepare.tools.gencode">
+        <antcall target="db2data"/>
+        <antcall target="db2fullentity"/>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="build.entity">
+        <antcall target="db2hbm"/>
+        <antcall target="hbm2java"/>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="hbm2data" depends="prepare.tools.gencode">
+        <mkdir dir="${build}/hbm2java/classes"/>
+
+        <hibernatetool destdir="${build}/hbm2java/classes" templatepath="">
+            <configuration>
+                <fileset dir="${hbmcfgpath}">
+                    <include name="datas.hbm.xml"/>
+                    <exclude name="full.entities.hbm.xml"/>
+                    <exclude name="entities.hbm.xml"/>
+                </fileset>
+            </configuration>
+            <classpath refid="hbm.tools.lib"/>
+            <hbmtemplate
+                    templatepath="${tools}/gencode/src/com/espendwise/tools/gencode/hbmxml/cfg"
+                    template="Pojo.ftl"
+                    filepattern="{package-name}/{class-name}.java"
+                    exporterclass="com.espendwise.tools.gencode.hbmxml.AppHbm2JavaExporter">
+                <property key="classVersionUID" value="classSerialUID.properties"/>
+                <property key="useClassVesionUID" value="true"/>
+                <property key="javaname" value="${javaname}"/>
+                <property key="ejb3" value="true"/>
+                <property key="jdk5" value="true"/>
+            </hbmtemplate>
+        </hibernatetool>
+
+        <copychangedfiles todir="${manta.project.src}"
+                          overwrite="yes"
+                          filtering="yes">
+            <fileset dir="${build}/hbm2java/classes">
+                <patternset>
+                    <include name="**/*.java"/>
+                </patternset>
+            </fileset>
+        </copychangedfiles>
+
+        <delete dir="${build}/hbm2java/classes"/>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="hbm2fullentity" depends="prepare.tools.gencode">
+        <mkdir dir="${build}/hbm2java/classes"/>
+
+        <hibernatetool destdir="${build}/hbm2java/classes" templatepath="">
+            <configuration>
+                <fileset dir="${hbmcfgpath}">
+                    <exclude name="datas.hbm.xml"/>
+                    <exclude name="entities.hbm.xml"/>
+                    <include name="full.entities.hbm.xml"/>
+                </fileset>
+            </configuration>
+
+            <classpath refid="hbm.tools.lib"/>
+
+            <hbmtemplate
+                    templatepath="${tools}/gencode/src/com/espendwise/tools/gencode/hbmxml/cfg"
+                    template="PojoFullEntity.ftl"
+                    filepattern="{package-name}/{class-name}.java"
+                    exporterclass="com.espendwise.tools.gencode.hbmxml.AppHbm2JavaFullEntityExporter">
+                <property key="classVersionUID" value="classSerialUID.properties"/>
+                <property key="useClassVesionUID" value="true"/>
+                <property key="javaname" value="${javaname}"/>
+                <property key="ejb3" value="true"/>
+                <property key="jdk5" value="true"/>
+            </hbmtemplate>
+        </hibernatetool>
+
+        <copychangedfiles todir="${manta.project.src}"
+                          overwrite="yes"
+                          filtering="yes">
+            <fileset dir="${build}/hbm2java/classes">
+                <patternset>
+                    <include name="**/*.java"/>
+                </patternset>
+            </fileset>
+        </copychangedfiles>
+
+        <delete dir="${build}/hbm2java/classes"/>
+
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="hbm2entity" depends="prepare.tools.gencode">
+
+        <mkdir dir="${build}/hbm2java/classes"/>
+
+        <hibernatetool destdir="${build}/hbm2java/classes" templatepath="">
+            <configuration>
+                <fileset dir="${hbmcfgpath}">
+                    <include name="datas.hbm.xml"/>
+                    <include name="entities.hbm.xml"/>
+                    <include name="full.entities.hbm.xml"/>
+                    <exclude name="view.xml"/>
+                </fileset>
+            </configuration>
+
+            <classpath refid="hbm.tools.lib"/>
+
+            <hbmtemplate
+                    templatepath="${tools}/gencode/src/com/espendwise/tools/gencode/hbmxml/cfg"
+                    template="Pojo.ftl"
+                    filepattern="{package-name}/{class-name}.java"
+                    exporterclass="com.espendwise.tools.gencode.hbmxml.AppHbm2JavaFullEntityExporter">
+                <property key="classVersionUID" value="classSerialUID.properties"/>
+                <property key="useClassVesionUID" value="true"/>
+                <property key="javaname" value="${javaname}"/>
+                <property key="ejb3" value="true"/>
+                <property key="jdk5" value="true"/>
+            </hbmtemplate>
+
+       </hibernatetool>
+
+        <copychangedfiles todir="${manta.project.src}"
+                          overwrite="yes"
+                          filtering="yes">
+            <fileset dir="${build}/hbm2java/classes">
+                <patternset>
+                    <include name="**/entity/*.java"/>
+                </patternset>
+            </fileset>
+        </copychangedfiles>
+
+        <delete dir="${build}/hbm2java/classes"/>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="hbm2view" depends="prepare.tools.gencode">
+        <mkdir dir="${build}/hbm2java/classes"/>
+
+        <hibernatetool destdir="${build}/hbm2java/classes" templatepath="">
+            <configuration>
+                <fileset dir="${hbmcfgpath}">
+                    <exclude name="datas.hbm.xml"/>
+                    <exclude name="entities.hbm.xml"/>
+                    <exclude name="full.entities.hbm.xml"/>
+                    <include name="views.xml"/>  </fileset>
+            </configuration>
+
+            <classpath refid="hbm.tools.lib"/>
+
+            <hbmtemplate
+                    templatepath="${tools}/gencode/src/com/espendwise/tools/gencode/hbmxml/cfg"
+                    template="Pojo.ftl"
+                    filepattern="{package-name}/{class-name}.java"
+                    exporterclass="com.espendwise.tools.gencode.hbmxml.AppHbm2JavaEntityExporter">
+                <property key="classVersionUID" value="classSerialUID.properties"/>
+                <property key="useClassVesionUID" value="true"/>
+                <property key="javaname" value="${javaname}"/>
+                <property key="ejb3" value="false"/>
+                <property key="jdk5" value="true"/>
+            </hbmtemplate>
+        </hibernatetool>
+
+        <copychangedfiles todir="${manta.project.src}"
+                          overwrite="yes"
+                          filtering="yes">
+            <fileset dir="${build}/hbm2java/classes">
+                <patternset>
+                    <include name="**/view/*.java"/>
+                </patternset>
+            </fileset>
+        </copychangedfiles>
+
+        <delete dir="${build}/hbm2java/classes"/>
+
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="hbm2java">
+        <antcall target="hbm2view"/>
+        <antcall target="hbm2entity"/>
+        <antcall target="hbm2data"/>
+        <antcall target="hbm2fullentity"/>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="init">
+        <tstamp/>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="init.deploy">
+
+        <!-- make sure we know where the server is -->
+        <fail unless="server.webdeploy" message="Must define server.webdeploy variable"/>
+        <if>
+            <available file="${resources}/META-INF/spring/database.properties"/>
+            <then><echo>database.properties OK!</echo></then>
+            <else><fail message="database.properties does not exist!"/></else>
+        </if>
+        <if>
+            <available file="${resources}/META-INF/spring/app-data-access.xml"/>
+            <then><echo>app-data-access.xml OK!</echo></then>
+            <else><fail message="app-data-access.xml does not exist!"/></else>
+        </if>
+        <if>
+            <available file="${hbmcfgpath}/persistence.xml"/>
+            <then><echo>persistence.xml OK!</echo></then>
+            <else><fail message="persistence.xml"/></else>
+        </if>
+
+        <delete file="${server.webdeploy}/${app.name}.war"/>
+        <delete dir="${server.webdeploy}/${app.name}"/>
+
+    </target>
+
+
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="compile" depends="init">
+
+        <mkdir dir="${build}/app"/>
+        <mkdir dir="${build}/lib"/>  
+
+        <javac destdir="${build}/app"
+               debug="${compiler.debug}"
+               nowarn="${compiler.generate.no.warnings}"
+               memorymaximumsize="${compiler.max.memory}"
+               fork="true"
+               includeantruntime="false">
+            <compilerarg line="${compiler.args}"/>
+            <classpath refid="manta.app.path"/>
+
+            <src refid="manta.module.sourcepath"/>
+        </javac>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="copy.war.lib">
+
+        <copy todir="${build}/war/${app.name}_war/WEB-INF/lib">
+            <fileset dir="${libdir}">
+                <patternset refid="ignored.files"/>
+                <patternset refid="compiler.resources"/>
+                <include name="**/*.jar"/>
+            </fileset>
+        </copy>
+
+        <copy file="${libdir}/edb-jdbc14.jar"   tofile="${build}/war/${app.name}_war/WEB-INF/lib/edb-jdbc14.jar"  overwrite="true"/>
+
+        <copy file="${tools}/tiles-2/tiles-2.2.2/tiles-core-2.2.2.jar"   tofile="${build}/war/${app.name}_war/WEB-INF/lib/tiles-core-2.2.2.jar"  overwrite="true"/>
+        <copy file="${tools}/tiles-2/tiles-2.2.2/tiles-api-2.2.2.jar"   tofile="${build}/war/${app.name}_war/WEB-INF/lib/tiles-api-2.2.2.jar"  overwrite="true"/>
+        <copy file="${tools}/tiles-2/tiles-2.2.2/tiles-servlet-2.2.2.jar"   tofile="${build}/war/${app.name}_war/WEB-INF/lib/tiles-servlet-2.2.2.jar"  overwrite="true"/>
+        <copy file="${tools}/tiles-2/tiles-2.2.2/tiles-jsp-2.2.2.jar"   tofile="${build}/war/${app.name}_war/WEB-INF/lib/tiles-jsp-2.2.2.jar"  overwrite="true"/>
+        <copy file="${tools}/tiles-2/tiles-2.2.2/lib/commons-digester-2.0.jar"   tofile="${build}/war/${app.name}_war/WEB-INF/lib/commons-digester-2.0.jar"  overwrite="true"/>
+        <copy file="${tools}/tiles-2/tiles-2.2.2/lib/commons-beanutils-1.8.0.jar"   tofile="${build}/war/${app.name}_war/WEB-INF/lib/commons-beanutils-1.8.0.jar"  overwrite="true"/>
+        <copy file="${tools}/tiles-2/tiles-2.2.2/tiles-template-2.2.2.jar"   tofile="${build}/war/${app.name}_war/WEB-INF/lib/tiles-template-2.2.2.jar"  overwrite="true"/>
+
+        <copy file="${ocean.lib.dir}/eSpendwiseOceanCommon.jar"   tofile="${build}/war/${app.name}_war/WEB-INF/lib/eSpendwiseOceanCommon.jar"  overwrite="true"/>
+        <copy file="${ocean.lib.dir}/eSpendwiseOceanUtil.jar"   tofile="${build}/war/${app.name}_war/WEB-INF/lib/eSpendwiseOceanUtil.jar"  overwrite="true"/>
+
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--                                                                        -->
+    <!-- ====================================================================== -->
+    <target name="create.app.war"  depends="compile">
+
+        <delete dir="${artifactDir}/${app.name}.war"/>
+        <!--mkdir dir="${artifactDir}"/-->
+
+        <mkdir dir="${build}/war/${app.name}_war"/>
+        <mkdir dir="${build}/war/${app.name}_war/META-INF"/>
+        <mkdir dir="${build}/war/${app.name}_war/WEB-INF"/>
+        <mkdir dir="${build}/war/${app.name}_war/WEB-INF/lib"/>
+        <mkdir dir="${build}/war/${app.name}_war/WEB-INF/classes"/>
+
+        <touch file = "${build}/war/${app.name}_war/WEB-INF/classes/build_info.properties" />
+
+        <copy todir="${build}/war/${app.name}_war/META-INF"  filtering="true">
+            <fileset dir="${manta.project.resource}/META-INF">
+                <patternset refid="ignored.files"/>
+                <include name="context.xml"/>
+            </fileset>
+        </copy>
+
+        <copy file="manta.properties.stub" tofile="${build}/war/${app.name}_war/META-INF/manta.properties.stub"  filtering="false"/>
+
+        <copy file="do_once.xml"
+              tofile="${build}/war/${app.name}_war/META-INF/do_once.xml"
+              filtering="false"
+              failonerror="false"/>
+
+        <copy todir="${build}/war/${app.name}_war/WEB-INF"  filtering="true">
+            <fileset dir="${manta.project.web}/WEB-INF">
+                <patternset refid="ignored.files"/>
+                <patternset refid="compiler.resources"/>
+                <include name="**/*"/>
+                <exclude name="/ckeditor-3.6.2/**"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${build}/war/${app.name}_war/resources" filtering="false">
+            <fileset dir="${manta.project.web}/resources">
+                <patternset refid="ignored.files"/>
+                <patternset refid="compiler.resources"/>
+                <include name="**/*"/>
+                <exclude name="/ckeditor-3.6.2/**"/>
+            </fileset>
+        </copy>
+
+        <unzip src="${manta.project.web}/resources/ckeditor-3.6.2/ckeditor.zip"
+               dest="${build}/war/${app.name}_war/resources"/>
+
+        <copy todir="${build}/war/${app.name}_war/WEB-INF/classes">
+            <fileset dir="${build}/app">
+                <patternset refid="ignored.files"/>
+                <patternset refid="compiler.resources"/>
+                <include name="**/*.class"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${build}/war/${app.name}_war/WEB-INF/classes" filtering="true">
+            <fileset dir="${manta.project.resource}" >
+                <patternset refid="ignored.files"/>
+                <include name="messages_*.properties"/>
+                <include name="Message_*.txt"/>
+                <include name="*manta*.properties"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${build}/war/${app.name}_war/WEB-INF/classes">
+            <fileset dir="${manta.project.resource}">
+                <patternset refid="ignored.files"/>
+                <include name="log4j.xml"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${build}/war/${app.name}_war/WEB-INF/classes/META-INF" filtering="true">
+            <fileset dir="${manta.project.resource}/META-INF">
+                <patternset refid="ignored.files"/>
+                <include name="spring/**/*"/>
+                <include name="persistence.xml"/>
+            </fileset>
+        </copy>
+
+	<antcall  target="create.i18n.messages.piglatin"/>
+
+        <antcall target="copy.war.lib"/>
+
+    </target>
+
+    <target name="dist.war" depends="create.app.war">
+
+        <condition property="build.number.exists" else="false">
+            <isset property="build.number"/>
+        </condition>
+
+        <if>
+            <equals arg1="${build.number.exists}" arg2="true"/>
+            <then>
+                <echo file="${build}/war/${app.name}_war/WEB-INF/classes/build_info.properties">
+#Build information
+build.number.manta=${build.number}
+build.date.manta=${build.date}
+build.branch.manta=${build.branch.number}
+                </echo>
+            </then>
+        </if>
+
+        <if>
+            <equals arg1="${build.number.exists}" arg2="true"/>
+            <then>
+                <war destfile="${artifactDir}/${app.name}.war" webxml="${build}/war/${app.name}_war/WEB-INF/web.xml">
+                    <fileset dir="${build}/war/${app.name}_war"/>
+                    <manifest>
+                        <attribute name="Application-Title" value="${app.name}"/>
+                        <attribute name="Application-Vendor" value="${app.vendor}"/>
+                        <attribute name="Build-Number" value="${build.number}"/>
+                        <attribute name="Build-Date" value="${build.date}"/>
+                    </manifest>
+                </war>
+            </then>
+            <else>
+                <war destfile="${artifactDir}/${app.name}.war" webxml="${build}/war/${app.name}_war/WEB-INF/web.xml">
+                    <fileset dir="${build}/war/${app.name}_war"/>
+                </war>
+            </else>
+        </if>
+
+    </target>
+
+
+    <!-- ====================================================================== -->
+    <!-- The process necessary for configuring the local installation           -->
+    <!-- of Jboss or Tomcat and create local.properties.                        -->
+    <!-- ====================================================================== -->
+    <target name="install.dev" description="Performs minimal configuration for a developer install.  Should only be called for a new install" depends="init">
+        <!-- make sure we know where the server is -->
+        <fail unless="server.home" message="Must define server.home variable -Dserver.home=/home/apache-tomcat"/>
+        <!-- fail if the manta.properties already exists -->
+        <fail message="File ${server.home}/bin/manta.properties exists!">
+            <condition>
+                <available file="${server.home}/bin/manta.properties"/>
+            </condition>
+        </fail>
+        <!-- Copy the stubbed manta.properties file.  Devs need to fill in this file for the environment. -->
+        <copy file="manta.properties.stub" tofile="${server.home}/bin/manta.properties" filtering="true">
+            <filterset>
+                <filter token="server.home" value="${server.home}"/>
+            </filterset>
+        </copy>
+        <!--create set env file used to pickup the manta properties file.  This is a tomcat feature. -->
+        <echo output="${server.home}/bin/setenv.sh" append="false">
+CATALINA_OPTS="-DdefmanConf=manta.properties"
+        </echo>
+        <echo output="${server.home}/bin/setenv.bat" append="false">
+set CATALINA_OPTS="-DdefmanConf=manta.properties"
+        </echo>
+        <!--create the local properties file so that deploy target works-->
+        <echo output="local.properties" append="true">
+#local.properties
+
+buildType=none
+log4j.configuration=log4j.properties
+
+#directory that server is in for deployment
+#example: /home/apache-tomcat
+server.home=${server.home}
+server.webdeploy=${server.home}/webapps
+
+package.target=target
+
+#the number of data sources, default is 30
+database.datasources.count=2
+        </echo>
+
+    </target>
+
+    <!-- ====================================================================== -->
+    <!--  determine the build number to be utilized for the build               -->
+    <!-- ====================================================================== -->
+    <target name="determineBuildNumber">
+
+        <mkdir dir="${targetBranchPath}"/> 
+        <javac srcdir="${src.dirBranchPath}" destdir="${classes.dirBranchPath}"/>  
+
+        <jar destfile="${jar.dirBranchPath}/${ant.project.name}.jar"  basedir="${classes.dirBranchPath}">
+          <manifest>
+            <attribute name="Main-Class" value="${main-classBranchPath}"/>
+          </manifest>
+        </jar>    
+
+        <java jar="${jar.dirBranchPath}/${ant.project.name}.jar" fork="true"/>
+
+        <taskdef name="buildVersion" classname="com.espendwise.ocean.buildUtils.ant.BuildVersionTask" >
+            <classpath>
+                <pathelement path="${tools}/ocean/eSpendwiseOceanBuildUtils.jar"/>
+                <pathelement location="${tools}/ocean/eSpendwiseOceanBuildUtils.jar" />
+            </classpath>
+        </taskdef>
+    	<property environment="env"/>
+        <buildVersion buildNumProperty="build.number"
+                      buildDateProperty="build.date"
+                      buildBranchProperty="build.branch.number"
+                      buildType="${buildType}"
+    	                autoBuildValue="${env.BUILD_NUMBER}"
+        	          buildNoPrompt="${buildNoPrompt}"
+                      buildPropertiesFile="${basedir}/buildVersion/build_info.properties"/>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!-- the process of collecting all build artifacts                          -->
+    <!-- and other static files used to run an application server               -->
+    <!-- into a centralized area for deployment either locally                  -->
+    <!-- or on another server system                                            -->
+    <!-- ====================================================================== -->
+    <target name="package" description="Main packaging task which creates deployable war file" depends="determineBuildNumber">
+        <antcall target="build.all"/>
+        <antcall target="dist.war"/>
+        <echo>
+---------------------------------------
+    Package Build Information
+---------------------------------------
+  build.number ${build.number}
+  build.date ${build.date}
+        </echo>
+    </target>
+
+
+    <!-- ====================================================================== -->
+    <!-- excluded "build" targets                                      -->
+    <!-- for developers only                                                    -->
+    <!-- ====================================================================== -->
+    <target name="deploy.dev"  depends="clean, dist.war, init.deploy">
+        <copy file="${artifactDir}/${app.name}.war" tofile="${server.webdeploy}/${app.name}.war" overwrite="true"/>
+    </target>
+
+    <!-- ====================================================================== -->
+    <!-- the steps required to install the files                                -->
+    <!-- gathered in the 'package' target                                       -->
+    <!-- above into the local Jboss or Tomcat installation.                     -->
+    <!-- ====================================================================== -->
+    <target name="deploy"  depends="clean, package, init.deploy">
+        <copy file="${artifactDir}/${app.name}.war" tofile="${server.webdeploy}/${app.name}.war" overwrite="true"/>
+    </target>
+    <!-- ====================================================================== -->
+    <!-- the process of initializing the build environment                      -->
+    <!-- by removing all traces of a previous build                             -->
+    <!-- and creating directories as needed                                     -->
+    <!-- ====================================================================== -->
+    <target name="clean">
+        <delete dir="${target}"/>
+        <delete dir="${artifactDir}"/>
+        <delete dir="${targetBranchPath}"/>
+    </target>
+    
+    <target name="match_messages" description="Match internationalization messages between two projects">
+        <mkdir dir="${build}/tmp"/>
+        <javac  destdir="${build}/tmp"
+                fork="true">
+                <include name="**/MessageMatcher.java" />
+                <classpath refid="manta.app.path" />
+                
+                <src refid="manta.module.sourcepath"/>
+        </javac>
+        <copy  file="${resources}/log4j.xml"
+               tofile="${build}/tmp/log4j.xml"
+               overwrite="yes"
+               filtering="yes" />
+        <java   classname="com.espendwise.manta.util.MessageMatcher"
+                fork="true">
+                <arg value="D:\Projects\CleanwiseRe\CVS\source\svn-orca\trunk\web\i18n" />
+                <arg value="D:\Projects\CleanwiseRe\CVS\source\svn-manta\trunk_\src\main\resources" />
+
+                <classpath refid="manta.app.path" />
+                <classpath>
+                    <pathelement path="${build}/tmp" />
+                </classpath>
+        </java>
+        <delete dir="${build}/tmp"/>
+    </target>
+
+
+	<!-- ====================================================================== -->
+	<!--Target to translate and create Message_All_xx-piglatin.txt file using Message_All_en.txt and copying to war file -->
+	<!-- ====================================================================== -->
+	<target name="create.i18n.messages.piglatin" depends="prepare-i18n-tools">
+			
+		<translateToPigLatin src="${resources}/messages_en.properties" 
+			dest="${resources}/messages_xx-piglatin.properties" keyExcludesPattern="shop.input.*Format" />
+			
+		</target>
+
+	<target name="prepare-i18n-tools" >
+		<taskdef name="translateToPigLatin"  classname="com.espendwise.ocean.buildUtils.ant.TranslatePropertiesToPigLatin" >
+			<classpath>
+				<pathelement location="${tools}/ocean/eSpendwiseOceanBuildUtils.jar" />
+			</classpath>
+		</taskdef>
+	</target>
+
+    <target name="eSpendwiseOceanCommon.jar">
+        <mkdir dir="${build}/ocean-common/src"/>
+        <mkdir dir="${build}/ocean-common/classes"/>
+        <copy todir="${build}/ocean-common/src" overwrite="true" filtering="true">
+            <fileset dir="${manta.project.src}">
+                <patternset>
+                    <include name="com/espendwise/ocean/**"/>
+                </patternset>
+            </fileset>
+        </copy>
+        <javac srcdir="${build}/ocean-common/src"
+               destdir="${build}/ocean-common/classes"
+               memoryMaximumSize="512M"
+               fork="true"
+               optimize="${compileopt}"
+               debug="${compiledebug}">
+            <classpath refid="manta.project.path"/>
+            <compilerarg line="${compiler.args}"/>
+            <include name="**/*.java"/>
+        </javac>
+        <jar jarfile="${ocean.lib.dir}/eSpendwiseOceanCommon.jar">
+            <fileset dir="${build}/ocean-common/classes">
+                <patternset>
+                    <include name="**/*.*"/>
+                </patternset>
+            </fileset>
+        </jar>
+    </target>
+
+</project>
+

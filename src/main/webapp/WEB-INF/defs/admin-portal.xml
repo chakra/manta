@@ -1,0 +1,534 @@
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <!-- Default Main Template -->
+    <definition name="portal.admin" template="/WEB-INF/templates/admin.jsp"  preparer="adminPortalPreparer">
+        <put-attribute name="includes" value="/WEB-INF/views/includes.jsp" />
+        <put-attribute name="declare" value="/WEB-INF/views/declare.jsp" />
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp" />
+        <put-attribute name="errors" value="/WEB-INF/views/errors.jsp" />
+        <put-attribute name="messages" value="/WEB-INF/views/messages.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp" />
+        <put-attribute name="locateAccount" value="/WEB-INF/views/locateAccount.jsp" />
+    </definition>
+
+    <!-- Default Main Template -->
+    <definition name="exception" template="/WEB-INF/templates/exception.jsp">
+        <put-attribute name="content" value="/WEB-INF/views/exc.jsp" />
+    </definition>
+
+    <definition name="portal.tabbed" extends="portal.admin">
+        <put-attribute name="content" value="/WEB-INF/templates/tabbed.jsp" />
+        <put-list-attribute name="imports"><add-attribute value="tabs" /><add-attribute value="jsp" /><add-attribute value="jspHeader" /></put-list-attribute>
+    </definition>
+
+    <definition name="storeMessage" extends="portal.tabbed" preparer="storeMessagePreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/storeMessage/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/storeMessage/header.jsp" />
+    </definition>
+
+    <definition name="account" extends="portal.tabbed" preparer="accountPreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/account/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/account/header.jsp" />
+    </definition>
+    
+    <definition name="cms" extends="portal.tabbed" preparer="cmsPreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/cms/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/cms/header.jsp" />
+    </definition>
+
+    <definition name="site" extends="portal.tabbed" preparer="sitePreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/site/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/site/header.jsp" />
+    </definition>
+
+    <definition name="manufacturer" extends="portal.tabbed" preparer="manufacturerPreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/manufacturer/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/manufacturer/header.jsp" />
+    </definition>
+
+    <definition name="distributor" extends="portal.tabbed" preparer="distributorPreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/distributor/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/distributor/header.jsp" />
+    </definition>
+
+    <definition name="emailTemplate" extends="portal.tabbed" preparer="emailTemplatePreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/emailTemplate/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/emailTemplate/header.jsp" />
+    </definition>
+
+    <definition name="user" extends="portal.tabbed" preparer="userPreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/user/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/user/header.jsp" />
+    </definition>
+
+    <definition name="login"  template="/WEB-INF/templates/login.jsp" preparer="loginPreparer">
+        <put-attribute name="content" value="/WEB-INF/views/login.jsp" />
+    </definition>
+
+    <definition name="home" extends="portal.admin">
+        <put-attribute name="title" value="admin.home.title" />
+        <put-attribute name="content" value="/WEB-INF/views/home.jsp" />
+    </definition>
+
+    <definition name="costCenter" extends="portal.tabbed" preparer="costCenterPreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/costCenter/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/costCenter/header.jsp" />
+    </definition>
+    
+    <definition name="group" extends="portal.tabbed" preparer="groupPreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/group/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/group/header.jsp" />
+    </definition>
+    
+    <definition name="order" extends="portal.tabbed" preparer="orderPreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/order/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/order/header.jsp" />
+    </definition>
+
+    <definition name="masterItem" extends="portal.tabbed" preparer="masterItemPreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/masterItem/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/masterItem/header.jsp" />
+    </definition>
+    
+    <definition name="profile" extends="portal.tabbed">
+        <put-attribute name="tabs" value="/WEB-INF/views/profile/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/profile/header.jsp" />
+    </definition>
+
+    <definition name="corporateSchedule" extends="portal.tabbed" preparer="corporateSchedulePreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/corporateSchedule/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/corporateSchedule/header.jsp" />
+    </definition>
+    
+    <definition name="batchOrder" extends="portal.tabbed">
+        <put-attribute name="tabs" value="/WEB-INF/views/batchOrder/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/batchOrder/header.jsp" />
+    </definition>
+
+    <definition name="uploadFile" extends="portal.tabbed" preparer="uploadFilePreparer">
+        <put-attribute name="tabs" value="/WEB-INF/views/uploadFile/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/uploadFile/header.jsp" />
+    </definition>
+
+    <definition name="catalogManager" extends="portal.tabbed">
+        <put-attribute name="tabs" value="/WEB-INF/views/catalog/tabs.jsp"/>
+        <put-attribute name="jspHeader" value="/WEB-INF/views/catalog/header.jsp" />
+    </definition>
+
+    <!-- LOCATE POPUPS -->
+
+    <definition name="locate" template="/WEB-INF/templates/locate.jsp" preparer="adminPortalPreparer">
+        <put-attribute name="errors" value="/WEB-INF/views/errors.jsp"/>
+    </definition>
+
+    <!-- STORE MESSAGES -->
+
+    <definition name="storeMessage/edit" extends="storeMessage">
+        <put-attribute name="title" value="admin.storeMessage.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/storeMessage/edit.jsp" />
+    </definition>
+
+    <definition name="storeMessage/configuration" extends="storeMessage">
+        <put-attribute name="title" value="admin.storeMessage.configuration.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/storeMessage/configuration/configurations.jsp" />
+    </definition>
+
+    <definition name="storeMessage/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.storeMessage.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/storeMessage/filter.jsp" />
+    </definition>
+    
+    <!-- CORPORATE SCHEDULES -->
+
+ 
+    <definition name="corporateSchedule/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.corporateSchedule.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/corporateSchedule/filter.jsp" />
+    </definition>
+    
+    <definition name="corporateSchedule/edit" extends="corporateSchedule">
+        <put-attribute name="title" value="admin.corporateSchedule.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/corporateSchedule/edit.jsp" />
+    </definition>
+
+	<definition name="corporateSchedule/account" extends="corporateSchedule">
+        <put-attribute name="title" value="admin.corporateSchedule.accounts.configuration.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/corporateSchedule/configuration/accounts.jsp" />
+    </definition>
+    
+    <definition name="corporateSchedule/location" extends="corporateSchedule">
+        <put-attribute name="title" value="admin.corporateSchedule.locations.configuration.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/corporateSchedule/configuration/locations.jsp" />
+    </definition>
+    
+    <!-- ACCOUNTS -->
+
+    <definition name="account/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.account.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/account/filter.jsp" />
+    </definition>
+
+    <definition name="account/edit" extends="account">
+        <put-attribute name="title" value="admin.account.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/edit.jsp" />
+    </definition>
+
+    <definition name="account/fiscalCalendar" extends="account">
+        <put-attribute name="title" value="admin.account.fiscalCalendar.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/fiscalCalendar/fiscalCalendar.jsp" />
+    </definition>
+
+    <definition name="account/locate" extends="locate" >
+        <put-attribute name="content" value="/WEB-INF/views/account/locate.jsp" />
+    </definition>
+    
+    <definition name="account/locationHierarchy" extends="account" >
+        <put-attribute name="title" value="admin.account.siteHierarchy.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/siteHierarchy/siteHierarchy.jsp" />
+    </definition>
+
+
+    <definition name="account/locationHierarchy/manage" extends="account" >
+        <put-attribute name="title" value="admin.account.siteHierarchy.manage.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/siteHierarchy/manage.jsp" />
+    </definition>
+
+    <definition name="account/locationHierarchy/configuration" extends="account" >
+        <put-attribute name="title" value="admin.account.siteHierarchy.configuration.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/siteHierarchy/configuration.jsp" />
+    </definition>
+
+    <definition name="account/contentManagement" extends="account">
+        <put-attribute name="title" value="admin.account.contentManagement.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/contentManagement/contentManagement.jsp" />
+    </definition>
+
+    <definition name="account/workflow" extends="account">
+        <put-attribute name="title" value="admin.account.workflow.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/workflow/workflow.jsp" />
+    </definition>
+ 
+   <definition name="account/workflow/edit" extends="account">
+        <put-attribute name="title" value="admin.account.workflow.edit.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/workflow/edit.jsp" />
+    </definition>
+
+    <definition name="account/workflow/sites" extends="account">
+        <put-attribute name="title" value="admin.account.workflow.sites.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/workflow/sites.jsp" />
+    </definition>
+     <definition name="account/workflow/ruleType" template="/WEB-INF/templates/locate.jsp" preparer="adminPortalPreparer">
+        <put-attribute name="errors" value="/WEB-INF/views/errors.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/account/workflow/ruleType.jsp" />
+    </definition>
+   <definition name="account/workflow/rule" extends="account">
+        <put-attribute name="title" value="admin.account.workflow.rule.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/workflow/rule/edit.jsp" />
+    </definition>
+
+    <definition name="account/shoppingControlFilter" extends="account">
+        <put-attribute name="title" value="admin.account.shoppingControl.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/shoppingControl/shoppingControl.jsp" />
+    </definition>
+    
+    <definition name="account/properties" extends="account">
+        <put-attribute name="title" value="admin.account.properties.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/account/properties/properties.jsp" />
+    </definition>
+
+    <!-- CMS -->
+
+    <definition name="cms/edit" extends="cms">
+        <put-attribute name="title" value="admin.cms.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/cms/edit.jsp" />
+    </definition>
+    
+    <!-- SITES -->
+
+    <definition name="site/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.site.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/site/filter.jsp" />
+    </definition>
+
+    <definition name="site/edit" extends="site">
+        <put-attribute name="title" value="admin.site.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/site/edit.jsp" />
+    </definition>
+
+    <definition name="site/budgets" extends="site">
+        <put-attribute name="title" value="admin.site.budgets.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/site/budgets/budgets.jsp" />
+    </definition>
+    
+    <definition name="site/users" extends="site">
+        <put-attribute name="title" value="admin.site.users.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/site/users/users.jsp" />
+    </definition>
+    
+    <definition name="site/catalog" extends="site">
+        <put-attribute name="title" value="admin.site.catalog.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/site/catalog/catalog.jsp" />
+    </definition>
+
+
+    <definition name="site/locationHierarchy" extends="site">
+        <put-attribute name="title" value="admin.site.hierarchy.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/site/siteHierarchy/siteHierarchy.jsp" />
+    </definition>
+
+    <definition name="site/workflow" extends="site">
+        <put-attribute name="title" value="admin.site.workflow.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/site/workflow/workflow.jsp" />
+    </definition>
+
+    <definition name="site/locate" extends="locate" >
+        <put-attribute name="content" value="/WEB-INF/views/site/locate.jsp" />
+    </definition>
+
+    <definition name="site/orderGuides" extends="site">
+        <put-attribute name="title" value="admin.site.orderGuides.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/site/orderGuides/orderGuides.jsp" />
+    </definition>
+ 
+   <definition name="site/orderGuides/edit" extends="site">
+        <put-attribute name="title" value="admin.site.orderGuides.edit.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/site/orderGuides/edit.jsp" />
+    </definition>
+
+
+
+    <!-- EMAIL TEMPLATES -->
+
+    <definition name="emailTemplate/filter" extends="emailTemplate">
+        <put-attribute name="title" value="admin.emailTemplate.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/emailTemplate/filter.jsp" />
+    </definition>
+
+    <definition name="emailTemplate/edit" extends="emailTemplate">
+        <put-attribute name="title" value="admin.emailTemplate.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/emailTemplate/edit.jsp" />
+    </definition>
+
+    <!-- USERS -->
+
+    <definition name="user/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.user.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/user/filter.jsp" />
+    </definition>
+
+    <definition name="user/edit" extends="user">
+        <put-attribute name="title" value="admin.user.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/user/edit.jsp" />
+    </definition>
+    
+    <definition name="user/account" extends="user">
+        <put-attribute name="title" value="admin.user.account.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/user/configuration/accounts.jsp" />
+    </definition>
+    
+    <definition name="user/location" extends="user">
+        <put-attribute name="title" value="admin.user.location.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/user/configuration/locations.jsp" />
+    </definition>
+
+    <definition name="user/group" extends="user">
+        <put-attribute name="title" value="admin.user.group.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/user/configuration/groups.jsp" />
+    </definition>
+
+    <definition name="user/notification" extends="user">
+        <put-attribute name="title" value="admin.user.notification.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/user/configuration/notifications.jsp" />
+    </definition>
+ 
+    <definition name="user/locate" extends="locate" >
+        <put-attribute name="content" value="/WEB-INF/views/user/locate.jsp" />
+    </definition>
+
+	<definition name="user/loader" extends="portal.admin">
+        <put-attribute name="title" value="admin.user.loader.title" />
+        <put-attribute name="content" value="/WEB-INF/views/user/loader.jsp" />
+    </definition>
+    
+    <!-- MANUFACTURER -->
+
+    <definition name="manufacturer/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.manufacturer.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/manufacturer/filter.jsp" />
+    </definition>
+
+    <definition name="manufacturer/edit" extends="manufacturer">
+        <put-attribute name="title" value="admin.manufacturer.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/manufacturer/edit.jsp" />
+    </definition>
+
+    <!-- DISTRIBUTOR -->
+
+    <definition name="distributor/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.distributor.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/distributor/filter.jsp" />
+    </definition>
+
+    <definition name="distributor/edit" extends="distributor">
+        <put-attribute name="title" value="admin.distributor.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/distributor/edit.jsp" />
+    </definition>
+
+    <definition name="distributor/configuration" extends="distributor">
+        <put-attribute name="title" value="admin.distributor.configuration.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/distributor/configuration/configuration.jsp" />
+    </definition>
+
+    <definition name="distributor/locate" extends="locate" >
+        <put-attribute name="content" value="/WEB-INF/views/distributor/locate.jsp" />
+    </definition>
+
+    <!-- COST CENTERS -->
+
+    <definition name="costCenter/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.costCenter.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/costCenter/filter.jsp" />
+    </definition>
+
+    <definition name="costCenter/edit" extends="costCenter">
+        <put-attribute name="title" value="admin.costCenter.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/costCenter/edit.jsp" />
+    </definition>
+
+    <definition name="costCenter/catalog" extends="costCenter">
+        <put-attribute name="title" value="admin.costCenter.catalog.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/costCenter/catalog/catalog.jsp" />
+    </definition>
+
+
+    <!-- CATALOGS -->
+    <definition name="catalog/locate" extends="locate" >
+        <put-attribute name="content" value="/WEB-INF/views/catalog/locate.jsp" />
+    </definition>
+
+    <!-- ITEMS -->
+    <definition name="item/locate" extends="locate" >
+        <put-attribute name="content" value="/WEB-INF/views/item/locate.jsp" />
+    </definition>
+
+    <definition name="itemCost/locate" extends="locate" >
+        <put-attribute name="content" value="/WEB-INF/views/order/itemCostLocate.jsp" />
+    </definition>
+
+    <definition name="service/locate" extends="locate" >
+        <put-attribute name="content" value="/WEB-INF/views/item/serviceLocate.jsp" />
+    </definition>
+    
+    <definition name="itemOrderGuide/locate" extends="locate" >
+        <put-attribute name="content" value="/WEB-INF/views/site/orderGuides/itemOrderGuideLocate.jsp" />
+    </definition>
+
+
+    <!-- GROUPS-->
+    <definition name="group/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.group.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/group/filter.jsp" />
+    </definition>
+    
+    <definition name="group/edit" extends="group">
+        <put-attribute name="title" value="admin.group.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/group/edit.jsp" />
+    </definition>
+
+    <definition name="group/configuration" extends="group">
+        <put-attribute name="title" value="admin.group.configuration.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/group/configuration/configuration.jsp" />
+    </definition>
+
+    <definition name="group/report" extends="group">
+        <put-attribute name="title" value="admin.group.report.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/group/configuration/reports.jsp" />
+    </definition>
+    
+    <definition name="group/function" extends="group">
+        <put-attribute name="title" value="admin.group.function.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/group/configuration/functions.jsp" />
+    </definition>   
+    
+    <!-- HISTORY -->
+    <definition name="historyFilter" extends="portal.admin">
+        <put-attribute name="title" value="admin.history.title" />
+        <put-attribute name="content" value="/WEB-INF/views/history/filter.jsp" />
+    </definition>
+
+    <!-- ORDERS -->
+    <definition name="order/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.order.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/order/filter.jsp" />
+    </definition>
+    
+    <definition name="order/edit" extends="order">
+        <put-attribute name="title" value="admin.order.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/order/edit.jsp" />
+    </definition>
+    
+    <definition name="order/orderNote" template="/WEB-INF/templates/locate.jsp" preparer="adminPortalPreparer">
+        <put-attribute name="errors" value="/WEB-INF/views/errors.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/order/orderNote.jsp" />
+    </definition>
+    
+    <definition name="order/printOrderTempPo" extends="locate" >
+        <put-attribute name="content" value="/WEB-INF/views/order/printTempPo.jsp" />
+    </definition>
+
+    <definition name="order/printOrderDetails" extends="order" >
+        <put-attribute name="title" value="admin.order.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/order/printOrderDetails.jsp" />
+    </definition>
+
+    <!-- MASTER ITEM -->
+     <definition name="masterItem/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.masterItem.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/masterItem/filter.jsp" />
+    </definition>
+
+    <definition name="masterItem/edit" extends="masterItem">
+        <put-attribute name="title" value="admin.masterItem.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/masterItem/edit.jsp" />
+    </definition>
+
+    <!-- ITEM LOADER -->
+    <definition name="uploadFile/filter" extends="portal.admin">
+        <put-attribute name="title" value="admin.itemLoader.filter.title" />
+        <put-attribute name="content" value="/WEB-INF/views/uploadFile/filter.jsp" />
+    </definition>
+    
+    <definition name="uploadFile/edit" extends="uploadFile">
+        <put-attribute name="title" value="admin.itemLoader.detail.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/uploadFile/edit.jsp" />
+    </definition>
+
+    <!-- BATCH ORDER -->
+	<definition name="batchOrder/loader" extends="batchOrder">
+        <put-attribute name="title" value="admin.batchOrder.loader.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/batchOrder/loader.jsp" />
+    </definition>
+
+	<!-- PASSWORD MANAGEMENT -->
+	<definition name="profile/passwordManagement" extends="profile">
+        <put-attribute name="title" value="admin.passwordManagement.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/profile/passwordManagement.jsp" />
+    </definition>
+    
+    <!-- ASSETS -->
+    <definition name="asset/locate" extends="locate" >
+        <put-attribute name="content" value="/WEB-INF/views/asset/locate.jsp" />
+    </definition>
+    
+    <!-- CATALOG MANAGER -->
+	<definition name="catalogManager/loader" extends="catalogManager">
+        <put-attribute name="title" value="admin.catalogManager.loader.title" />
+        <put-attribute name="jsp" value="/WEB-INF/views/catalog/loader.jsp" />
+    </definition>
+
+</tiles-definitions>

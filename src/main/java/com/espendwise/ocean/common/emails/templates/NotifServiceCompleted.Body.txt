@@ -1,0 +1,110 @@
+<hr>
+<br>
+This is an automated email.  Do not reply to this email.<br>
+<br>
+This note is to inform you that the status for <a href="${link.serviceTicket}">Service Ticket ${serviceTicketNumber}</a>  for ${account.name} and location ${location.siteName} has been changed to 'Completed'.  See details below or select Service Ticket link to visit our website.<br>
+<br>
+Service Ticket Number: ${serviceTicketNumber}<br>
+Location: ${location.siteName}<br>
+Location Number: <#if location.siteBudgetReferenceNumber??> ${location.siteBudgetReferenceNumber} </#if><br>
+Service Request:  ${serviceType.name}<br>
+PO Number: <#if pONumber??> ${pONumber} </#if><br>
+
+<#if contract.ratePerZone == false>
+	<#assign rateZone = zones[0]> 
+	<#assign ratesSize=(rateZone.rates?size)>
+	<#if ratesSize gt 1>
+		RATES:<br>
+	</#if>
+	<#list rateZone.rates as rate>
+		${rate.name}: ${rate.value} ${rate.rateType}<br> 
+	</#list><br>
+</#if>
+
+<#if contract.ratePerZone == true>
+	<#list zones as zone>
+		<br>
+		<#if ticketWithZones??>
+		ZONE ${zone.name}<br>
+		</#if>
+		<#list zone.rates as rate>
+			${rate.name}: ${rate.value} ${rate.rateType}<br> 
+		</#list><br>
+	</#list><br>
+</#if>
+
+Additional Charges: <#if additionalCharges??>${additionalCharges} </#if><br>
+Service Ticket Status: ${status}<br>
+Requested By: ${addBy}<br>
+Requested Date/Time: ${addDate}<br>
+Comments:  <#if comments??>${comments}</#if><br>
+
+<#list zones as zone>
+<br>
+	<#if ticketWithZones??>
+ZONE ${zone.name}<br>
+	</#if>
+	
+	Status:  ${zone.status}<br>
+	Scheduled Date: <#if zone.scheduledDate??>${zone.scheduledDate}</#if><br>
+	
+	<#assign recordSize=(zone.records?size)>
+	<#list zone.records as record>
+		<br>
+		<#list record.fields as field>
+			<#if recordSize gt 1> Service ${record.recurringNumber}</#if> ${field.label}: ${field.value}<br>     
+		</#list>
+	</#list>
+</#list>
+<br>
+
+<#if serviceType.freeform>
+SERVICE VENDOR<br>
+	Service Vendor:  ${serviceVendor.vendorName}<br>
+	Contact Name: ${serviceVendor.contactName}<br>
+	Contact Phone: ${serviceVendor.phone}<br>
+	Contact Mobile: ${serviceVendor.mobile}<br>
+	Contact Email: ${serviceVendor.contactEmail}<br>
+<#else>
+SERVICE PROVIDER<br>
+	Service Provider:  ${serviceProvider.name}<br>
+	Contact Name: ${serviceProvider.firstName} ${serviceProvider.lastName}<br>
+	Contact Phone: ${serviceProvider.telephoneNumber}<br>
+	Contact Email: ${serviceProvider.emailAddress}<br>
+</#if>
+<br>
+
+LOCATION<br>
+Location: ${location.siteName}<br>
+Address 1: ${location.address.address1}<br>
+Address 2:  ${location.address.address2}<br>
+Address 3:  ${location.address.address3}<br>
+City:  ${location.address.city}<br>
+State:  ${location.address.state}<br>
+Postal Code:  ${location.address.postalCode}<br>
+<#if asset??>
+<#list location.customAssetLocationFields as locationField>
+${locationField.label} : ${locationField.value}
+</#list>
+</#if><br>
+CONTACT<br>
+Contact Name: ${contact.firstName!""} ${contact.lastName!""}<br>
+Address 1:  ${contact.address.address1!""}<br>
+Address 2:  ${contact.address.address2!""}<br>
+Address 3:  ${contact.address.address3!""}<br>
+City:  ${contact.address.city!""}<br>
+State: ${contact.address.state!""}<br>
+Postal Code:  ${contact.address.postalCode!""}<br>
+Telephone Number:  ${contact.phoneNumber!""}<br>
+Mobile Number:  ${contact.mobileNumber!""}<br>
+Email:  ${contact.emailAddress!""}<br>
+<#if asset??><br><br>
+ASSET<br>
+Asset Name:  ${asset.name}
+Asset Number: ${asset.number}
+Serial Number:  ${asset.serialNumber}
+</#if>
+<br>
+Thank you.<br>
+<br>
+<hr>

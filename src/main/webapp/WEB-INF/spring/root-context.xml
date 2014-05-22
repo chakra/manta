@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+    <bean id="properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <!-- app.properties should be passed in as a command line arg to tomcat -->
+                <value>classpath*:META-INF/spring/*.properties</value>
+                <value>file:${defmanConf}</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="defaultProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:manta.default.properties"/>
+    </bean>
+
+    <bean id="systemPropertiesLoader" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject" value="#{@systemProperties}" />
+        <property name="targetMethod" value="putAll" />
+        <property name="arguments"><util:properties location="classpath:build_info.properties" /></property>
+    </bean>
+
+    <bean id="placeHolderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="properties" ref="properties"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="nullValue" value="null"/>
+    </bean>
+
+    <!--  define i18n bundles -->
+    <bean id="messageSource"  class="com.espendwise.manta.support.spring.ApplicationResourceBundleMessageSource">
+    </bean>
+
+    <bean id="resourceLoader" class="org.springframework.core.io.DefaultResourceLoader"/>
+    <bean  id="localeResolver" class="com.espendwise.manta.support.spring.ApplicationLocaleResolver"/>
+
+    <bean id="messageResource" class="com.espendwise.manta.i18n.MessageResourceImpl" init-method="init">
+        <property name="resourceDirectory" value="classpath:/" />
+        <property name="resourceLoader" ref="resourceLoader" />
+    </bean>
+
+    <bean class="com.espendwise.manta.web.util.smac.SmacHandler" init-method="init"/>
+
+    <bean id="dbConstantResource" class="com.espendwise.manta.util.DbConstantResource" init-method="init"/>
+
+    <bean id="applicationSettings" class="com.espendwise.manta.util.ApplicationSettings" init-method="init">
+        <property name="defaultProperties" ref="defaultProperties" />
+        <property name="properties" ref="properties" />
+    </bean>
+
+    <bean id="userMessageResource" class="com.espendwise.manta.i18n.UserMessageResourceImpl">
+        <constructor-arg ref="messageResource"/>
+    </bean>
+
+    <bean id='applicationResource' class="com.espendwise.manta.util.AppResource">
+        <constructor-arg ref="applicationSettings"/>
+        <constructor-arg ref="dbConstantResource"/>
+    </bean>
+
+    <bean id='i18nResource' class="com.espendwise.manta.i18n.I18nResource"/>
+    <bean id='appResourceHolder' class="com.espendwise.manta.util.AppResourceHolder"/>
+    
+    <bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="maxUploadSize" value="10000000" />
+	</bean>
+
+
+</beans>

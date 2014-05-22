@@ -1,0 +1,94 @@
+<hr>
+</br>
+This is an automated email. Do not reply to this email.
+<br>
+<br>
+Dear Service  <#if serviceType.freeform>Vendor:<#else>Provider:</#if>
+<br><br>
+<#if serviceType.recurringService>
+Attached please find a service request for ${serviceType.fullName} - <a href="${link.serviceTicket}">Service Ticket ${serviceTicketNumber}</a> (for ${account.name} for location ${location.siteName}) for your review.
+<#else>
+Below please find a service request;<br>
+<br>
+Service Ticket Number: <a href="${link.serviceTicket}"> ${serviceTicketNumber}</a><br>
+Location: ${location.siteName}<br>
+Location Number: <#if location.siteBudgetReferenceNumber??> ${location.siteBudgetReferenceNumber} </#if><br>
+Service Request:  ${serviceType.name}<br>
+PO Number: <#if pONumber??> ${pONumber} </#if><br>
+
+<#if contract.ratePerZone == false>
+	<#assign rateZone = zones[0]> 
+	<#assign ratesSize=(rateZone.rates?size)>
+	<#if ratesSize gt 1>
+		RATES:<br>
+	</#if>
+	<#list rateZone.rates as rate>
+		${rate.name}: ${rate.value} ${rate.rateType}<br> 
+	</#list><br>
+</#if>
+
+<#if contract.ratePerZone == true>
+	<#list zones as zone>
+		<br>
+		<#if ticketWithZones??>
+		ZONE ${zone.name}<br>
+		</#if>
+		<#list zone.rates as rate>
+			${rate.name}: ${rate.value} ${rate.rateType}<br> 
+		</#list><br>
+	</#list><br>
+</#if>
+Comments: ${comments}<br>
+
+<#list zones as zone>
+<br>
+	<#if ticketWithZones??>
+ZONE ${zone.name}<br>
+	</#if>
+	
+	Scheduled Date: <#if zone.scheduledDate??>${zone.scheduledDate}</#if><br>
+<#assign recordSize=(zone.records?size)>
+	<#list zone.records as record>
+		<br>
+		<#list record.fields as field>
+			<#if recordSize gt 1> Service ${record.recurringNumber}</#if> ${field.label}: ${field.value}<br>     
+		</#list>
+	</#list>
+</#list>
+<br>
+
+LOCATION<br>
+Location: ${location.siteName}<br>
+Address 1: ${location.address.address1}<br>
+Address 2:  ${location.address.address2}<br>
+Address 3:  ${location.address.address3}<br>
+City:  ${location.address.city}<br>
+State:  ${location.address.state}<br>
+Postal Code:  ${location.address.postalCode}<br>
+<#if asset??>
+<#list location.customAssetLocationFields as locationField>
+${locationField.label} : ${locationField.value}
+</#list>
+</#if><br>
+CONTACT<br>
+Contact Name: ${contact.firstName!""} ${contact.lastName!""}<br>
+Address 1:  ${contact.address.address1!""}<br>
+Address 2:  ${contact.address.address2!""}<br>
+Address 3:  ${contact.address.address3!""}<br>
+City:  ${contact.address.city!""}<br>
+State: ${contact.address.state!""}<br>
+Postal Code:  ${contact.address.postalCode!""}<br>
+Telephone Number:  ${contact.phoneNumber!""}<br>
+Mobile Number:  ${contact.mobileNumber!""}<br>
+Email:  ${contact.emailAddress!""}<br>
+<#if asset??><br><br>
+ASSET<br>
+Asset Name:  ${asset.name}
+Asset Number: ${asset.number}
+Serial Number:  ${asset.serialNumber}
+</#if>
+</#if>
+<br>
+Thank you.<br>
+<br>
+<hr>

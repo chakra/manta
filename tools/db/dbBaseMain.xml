@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database>
+
+  <table name="ESW_ALL_USER" serialVersionDataUID="770654028782702017L" serialVersionVectorUID="-9137986146312547650L">
+    <column isPrimaryKey="true" name="ALL_USER_ID" size="38" type="NUMBER"/>
+    <column name="USER_ID" size="38" type="NUMBER"/>
+    <column name="USER_NAME" size="255" type="VARCHAR2"/>
+    <column name="FIRST_NAME" nullable="true" size="255" type="VARCHAR2"/>
+    <column name="LAST_NAME" nullable="true" size="255" type="VARCHAR2"/>
+    <column name="PASSWORD" nullable="true" size="35" type="VARCHAR2"/>
+    <column name="EFF_DATE" nullable="true" size="7" type="DATE"/>
+    <column name="EXP_DATE" nullable="true" size="7" type="DATE"/>
+    <column name="USER_STATUS_CD" size="30" type="VARCHAR2"/>
+    <column name="USER_TYPE_CD" size="30" type="VARCHAR2"/>
+    <column name="DEFAULT_STORE_ID" nullable="true" size="38" type="NUMBER"/>
+    <column name="ADD_DATE" size="7" type="DATE"/>
+    <column name="ADD_BY" nullable="true" size="255" type="VARCHAR2"/>
+    <column name="MOD_DATE" size="7" type="DATE"/>
+    <column name="MOD_BY" nullable="true" size="255" type="VARCHAR2"/>
+    <primaryKey name="ESW_ALL_USER_PK">
+      <columnref name="ALL_USER_ID"/>
+    </primaryKey>
+  </table>
+
+  <table name="ESW_ALL_STORE" serialVersionDataUID="8116864918440830884L" serialVersionVectorUID="1732441378951799677L">
+    <column isPrimaryKey="true" name="ALL_STORE_ID" size="38" type="NUMBER"/>
+    <column name="STORE_ID" size="38" type="NUMBER"/>
+    <column name="STORE_NAME" nullable="true" size="255" type="VARCHAR2"/>
+    <column name="DOMAIN" nullable="true" size="255" type="VARCHAR2"/>
+    <column name="DATASOURCE" nullable="true" size="255" type="VARCHAR2"/>
+    <column name="ADD_DATE" size="7" type="DATE"/>
+    <column name="ADD_BY" nullable="true" size="255" type="VARCHAR2"/>
+    <column name="MOD_DATE" size="7" type="DATE"/>
+    <column name="MOD_BY" nullable="true" size="255" type="VARCHAR2"/>
+    <primaryKey name="ESW_ALL_STORE_PK">
+      <columnref name="ALL_STORE_ID"/>
+    </primaryKey>
+  </table>
+
+  <table name="ESW_USER_STORE" serialVersionDataUID="8116864918440830884L" serialVersionVectorUID="1732441378951799677L">
+    <column isPrimaryKey="true" name="USER_STORE_ID" size="38" type="NUMBER"/>
+    <column name="ALL_USER_ID" size="38" type="NUMBER"/>
+    <column name="ALL_STORE_ID" size="38" type="NUMBER"/>
+    <column name="LAST_LOGIN_DATE" nullable="true" size="7" type="DATE"/>
+    <column name="ADD_DATE" size="7" type="DATE"/>
+    <column name="ADD_BY" nullable="true" size="255" type="VARCHAR2"/>
+    <column name="MOD_DATE" size="7" type="DATE"/>
+    <column name="MOD_BY" nullable="true" size="255" type="VARCHAR2"/>
+    <column name="LOCALE_CD" nullable="true" size="5" type="VARCHAR2"/>
+    <primaryKey name="ESW_USER_STORE_PK">
+      <columnref name="USER_STORE_ID"/>
+    </primaryKey>
+  </table>
+
+<index name="ALL_USER_A" table="ESW_ALL_USER">
+<columnref name="USER_NAME"/>
+</index>
+
+<fkey fkTable="ESW_USER_STORE" name="USER_STORE_USER_FK" pkName="ESW_ALL_USER_PK" pkTable="ESW_ALL_USER">
+<fkeyref fkColumnName="ALL_USER_ID" pkColumnName="ALL_USER_ID"/>
+</fkey>
+
+<fkey fkTable="ESW_USER_STORE" name="USER_STORE_STORE_FK" pkName="ESW_ALL_STORE_PK" pkTable="ESW_ALL_STORE">
+<fkeyref fkColumnName="ALL_STORE_ID" pkColumnName="ALL_STORE_ID"/>
+</fkey>
+
+<sequence name="ESW_ALL_USER_SEQ"/>
+<sequence name="ESW_ALL_STORE_SEQ"/>
+<sequence name="ESW_USER_STORE_SEQ"/>
+
+</database>

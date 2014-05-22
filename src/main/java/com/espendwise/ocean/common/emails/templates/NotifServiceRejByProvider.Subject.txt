@@ -1,0 +1,1 @@
+SERVICE REJECTED BY PROVIDER for ${serviceType.name} - Service Ticket ${serviceTicketNumber} - Sent ${sentDate}

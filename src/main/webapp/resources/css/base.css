@@ -1,0 +1,449 @@
+/*----- START TOC ----
+
+
+---- END TOC -----*/
+
+
+/*------------------------------------------*/
+/*------  Section xx - xxxxxxxxx      ------*/
+/*------------------------------------------*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4,  h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup,  menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0;padding: 0;	border: 0; font: inherit;font-size: 100%;vertical-align: baseline; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block;}
+body {line-height: 1; }
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: '';content: none;}
+table {	border-collapse: collapse;	border-spacing: 0;}
+
+/*------------------------------------------*/
+/*------  Section xx - xxxxxxxxx      ------*/
+/*------------------------------------------*/
+body { font-family: Arial, Helvetica, Sans-Serif; background-color: #ffffff; background-layer-color: #ffffff; font-size: 12px; color: rgb(108,106,187); }
+
+a {color: rgb(108,106,187);text-decoration: none; outline: none; }
+a:hover { text-decoration: underline; }
+
+h1 { font-size: 2em; font-weight: normal;  padding-bottom: 10px;  padding-top: 10px; line-height: 1.3em; color: #6c6c6c; float: left; }
+h2 { font-size: 2em;font-weight: normal; padding-bottom: 10px; line-height: 1.3em; color: #6c6c6c; padding-top: 10px; clear: both;  float: left;}
+h2.left { float: left !important;}
+h3 { font-family: Arial, Helvetica, Sans-Serif; font-size: 1.6em; margin-bottom: 15px;  line-height: 1.3em; padding-top: 10px;font-weight: normal;}
+h4 { font-size: 1.7em;     padding-bottom: 10px;   font-weight: normal; }
+
+hr { background-color: transparent;border: none; font-size: 2px; border-top: 2px rgb(180, 180, 180) solid;padding-top: 5px;  padding-bottom: 5px; height: 2px; clear: both; }
+
+
+strong {  font-weight: bold; }
+em { font-style: italic; }
+
+table td, table th { font-size: 12px; vertical-align: middle; }
+
+input { color: #575757; font-size: 12px;padding:3px 3px 2px 3px; border: 1px solid rgb(127, 157, 185)}
+input.disabled {display: none;}
+input.readonly { background: rgb(235,235,228); border: 1px solid #c9c9c9;}
+input.noborder {border:0;}
+
+
+button { color: rgb(108,106,187); font-size: 14px; font-weight: bold;cursor: pointer; cursor: hand;}
+.button { color: rgb(108,106,187); font-size: 14px; font-weight: bold;cursor: pointer; cursor: hand;}
+
+select {color: #575757; font-size: 12px; padding: 2px 1px 2px 1px; width: 153px;  border: 1px solid rgb(127, 157, 185);}
+label { font-weight: bold;  font-size: 12px; color: rgb(108,106,187);}
+
+
+.colon {font-weight: bold;}
+.hide {	display: none !important; }
+.invisible {	visibility: hidden; }
+.clear { clear: both; }
+.clearRight { clear: right; }
+.relative { position: relative;}
+.middle {vertical-align: middle;;}
+.label { font-weight: bold;  font-size: 12px; color: rgb(108,106,187); tex-align:left; white-space: nowrap;}
+.checkbox { padding: 0;border:0;}
+.radio { border:0}
+.required {	font-weight: bold; color: red;}
+.reqind{font-weight: bold; color: red;}
+
+/*------------------------------------------*/
+/*------  Section xx - xxxxxxxxx      ------*/
+/*------------------------------------------*/
+
+div#container{padding-left: 10px;padding-right: 10px;    margin:0 auto;  text-align:left; min-width: 900px;}
+
+div.leftColumn { float: left;  margin-left: -100%; }
+div.rightColumn { float: left; width: 100%; }
+div.rightColumnIndent {   }
+
+div#contentWrapper div.leftColumn {  width: 180px;}
+div#contentWrapper div.rightColumnIndent {   margin-left: 180px; }
+
+div#headerWrapper div.leftColumn {  width: 600px; text-align: left;}
+div#headerWrapper div.rightColumnIndent {   margin-left: 600px; text-align: right; }
+
+div#headerWrapper, div#contentWrapper, div#footerWrapper {clear: both;  width:100%; text-align: center;   }
+div#header, div#content, div#menu, div#footer {  text-align: left;  margin: 0 auto;  padding: 0;}
+div#content {margin:0;text-align:left;padding-top: 5px; }
+div#menu { width:160px; margin: 5px}
+div#header { margin-top: 5px;}
+div#footer { width:100%; text-align: center}
+
+div.row { clear: both; text-align:center; display:block}
+div.row-standart { margin-bottom:5px; }
+
+div.cell{ float: left; text-align:left;}
+div.cell-standart{ }
+
+
+
+/*------------------------------------------*/
+/*------  Section xx - xxxxxxxxx      ------*/
+/*------------------------------------------*/
+.clearfix:after {	visibility: hidden; display: block;	font-size: 0;content: " "; 	clear: both;	height: 0;	}
+* html .clearfix, * html .zone { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix, *:first-child+html .zone { zoom: 1; } /* IE7 */
+
+/*------------------------------------------*/
+/*------  Section xx - xxxxxxxxx      ------*/
+
+/*------------------------------------------*/
+#tooggler a:hover {display:block;background:  rgb(108,106,187);}
+#tooggler a {display:block; background: #c7d0cc;}
+#tooggler .expandArrow{ display:block; width:18px;height:13px;   background: left top no-repeat url("../../resources/images/ui/expandArrow.png")}
+#tooggler .wideScreen{ display:block; width:18px;height:13px;  background: left top no-repeat url("../../resources/images/ui/expandArrowInvert.png")}
+
+.search  { vertical-align: top;}
+.search .searchResult { text-align: left;}
+.search .resultCount { padding-top: 2px; padding-bottom: 15px; }
+.search .resultCount label.value{ padding-left: 5px;  }
+
+.search .searchResult .header .row .cell  { padding: 5px; font-weight: bold; white-space: nowrap;}
+.search .searchResult .body .row .cell { padding-left: 5px; padding-right: 5px; padding-top: 10px}
+.search .searchResult .row .cell-text { text-align: left; vertical-align: top;}
+.search .searchResult .row .cell-number { text-align: right; vertical-align: top;}
+.search .searchResult .row .cell-date { text-align: left; vertical-align: top;}
+.search .searchResult .row .cell-element { text-align: center; vertical-align: top;}
+.search .searchResult .black { color:black; }
+.search .searchResult .grey { background:  rgb(190,190,190); }
+
+.search .filter td.cell { padding:3px;}
+.search .filter { white-space: nowrap; }
+.search .filter td.label { padding-left: 20px; padding-right: 20px;}
+.search .filter td.first { padding-left: 0;  white-space: nowrap;width: 150px;}
+.search .filter td.second {padding-left: 15px;  white-space: nowrap;}
+.search .filter td.value input {width: 200px;}
+.search .filter td.value select {width: 208px;}
+.search .filter td.value input.id{ width: 80px;}
+.search .filter td.value input.state{ width: 60px;}
+.search .filter td.value input.refNumber{ width: 80px;}
+.search .filter td.value input.postalCode{ width: 100px;}
+.search .filter td.value input.filterValue{}
+.search .filter td.action  {text-align:right}
+.search .filter .showInactive { padding-left: 20px;}
+.search .filter .user-filter td.first { padding-left: 0px;  white-space: nowrap;width: 150px;}
+
+.search .filter .locate button {color: rgb(108,106,187); font-size: 12px; font-weight: bold;cursor: pointer; cursor: hand; margin-top:5px; width:150px;}
+.search .filter .locate textarea {width:500px;height:70px;  border: 1px solid #c9c9c9;}
+.search .filter .locate textarea.readonly {background:white; border: 1px solid #c9c9c9;}
+
+.search hr { padding-top: 10px;  padding-bottom: 10px; }
+.search hr.compact-bottom { padding-bottom: 0; }
+.search hr.compact-top { padding-bottom: 0; }
+
+#helpboard .helpTarget { color: black; font-weight: bold; }
+#helpboard .helpSeparator { color: black; }
+#helpboard .helpText { }
+#helpboard .top { padding:0; margin:0;}
+#helpboard .first{ padding:0;margin:0;}
+
+
+div#logo{ padding-left: 25px;display: block;padding-bottom: 2px;padding-top: 10px}
+div#logoName{ padding-left: 30px;display: block; padding-bottom: 5px;padding-top: 2px}
+
+div#headerWrapper div#header div.content { padding: 5px;  padding-right: 25px;   }
+
+/*------------------------------------------*/
+/*------  Section xx - xxxxxxxxx      ------*/
+/*------------------------------------------*/
+
+div.wrapper {  clear: both;  padding: 0; width: 100%;  height: 100%;  margin:0;  display: block; vertical-align: top;  text-align: left;}
+div.wrapper div.middle { clear: both; text-align: center; display: block; vertical-align: top;padding: 0; }
+div.wrapper div.middle div.middleWrapper div.content { padding: 10px; text-align: left; }
+div.wrapper div.middle div.middleWrapper span.left{display: block;;  position: absolute; left: 0;  height: 100%; top:0; width: 2px; background: left top repeat-y url("../../resources/images/wrapper/wrapper-line-left.jpg")}
+div.wrapper div.middle div.middleWrapper { position: relative; min-height:25px; height:auto !important; height:25px;}
+div.wrapper div.middle div.middleWrapper  span.right{ display: block;; position: absolute; right: 0; height: 100%; top:0;  width: 2px; background: right top repeat-y url("../../resources/images/wrapper/wrapper-line-left.jpg") }
+div.wrapper div.top{ width: 100%;   padding: 0; margin: 0;  clear: both; text-align: center; display: block;}
+div.wrapper div.bottom{ width: 100%; padding: 0;  margin: 0;  clear: both; text-align: center; display: block; }
+div.wrapper div.top div.topWrapper { clear: both;   width: 100%;  border:0;  padding: 0; margin: 0; text-align: center; position: relative}
+div.wrapper div.top div.topWrapper span.left {  width: 15px; height: 16px; display: block; position: absolute; top: 0; left: 0;height: 16px;  background: left top no-repeat url("../../resources/images/wrapper/wrapper-corner-left-top.jpg")}
+div.wrapper div.top div.topWrapper span.center {  display: block;  height: 16px; background: left top repeat-x url("../../resources/images/wrapper/wrapper-line-top-bottom.jpg")}
+div.wrapper div.top div.topWrapper span.right { width: 15px; display: block;position: absolute; top: 0;  right: 0; height: 16px;background: left top no-repeat url("../../resources/images/wrapper/wrapper-corner-right-top.jpg")}
+div.wrapper div.bottom div.bottomWrapper {   clear: both; text-align: center; position: relative }
+div.wrapper div.bottom div.bottomWrapper span.left { width: 15px; height: 16px; display: block; position: absolute;  top: 0;  left: 0; background: left top no-repeat url("../../resources/images/wrapper/wrapper-corner-left-bottom.jpg")}
+div.wrapper div.bottom div.bottomWrapper span.center { display: block;height: 16px;background: left bottom repeat-x url("../../resources/images/wrapper/wrapper-line-top-bottom.jpg")}
+div.wrapper div.bottom div.bottomWrapper span.right { width: 15px; display: block; position: absolute; top: 0; right: 0; height: 16px;  background: left top no-repeat url("../../resources/images/wrapper/wrapper-corner-right-bottom.jpg")}
+
+
+
+/*------------------------------------------*/
+/*------  Section xx - xxxxxxxxx      ------*/
+/*------------------------------------------*/
+
+div.tabsContent div.content {background:white;border:2px solid rgb(159, 176, 196);;position:relative;top: -2px;padding: 10px; z-index: 1002;}
+div.tabsContent div.tabs { z-index: 1002;}
+div.tabsContent div.tabs div.tab { text-align: center; white-space: nowrap;float: left;  font-weight: bold;position:relative;}
+div.tabsContent div.tabs div.tab .content {text-align: center;white-space: nowrap;float: left;}
+div.tabsContent div.tabs div.tab div.space {float: left; border: 0; background: repeat-x left bottom  url("../../resources/images/tabs/tab-point.png"); width:8px; height:25px}
+
+div.tabsContent div.tabs div.tab-first-cell {margin-left: 8px;}
+div.tabsContent div.tabs div.tab-last-row {margin-left: 0}
+div.tabsContent div.tabs div.tab-first-cell div.space {float: left; border: 0; width:8px; height:25px;  margin-left: 0}
+div.tabsContent div.tabs div.tab-last-row div.space {float: left; border: 0; width:8px; height:25px; background :white;}
+div.tabsContent div.tabs div.tab-last-cell div.space {float: left; border: 0; width:0; height:0}
+
+div.tabsContent div.tabs div.tab a { text-decoration: none; }
+div.tabsContent div.tabs div.tab span.tab-active { position: relative;z-index: 1003;  background :white;}
+div.tabsContent div.tabs div.tab span.tab-inactive { position: relative;z-index: 1001;  background :white;}
+
+div.tabsContent div.tabs div.tab span.content a:hover { color: rgb(108,106,187);}
+div.tabsContent div.tabs div.tab span.tab-inactive a {color: gray}
+div.tabsContent div.tabs div.tab span.tab-active a {color: rgb(108,106,187);}
+
+
+div.tabsContent div.tabs div.tab .left { float: left;  border: 0; background: no-repeat left top  url("../../resources/images/tabs/left-corner.png");  width:11px;  height:25px }
+div.tabsContent div.tabs div.tab .right {  float: left; border: 0; background: no-repeat left top  url("../../resources/images/tabs/right-corner.png"); width:11px;   height:25px }
+div.tabsContent div.tabs div.tab .center { float: left;  background: white repeat-x left top  url("../../resources/images/tabs/tab-line.png"); }
+
+div.tabsContent div.tabs div.tab-last-cell div.endline{ margin-top:25px; z-index: 99; display: block; position:absolute; text-align: right; top:0;right:0; width:2px; height: 50px; background: rgb(159, 176, 196) repeat-y left top  url("../../resources/images/tabs/end-tab-line.png"); ;}
+
+
+div.serverInfo { color:black; }
+div.serverInfo div {padding-bottom:4px;}
+
+
+
+/*------------------------------------------*/
+/*------  Section xx - xxxxxxxxx      ------*/
+/*------------------------------------------*/
+body.login { text-align: center; padding-top: 65px;  font-size: 62.5%;background: #f3f3f3 center 350px no-repeat url("../../resources/images/login/loginBg.jpg");}
+div#loginWrapper { width: 455px; margin: 0 auto; text-align: left;}
+div#loginWrapper p { font-size: 10px; color: #a5a5a5; / CP: MOD #c8c7c7 */text-align: center;padding: 35px 12px;  }
+div#loginWrapper div.top { width: 455px;   height: 11px; background: 10px top no-repeat url("../../resources/images/login/login-Top.png");}
+div#loginWrapper div.loginBox { width: 375px;  position: relative; padding: 30px 40px 15px 40px;  background: 1px bottom no-repeat url("../../resources/images/login/login-Bg.png");}
+div#loginWrapper div.loginBox img.mascot { position: absolute;   right: 42px; bottom: -75px;}
+div#loginWrapper div.loginBox label.login {font-size: 1.6em; color: #6c6c6c; padding: 20px 0 5px 10px;  display: block;font-weight: normal;}
+div#loginWrapper div.loginBox p { padding: 15px 0 0 10px; clear: both;  text-align: left; color: #a5a5a5; font-size: 12px;}
+div#loginWrapper div.alertMessage,div#loginWrapper div.infoMessage,div#loginWrapper div.errorMessage { margin-top: 10px; }
+div#loginWrapper div.alertMessage p,div#loginWrapper div.infoMessage p { padding: 0 0 0 0;color: #575757;}
+div#loginWrapper div.loginBox div.message { color: #575757; position: relative; left: -10px; width: 395px; margin-top: 20px; background: left bottom no-repeat url("../../resources/images/login/loginMessage-Bottom.png");}
+div#loginWrapper div.loginBox div.message div { width: 365px; padding: 15px 15px 5px 15px; background: left top no-repeat url("../../resources/images/login/loginMessage-Top.png");}
+div#loginWrapper div.loginBox div.message div p { color: #575757; padding: 0 0 0 0; font-size: 1.2em;}
+div#loginWrapper div.loginBox p.forgotPassword { font-size: 11px; padding: 5px 0 0 10px; margin-bottom: 7px;}
+div#loginWrapper div.loginBox p input {position: relative; top: 1px;}
+div#loginWrapper div.bottom {  width: 455px;  height: 47px;  background: 1px top no-repeat url("../../resources/images/login/login-Bottom.png");}
+div#loginWrapper div.inputWrapper { background: left top no-repeat url("../../resources/images/login/loginInputBg.png"); width: 241px; height: 33px; margin-left: 10px;}
+div#loginWrapper div.inputWrapper input {font-size: 18px;padding: 7px 4px 1px 4px;  background-color: transparent; border: none; width: 230px; }
+
+
+a.loginBtn { display: block; font-size: 16px;  font-weight: bold; color: #fff; background: left top no-repeat url("../../resources/images/login/loginBtn-Left.png");float: left;margin: 15px 0 0 10px;}
+a.loginBtn span { display: block;  background: right top no-repeat url("../../resources/images/login/loginBtn-Right.png"); padding: 10px 25px 0 25px;height: 28px; cursor: pointer; }
+a.loginBtn:hover { background-position: left -38px; text-decoration: none;}
+a.loginBtn:hover span {  background-position: right -38px;}
+
+
+div#loginWrapper div.errorMessage {margin-bottom: 12px;  border: solid 1px #d5d5d5; -moz-border-radius: 7px;    border-radius: 7px;  -moz-box-shadow: 0 0 1px #bfbebe; -webkit-box-shadow: 0 0 1px #bfbebe; box-shadow: 0 0 2px #bfbebe; padding: 16px 16px 5px 57px;   clear: both;  min-height: 40px }
+div#loginWrapper div.errorMessage { background: #faf6e5 12px 16px no-repeat url("../images/login/icon-error.png")}
+div#loginWrapper div.errorMessage p {color: red; padding: 0 0 0 0;  font-size: 1.2em;}
+
+
+
+#content .info{padding:5px;}
+#content .formErrors{color: red; text-align: center;width: 100%;font-weight: bold;}
+#content .webErrors{color: red; text-align: center;width: 100%;font-weight: bold;}
+#content .webError{padding:5px;}
+#content .webSuccessMessages{color: green; text-align: center;width: 100%;font-weight: bold;}
+#content .webSuccessMessage{padding:5px;}
+#content .webMessages{color: black; text-align: center;width: 100%;font-weight: bold;}
+#content .webMessage{padding:5px;}
+#content .webWarnings {color: #d5af12; text-align: center;width: 100%;font-weight: bold;}
+#content .webWarning {padding:5px;}
+
+a.sort { text-decoration: underline;}
+
+#menuWrapper.wideScreen { width:35px;}
+#menucontent.wideScreen { display:none}
+#menu.wideScreen { width:35px;}
+div#contentWrapper div.leftColumn.wideScreen{ width:45px;}
+#contentWrapper .rightColumn .wideScreen { margin-left:55px;}
+
+/*------------------------------------------*/
+/*------  Section xx - xxxxxxxxx      ------*/
+/*------------------------------------------*/
+.tabbed .tabHeader {  padding-top:20px; padding-bottom: 20px; }
+.tabbed .tabHeader   .cell-space{ width: 160px; }
+.tabbed .tabHeader  .row .cell{ font-size: 14px; font-weight: bold; }
+.tabbed .tabHeader  .row .cell .labelValue{ padding-left: 20px; font-size: 14px;  font-weight: normal; }
+
+.tabbed .details  {display: block; text-align: left;}
+.tabbed .details  div.label { text-align: left; font-weight:bold;white-space: nowrap;  }
+.tabbed .details  .labelValue { padding-left: 0px; font-weight: normal; }
+.tabbed .details.std .value input.std{ width: 200px; }
+.tabbed .details.std .value select.std{ width: 208px; }
+.tabbed .details.std .value input.name{ width: 300px; }
+.tabbed .details.std .value input.numberCode {width: 80px;}
+.tabbed .details  .areaLabel{ text-align:left;}
+.tabbed .details  td{  padding: 6px; }
+.tabbed .details .disabled{ color:gray}
+.inputShort{ width: 200px; }
+.selectShort{width: 208px; }
+.inputMid{ width: 255px; }
+.selectMid{ width: 264px; }
+.inputLong{ width: 300px; }
+.selectLong{ width: 308px; }
+
+input.standardCal { background: #fff 98% 3px no-repeat url("../images/calendar/calendarIcon.png"); padding:3px 3px 2px 3px; border: 1px solid rgb(127, 157, 185)}
+input.standardReadOnlyCal { background: rgb(235,235,228) 98% 3px no-repeat url("../images/calendar/calendarIcon.png");  padding:3px 3px 2px 3px; border: 1px solid #c9c9c9}
+
+/*------------------------------------------*/
+/*------  Section xx - xxxxxxxxx      ------*/
+/*------------------------------------------*/
+#exception {position:absolute;  left:50%; top:50%; margin:-160px 0 0 -320px;width:640px;;background: #8b0000 repeat-y top left url("../images/ui/error/error_bg.png"); height:320px;}
+#exception  .excWrapper{position:relative;  left:50%; top:50%; margin:-125px  0 0 -295px;width:590px;;background: #ffffff; height:250px;}
+#exception  .excWrapper .excTop {background: white; display:block;height: 4px;}
+#exception  .excWrapper .excTop .excTopLeft{ float:left; background: white no-repeat top left url("../images/ui/error/error_left_top_corner.png"); width:6px;height: 4px; }
+#exception  .excWrapper .excTop .excTopRight { float:right; background: white no-repeat top left url("../images/ui/error/error_right_top_corner.png"); width:6px;height: 4px;}
+#exception  .excWrapper .excBottom {background: white; display:block;height: 4px;}
+#exception  .excWrapper .excBottom .excBottomLeft{ float:left; background: white no-repeat bottom left url("../images/ui/error/error_left_bottom_corner.png"); width:6px;height: 4px; }
+#exception  .excWrapper .excBottom .excBottomRight { float:right; background: white no-repeat bottom left url("../images/ui/error/error_right_bottom_corner.png"); width:6px;height: 4px;}
+#exception  .excWrapper .excContent {background: white; display:block; height: 100%;}
+#exception  .excWrapper .cell  {background: white; position:relative;top:40px;}
+#exception  .excWrapper .excIcon  { padding: 20px}
+#exception  .excWrapper .excInfo  { height: 80px; overflow-y: auto;}
+#exception  .excWrapper .excTitle  {padding-top:30px; font-size: 16px;color: rgb(223,70,23);font-weight: bold; }
+#exception  .excWrapper .excBody  { padding-top:20px; font-size: 14px;color: black;padding-bottom: 20px; }
+#exception  .excWrapper .excMessage  {font-size: 14px;color: black; }
+#exception  .excWrapper .errLabel{ color: #000000;font-weight: bold; padding-right: 10px; width:50px;}
+#exception  .excWrapper .errValue{color: rgb(223,70,23);font-weight:bold;}
+#exception  .excWrapper .excReason { padding-top:5px;font-size: 14px;}
+#exception  .excWrapper .excButton .excButtonLeft {  background: white no-repeat right url("../images/ui/error/err_button-left-corner.png"); width:11px;height: 18px; }
+#exception  .excWrapper .excButton .excButtonBody { text-align:center; background: rgb(117, 24, 32); }
+#exception  .excWrapper .excButton .excButtonRight {  background: white no-repeat left url("../images/ui/error/err_button-right-corner.png"); width:11px;height: 18px; }
+#exception  .excWrapper .excButton a.back { color: white; font-size: 12px;}
+
+
+
+/*------------------------------------------*/
+/*------  Section xx - xxxxxxxxx      ------*/
+/*------------------------------------------*/
+#menucontent a:hover { text-decoration: none; }
+#menucontent ul.navi-menu { padding:0; }
+#menucontent #navi li.top{ margin-top:10px; font-weight: bold; font-size: 13px;}
+#menucontent #navi li.first{font-weight: bold; font-size: 13px;}
+#menucontent ul.navi-menu li { padding:2px 0;margin-top:2px;list-style:none; }
+#menucontent ul.navi-menu li ul { padding:0;margin:0 0 0 20px; }
+#menucontent a.href:hover { text-decoration: underline; }
+#menucontent #navi ul li a { padding-right:8px; font-size: 12px; font-weight: normal; }
+#menucontent #navi li a.selected { color:black; font-weight: bold;}
+#menucontent #navi li.top a.selected {  font-weight: bold;}
+
+#menucontent ul#navi a.expanded { padding-right:8px;  background: #fff right 4px  no-repeat url("../images/ui/expanded.png"); };
+
+
+div.details  div.box{ clear: both;  padding: 0; width: 100%;  height: 100%;  margin:0;  display: block; vertical-align: top;  text-align: left;}
+.boxName {background :white; padding: 2px;;position: relative;top:-5px;left:10px; font-weight: bold; }
+div.details div.box div.boxMiddle div.middleWrapper div.boxContent { padding: 10px; text-align: left; }
+div.details div.box div.boxMiddle div.middleWrapper span.left{display: block;;  position: absolute; left: 0;  height: 100%; top:0; width: 2px; background: left top repeat-y url("../../resources/images/ui/box-line-left.png")}
+div.details div.box div.boxMiddle div.middleWrapper { position: relative; min-height:25px; height:auto !important; height:25px;}
+div.details div.box div.boxMiddle div.middleWrapper  span.right{ display: block;; position: absolute; right: 0; height: 100%; top:0;  width: 2px; background: right top repeat-y url("../../resources/images/ui/box-line-left.png") }
+div.details div.box div.boxTop div.topWrapper { clear: both;   width: 100%;  border:0;  padding: 0; margin: 0; text-align: center; position: relative}
+div.details div.box div.boxTop div.topWrapper span.left {  width: 10px; height: 11px; display: block; position: absolute; top: 0; left: 0;height: 11px;  background: left top no-repeat url("../../resources/images/ui/box-corner-left-top.png")}
+div.details div.box div.boxTop div.topWrapper span.center { text-align: left; display: block;  height: 11px; background: left top repeat-x url("../../resources/images/ui/box-line-top-bottom.png")}
+div.details div.box div.boxTop div.topWrapper span.right { width: 10px; display: block;position: absolute; top: 0;  right: 0; height: 11px;background: left top no-repeat url("../../resources/images/ui/box-corner-right-top.png")}
+div.details div.box div.boxBottom div.bottomWrapper {   clear: both; text-align: center; position: relative }
+div.details div.box div.boxBottom div.bottomWrapper span.left { width: 10px; height: 11px; display: block; position: absolute;  top: 0;  left: 0; background: left top no-repeat url("../../resources/images/ui/box-corner-left-bottom.png")}
+div.details div.box div.boxBottom div.bottomWrapper span.center { display: block;height: 11px;background: left bottom repeat-x url("../../resources/images/ui/box-line-top-bottom.png")}
+div.details div.box div.boxBottom div.bottomWrapper span.right { width: 10px; display: block; position: absolute; top: 0; right: 0; height: 11px;  background: left top no-repeat url("../../resources/images/ui/box-corner-right-bottom.png")}
+
+
+div.details div.box div.boxBottom{  background-color: rgb(247, 247, 247); width: 100%; padding: 0;  margin: 0;  clear: both; text-align: center; display: block; }
+div.details div.box div.boxTop{  background-color: rgb(247, 247, 247); width: 100%;   padding: 0; margin: 0;  clear: both; text-align: left; display: block;}
+div.details div.box div.boxMiddle { background-color: rgb(247, 247, 247); clear: both; text-align: center; display: block; vertical-align: top;padding: 0; }
+div.details div.box .boxContent { background-color: rgb(247, 247, 247);}
+
+
+div.details div.box.white div.boxBottom{  background-color: rgb(255, 255, 255);}
+div.details div.box.white div.boxTop{  background-color: rgb(255, 255, 255); }
+div.details div.box.white div.boxMiddle { background-color: rgb(255, 255, 255); }
+div.details div.box.white .boxContent { background-color: rgb(255, 255, 255);}
+
+div.details .subHeader { font-size:16px; font-weight: bold; }
+div.details .primaryHeader { font-size:18px; font-weight: bold; }
+div.details span.postalCodeAroundState { padding-left: 20px; }
+div.details .subitem tbody tr td.cell {padding:5px; padding-left: 30px; }
+
+div.details .locationBudgets .costCenter  td {border: 1px gray solid}
+div.details .locationBudgets table.spent hr { padding: 0;}
+div.details .locationBudgets .compactRow { padding: 0;}
+div.details .locationBudgets .noborder table {border: 0;}
+div.details .locationBudgets  .noborder td {border: 0;}
+div.details .locationBudgets  input.smallAmount {width: 57px;}
+div.details  input.smallNumber {width: 30px;}
+
+
+
+
+div.search div.box{ clear: both;  padding: 0; width: 100%;  height: 100%;  margin:0;  display: block; vertical-align: top;  text-align: left;}
+.boxName {background :white; padding: 2px;;position: relative;top:-5px;left:10px; font-weight: bold; }
+div.search div.box .boxContent { background-color: rgb(247, 247, 247);}
+div.search div.box div.boxMiddle { background-color: rgb(247, 247, 247); clear: both; text-align: center; display: block; vertical-align: top;padding: 0; }
+div.search div.box div.boxMiddle div.middleWrapper div.boxContent { padding: 10px; text-align: left; }
+div.search div.box div.boxMiddle div.middleWrapper span.left{display: block;;  position: absolute; left: 0;  height: 100%; top:0; width: 2px; background: left top repeat-y url("../../resources/images/ui/box-line-left.png")}
+div.search div.box div.boxMiddle div.middleWrapper { position: relative; min-height:25px; height:auto !important; height:25px;}
+div.search div.box div.boxMiddle div.middleWrapper  span.right{ display: block;; position: absolute; right: 0; height: 100%; top:0;  width: 2px; background: right top repeat-y url("../../resources/images/ui/box-line-left.png") }
+div.search div.box div.boxTop{  background-color: rgb(247, 247, 247); width: 100%;   padding: 0; margin: 0;  clear: both; text-align: left; display: block;}
+div.search div.box div.boxBottom{  background-color: rgb(247, 247, 247); width: 100%; padding: 0;  margin: 0;  clear: both; text-align: center; display: block; }
+div.search div.box div.boxTop div.topWrapper { clear: both;   width: 100%;  border:0;  padding: 0; margin: 0; text-align: center; position: relative}
+div.search div.box div.boxTop div.topWrapper span.left {  width: 10px; height: 11px; display: block; position: absolute; top: 0; left: 0;height: 11px;  background: left top no-repeat url("../../resources/images/ui/box-corner-left-top.png")}
+div.search div.box div.boxTop div.topWrapper span.center { text-align: left; display: block;  height: 11px; background: left top repeat-x url("../../resources/images/ui/box-line-top-bottom.png")}
+div.search div.box div.boxTop div.topWrapper span.right { width: 10px; display: block;position: absolute; top: 0;  right: 0; height: 11px;background: left top no-repeat url("../../resources/images/ui/box-corner-right-top.png")}
+div.search div.box div.boxBottom div.bottomWrapper {   clear: both; text-align: center; position: relative }
+div.search div.box div.boxBottom div.bottomWrapper span.left { width: 10px; height: 11px; display: block; position: absolute;  top: 0;  left: 0; background: left top no-repeat url("../../resources/images/ui/box-corner-left-bottom.png")}
+div.search div.box div.boxBottom div.bottomWrapper span.center { display: block;height: 11px;background: left bottom repeat-x url("../../resources/images/ui/box-line-top-bottom.png")}
+div.search div.box div.boxBottom div.bottomWrapper span.right { width: 10px; display: block; position: absolute; top: 0; right: 0; height: 11px;  background: left top no-repeat url("../../resources/images/ui/box-corner-right-bottom.png")}
+
+div.search .subHeader { font-size:16px; font-weight: bold; }
+div.search span.postalCodeAroundState { padding-left: 20px; }
+div.search .boldLabel { font-size:13px; font-weight: bold; }
+
+
+
+div.locate .locateFilterHeader { font-size: 17px; font-weight: bold;  vertical-align: top; padding-top: 5px; padding-right: 50px;}
+
+table.boxContent{background-color: rgb(247, 247, 247);}
+
+.collapsedArrow {
+
+	display: block;
+	padding: 14px 0 14px 0;
+	background: 98% -68px no-repeat url(../images/ui/zoneArrows.png);
+}
+.expandedArrow {
+    display: block;
+    padding: 14px 0 14px 0;
+	background: 98% 19px no-repeat url(../images/ui/zoneArrows.png);
+}
+
+.borderLeftTopCorner {    background: left top no-repeat url("../../resources/images/wrapper/wrapper-corner-left-top.jpg")}
+.borderHTop {   background: left top repeat-x url("../../resources/images/wrapper/wrapper-line-top-bottom.jpg")}
+.borderRightTopCorner { background: right top no-repeat url("../../resources/images/wrapper/wrapper-corner-right-top.jpg")}
+
+.borderLeftBottomCorner {    background: left bottom no-repeat url("../../resources/images/wrapper/wrapper-corner-left-bottom.jpg")}
+.borderHBottom {   background: left bottom repeat-x url("../../resources/images/wrapper/wrapper-line-top-bottom.jpg")}
+.borderRightBottomCorner { background: right bottom no-repeat url("../../resources/images/wrapper/wrapper-corner-right-bottom.jpg")}
+
+.borderVL  {   background: left top repeat-y url("../../resources/images/wrapper/wrapper-line-left.jpg")}
+.borderVR  {   background: right top repeat-y url("../../resources/images/wrapper/wrapper-line-left.jpg")}
+
+.headerWRow   { padding: 5px; font-weight: bold; white-space: nowrap;}
+.tableWRule   { padding: 0px; border: 0;}
+
+a.pdf{ padding:24px; background:left top no-repeat url("../../resources/images/ui/icon-acrobat.png") }
+

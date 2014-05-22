@@ -1,0 +1,2084 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database>
+
+    <table name="WO_ADDRESS" serialVersionDataUID="-7774024263382877637L" serialVersionVectorUID="-1591286193770455129L"
+           cache="true">
+        <column isPrimaryKey="true" name="ADDRESS_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="USER_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="NAME1" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="NAME2" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADDRESS1" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADDRESS2" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADDRESS3" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADDRESS4" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="CITY" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="STATE_PROVINCE_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="COUNTRY_CD" size="255" type="VARCHAR2"/>
+        <column name="COUNTY_CD" nullable="true" size="50" type="VARCHAR2"/>
+        <column name="POSTAL_CODE" nullable="true" size="15" type="VARCHAR2"/>
+        <column name="ADDRESS_STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="ADDRESS_TYPE_CD" size="30" type="VARCHAR2"/>
+        <column name="PRIMARY_IND" nullable="true" size="1" type="NUMBER"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_ADDRESS_PK">
+            <columnref name="ADDRESS_ID"/>
+        </primaryKey>
+    </table>
+
+    <table name="WO_COUNTRY" serialVersionDataUID="8754859292688253066L" serialVersionVectorUID="-4668292916174852362L"
+           cache="true">
+        <column isPrimaryKey="true" name="COUNTRY_ID" size="38" type="NUMBER"/>
+        <column name="SHORT_DESC" size="64" type="VARCHAR2"/>
+        <column name="UI_NAME" size="128" type="VARCHAR2"/>
+        <column name="COUNTRY_CODE" size="2" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="LOCALE_CD" nullable="true" size="5" type="VARCHAR2"/>
+        <primaryKey name="WO_COUNTRY_PK">
+            <columnref name="COUNTRY_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_COUNTRY_PROPERTY" serialVersionDataUID="-1652415515457096015L"
+           serialVersionVectorUID="6704419682445760410L" cache="true">
+        <column isPrimaryKey="true" name="COUNTRY_PROPERTY_ID" size="38" type="NUMBER"/>
+        <column name="COUNTRY_ID" size="38" type="NUMBER"/>
+        <column name="COUNTRY_PROPERTY_CD" size="30" type="VARCHAR2"/>
+        <column name="WO_VALUE" nullable="true" size="12" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_COUNTRY_PROPERTY_PK">
+            <columnref name="COUNTRY_PROPERTY_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_CURRENCY" serialVersionDataUID="-3972558621780985667L"
+           serialVersionVectorUID="-5295437089948486699L">
+        <column isPrimaryKey="true" name="CURRENCY_ID" size="38" type="NUMBER"/>
+        <column name="LOCALE" size="5" type="VARCHAR2"/>
+        <column name="SHORT_DESC" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="LOCAL_CODE" nullable="true" size="10" type="VARCHAR2"/>
+        <column name="CURRENCY_POSITION_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="DECIMALS" size="2" type="NUMBER"/>
+        <column name="GLOBAL_CODE" size="3" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_CURRENCY_PK">
+            <columnref name="CURRENCY_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_EMAIL" serialVersionDataUID="-9193663064640827311L" serialVersionVectorUID="6394667669701823074L"
+           cache="true">
+        <column isPrimaryKey="true" name="EMAIL_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="USER_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="SHORT_DESC" nullable="true" size="35" type="VARCHAR2"/>
+        <column name="EMAIL_TYPE_CD" size="30" type="VARCHAR2"/>
+        <column name="EMAIL_STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="EMAIL_ADDRESS" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="PRIMARY_IND" nullable="true" size="1" type="NUMBER"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="CONTACT_ID" nullable="true" size="38" type="NUMBER"/>
+        <primaryKey name="WO_EMAIL_PK">
+            <columnref name="EMAIL_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_LOCALE" serialVersionDataUID="-354475515463390851L" serialVersionVectorUID="3686426746349018266L">
+        <column isPrimaryKey="true" name="LOCALE_ID" size="38" type="NUMBER"/>
+        <column name="SHORT_DESC" size="30" type="VARCHAR2"/>
+        <column name="COUNTRY_CD" size="30" type="VARCHAR2"/>
+        <column name="LANGUAGE_CD" size="30" type="VARCHAR2"/>
+        <column name="CURRENCY_CD" size="30" type="VARCHAR2"/>
+        <column name="DATE_FORMAT_CD" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_LOCALE_PK">
+            <columnref name="LOCALE_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_LOCALE_MAP" serialVersionDataUID="881937895176380906L"
+           serialVersionVectorUID="-4021113834926672025L">
+        <column isPrimaryKey="true" name="LOCALE_MAP_ID" size="38" type="NUMBER"/>
+        <column name="TABLE_NAME" size="30" type="VARCHAR2"/>
+        <column name="COLUMN_NAME" size="30" type="VARCHAR2"/>
+        <column name="LOCALE_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="PATH" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_LOCALE_MAP_PK">
+            <columnref name="LOCALE_MAP_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_LOCALE_PROPERTY" serialVersionDataUID="-630121982563110815L"
+           serialVersionVectorUID="-3917265734079669055L">
+        <column isPrimaryKey="true" name="LOCALE_PROPERTY_ID" size="38" type="NUMBER"/>
+        <column name="LOCALE_ID" size="38" type="NUMBER"/>
+        <column name="SHORT_DESC" size="30" type="VARCHAR2"/>
+        <column name="WO_VALUE" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_LOCALE_PROPERTY_PK">
+            <columnref name="LOCALE_PROPERTY_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_MESSAGE_RESOURCE" serialVersionDataUID="-7236903007094112905L"
+           serialVersionVectorUID="-9168864174031800705L">
+        <column isPrimaryKey="true" name="MESSAGE_RESOURCE_ID" size="38" type="NUMBER"/>
+        <column name="LOCALE" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="32" type="NUMBER"/>
+        <column name="NAME" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="WO_VALUE" nullable="true" size="3000" type="VARCHAR2"/>
+        <column name="ADD_BY" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADD_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <primaryKey name="WO_MESSAGE_RESOURCE_PK">
+            <columnref name="MESSAGE_RESOURCE_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_PHONE" serialVersionDataUID="76844096298511910L" serialVersionVectorUID="8232983482531121093L"
+           cache="true">
+        <column isPrimaryKey="true" name="PHONE_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="USER_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="PHONE_COUNTRY_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="PHONE_AREA_CODE" nullable="true" size="3" type="VARCHAR2"/>
+        <column name="PHONE_NUM" nullable="true" size="60" type="VARCHAR2"/>
+        <column name="SHORT_DESC" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="PHONE_TYPE_CD" size="30" type="VARCHAR2"/>
+        <column name="PHONE_STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="PRIMARY_IND" nullable="true" size="1" type="NUMBER"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="CONTACT_ID" nullable="true" size="38" type="NUMBER"/>
+        <primaryKey name="WO_PHONE_PK">
+            <columnref name="PHONE_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_PROPERTY" serialVersionDataUID="8116864918440830884L" serialVersionVectorUID="1732441378951799677L"
+           cache="true">
+        <column isPrimaryKey="true" name="PROPERTY_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="USER_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="SHORT_DESC" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="WO_VALUE" nullable="true" size="4000" type="VARCHAR2"/>
+        <column name="PROPERTY_STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="PROPERTY_TYPE_CD" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="LOCALE_CD" nullable="true" size="5" type="VARCHAR2"/>
+        <primaryKey name="WO_PROPERTY_PK">
+            <columnref name="PROPERTY_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_REF_CD" serialVersionDataUID="5456367506984619030L" serialVersionVectorUID="9060493052057634939L">
+        <column isPrimaryKey="true" name="REF_CD_ID" size="38" type="NUMBER"/>
+        <column name="REF_CD" size="30" type="VARCHAR2"/>
+        <column name="SHORT_DESC" size="255" type="VARCHAR2"/>
+        <column name="WO_VALUE" size="255" type="VARCHAR2"/>
+        <column name="REF_CD_TYPE" size="30" type="VARCHAR2"/>
+        <column name="REF_STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_REF_CD_PK">
+            <columnref name="REF_CD_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_USER" serialVersionDataUID="770654028782702017L" serialVersionVectorUID="-9137986146312547650L">
+        <column isPrimaryKey="true" name="USER_ID" size="38" type="NUMBER"/>
+        <column name="FIRST_NAME" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="LAST_NAME" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="USER_NAME" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="PASSWORD" nullable="true" size="35" type="VARCHAR2"/>
+        <column name="EFF_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="EXP_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="USER_STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="USER_ROLE_CD" size="255" type="VARCHAR2"/>
+        <column name="USER_TYPE_CD" size="30" type="VARCHAR2"/>
+        <column name="REGISTER_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="LAST_ACTIVITY_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="PREF_LOCALE_CD" size="30" type="VARCHAR2"/>
+        <column name="WORKFLOW_ROLE_CD" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_USER_PK">
+            <columnref name="USER_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_USER_ASSOC" serialVersionDataUID="-8354316348277710756L"
+           serialVersionVectorUID="-5877605316141373628L">
+        <column isPrimaryKey="true" name="USER_ASSOC_ID" size="38" type="NUMBER"/>
+        <column name="USER_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="USER_ASSOC_CD" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_USER_ASSOC_PK">
+            <columnref name="USER_ASSOC_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_BUS_ENTITY_ASSOC" serialVersionDataUID="2821771090106166142L" serialVersionVectorUID="2956280928018803547L" cache="true">
+        <column isPrimaryKey="true" name="BUS_ENTITY_ASSOC_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY1_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY2_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ASSOC_CD" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_BUS_ENTITY_ASSOC_PK">
+            <columnref name="BUS_ENTITY_ASSOC_ID"/>
+        </primaryKey>
+    </table>
+
+    <table name="WO_EMAIL_TRACKING" serialVersionDataUID="1472100525945589694L" serialVersionVectorUID="-2873893985136343784L">
+        <column isPrimaryKey="true" name="EMAIL_TRACKING_ID" size="38" type="NUMBER"/>
+        <column name="REFERENCE_NUM" nullable="true" size="38" type="NUMBER"/>
+        <column name="EMAIL_TRACKING_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="EMAIL_TRACKING_STATUS_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="TO_ADDRESS" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="CC_ADDRESS" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="SUBJECT" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="TEXT" nullable="true" size="4000" type="VARCHAR2"/>
+        <column name="SEND_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="SEND_TIME" nullable="true" size="7" type="DATE"/>
+        <column name="ADD_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_EMAIL_TRACKING_PK">
+            <columnref name="EMAIL_TRACKING_ID"/>
+        </primaryKey>
+    </table>
+
+    <table name="WO_GROUP" serialVersionDataUID="-1583253567190009012L"
+           serialVersionVectorUID="5977957258204273722L">
+        <column isPrimaryKey="true" name="GROUP_ID" size="38" type="NUMBER" />
+        <column name="SHORT_DESC" size="30" type="VARCHAR2" />
+        <column name="GROUP_STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="GROUP_TYPE_CD" size="30" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_GROUP_PK">
+            <columnref name="GROUP_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_GROUP_ASSOC" serialVersionDataUID="2901748262522932089L"
+           serialVersionVectorUID="2565753065618123920L">
+        <column isPrimaryKey="true" name="GROUP_ASSOC_ID" size="38" type="NUMBER" />
+        <column name="GROUP_ASSOC_CD" size="30" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="USER_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="GROUP_ID" size="38" type="NUMBER" />
+        <column name="GENERIC_REPORT_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="APPLICATION_FUNCTION" nullable="true" size="255"
+                type="VARCHAR2" />
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER" />
+        <primaryKey name="WO_GROUP_ASSOC_PK">
+            <columnref name="GROUP_ASSOC_ID" />
+        </primaryKey>
+    </table>
+
+    <table name="WO_BUDGET" serialVersionDataUID="-7247769078194188926L" serialVersionVectorUID="-2725241922547586219L" cache="true">
+        <column isPrimaryKey="true" name="BUDGET_ID" size="38" type="NUMBER" />
+        <column name="BUS_ENTITY_ID" size="38" type="NUMBER" />
+        <column name="COST_CENTER_ID" size="38" type="NUMBER" />
+        <column name="SHORT_DESC" nullable="true" size="255" type="VARCHAR2" />
+        <column name="BUDGET_STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="BUDGET_TYPE_CD" size="30" type="VARCHAR2" />
+        <column name="EFF_DATE" nullable="true" size="7" type="DATE" />
+        <column name="EXP_DATE" nullable="true" size="7" type="DATE" />
+        <column name="BUDGET_THRESHOLD" size="10" type="VARCHAR2" nullable="true" />
+        <column name="BUDGET_YEAR" size="5" type="NUMBER" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_BUDGET_PK">
+            <columnref name="BUDGET_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_BUDGET_DETAIL" serialVersionDataUID="-1L" serialVersionVectorUID="-1L">
+        <column isPrimaryKey="true" name="BUDGET_DETAIL_ID" size="38" type="NUMBER" />
+        <column name="BUDGET_ID" size="38" type="NUMBER" />
+        <column name="PERIOD" size="10" type="NUMBER" />
+        <column digits="3" name="AMOUNT" size="15" nullable="true" type="NUMBER" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_BUDGET_DETAIL_PK">
+            <columnref name="BUDGET_DETAIL_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_NOTE" serialVersionDataUID="8028320161462501131L"
+           serialVersionVectorUID="-6215311254175121600L" cache="true">
+        <column isPrimaryKey="true" name="NOTE_ID" size="38" type="NUMBER" />
+        <column name="PROPERTY_ID" size="38" type="NUMBER" />
+        <column name="NOTE_TYPE_CD" size="30" type="VARCHAR2" />
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="TITLE" size="4000" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="EFF_DATE" nullable="true" size="7" type="DATE" />
+        <column name="EXP_DATE" nullable="true" size="7" type="DATE" />
+        <column name="COUNTER" nullable="true" size="3" type="NUMBER" />
+        <column name="LOCALE_CD" nullable="true" size="5" type="VARCHAR2" />
+        <primaryKey name="WO_NOTE_PK">
+            <columnref name="NOTE_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_NOTE_ATTACHMENT" serialVersionDataUID="3714207616991372957L"
+           serialVersionVectorUID="6619549828238969675L">
+        <column isPrimaryKey="true" name="NOTE_ATTACHMENT_ID" size="38"
+                type="NUMBER" />
+        <column name="NOTE_ID" size="38" type="NUMBER" />
+        <column name="SERVER_NAME" nullable="true" size="30" type="VARCHAR2" />
+        <column name="FILE_NAME" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="BINARY_DATA" nullable="true" size="4000" type="BLOB" />
+        <primaryKey name="WO_NOTE_ATTACHMENT_PK">
+            <columnref name="NOTE_ATTACHMENT_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_NOTE_TEXT" serialVersionDataUID="6945824884254966020L"
+           serialVersionVectorUID="755070851024125281L" cache="true">
+        <column isPrimaryKey="true" name="NOTE_TEXT_ID" size="38" type="NUMBER" />
+        <column name="USER_FIRST_NAME" nullable="true" size="255" type="VARCHAR2" />
+        <column name="USER_LAST_NAME" size="255" type="VARCHAR2" />
+        <column name="NOTE_ID" size="38" type="NUMBER" />
+        <column name="SEQ_NUM" size="38" type="NUMBER" />
+        <column name="PAGE_NUM" size="38" type="NUMBER" />
+        <column name="NOTE_TEXT" nullable="true" size="4000" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_NOTE_TEXT_PK">
+            <columnref name="NOTE_TEXT_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_WORKFLOW" serialVersionDataUID="8360239139586048008L"
+           serialVersionVectorUID="8164968026329471108L" cache="true">
+        <column isPrimaryKey="true" name="WORKFLOW_ID" size="38" type="NUMBER" />
+        <column name="BUS_ENTITY_ID" size="38" type="NUMBER" />
+        <column name="SHORT_DESC" size="30" type="VARCHAR2" />
+        <column name="WORKFLOW_TYPE_CD" size="30" type="VARCHAR2" />
+        <column name="WORKFLOW_STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="EFF_DATE" nullable="true" size="7" type="DATE" />
+        <column name="EXP_DATE" nullable="true" size="7" type="DATE" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_WORKFLOW_PK">
+            <columnref name="WORKFLOW_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_WORKFLOW_ASSOC" serialVersionDataUID="2346090719632280628L"
+           serialVersionVectorUID="4664582120343825218L">
+        <column isPrimaryKey="true" name="WORKFLOW_ASSOC_ID" size="38"
+                type="NUMBER" />
+        <column name="WORKFLOW_ID" size="38" type="NUMBER" />
+        <column name="WORKFLOW_RULE_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="WORKFLOW_ASSOC_CD" size="30" type="VARCHAR2" />
+        <column name="GROUP_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="USER_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_WORKFLOW_ASSOC_PK">
+            <columnref name="WORKFLOW_ASSOC_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_WORKFLOW_LOG" serialVersionDataUID="5769751979513213148L"
+           serialVersionVectorUID="192389988829546824L">
+        <column isPrimaryKey="true" name="WORKFLOW_LOG_ID" size="38"
+                type="NUMBER" />
+        <column name="WORKFLOW_ID" size="38" type="NUMBER" />
+        <column name="START_DATE" size="7" type="DATE" />
+        <column name="START_TIME" size="7" type="DATE" />
+        <column name="WORKFLOW_TYPE_CD" size="30" type="VARCHAR2" />
+        <column name="WORKFLOW_STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="END_DATE" nullable="true" size="7" type="DATE" />
+        <column name="END_TIME" nullable="true" size="7" type="DATE" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_WORKFLOW_LOG_PK">
+            <columnref name="WORKFLOW_LOG_ID" />
+        </primaryKey>
+    </table>
+
+    <table name="WO_WORKFLOW_ST_QUEUE" serialVersionDataUID="1L" serialVersionVectorUID="-1">
+        <column isPrimaryKey="true" name="WORKFLOW_ST_QUEUE_ID" size="38" type="NUMBER"/>
+        <column name="SHORT_DESC" size="30" type="VARCHAR2"/>
+        <column name="SERVICE_TICKET_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="WORKFLOW_ROLE_CD" size="30" type="VARCHAR2"/>
+        <column name="WORKFLOW_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="WORKFLOW_RULE_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="ACTION_DAYS" nullable="true" size="38" type="NUMBER"/>
+        <column name="ACTION_TYPE" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_WORKFLOW_ST_QUEUE_PK">
+            <columnref name="WORKFLOW_ST_QUEUE_ID"/>
+        </primaryKey>
+    </table>
+    
+    <table name="WO_WORKFLOW_RULE" serialVersionDataUID="-4975690026283822198L"
+           serialVersionVectorUID="-6740711256659404096L">
+        <column isPrimaryKey="true" name="WORKFLOW_RULE_ID" size="38"
+                type="NUMBER" />
+        <column name="RULE_SEQ" nullable="true" size="38" type="NUMBER" />
+        <column name="WORKFLOW_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="RULE_TYPE_CD" size="30" type="VARCHAR2" />
+        <column name="RULE_EXP" size="30" type="VARCHAR2" />
+        <column name="RULE_EXP_VALUE" size="30" type="VARCHAR2" />
+        <column name="RULE_ACTION" nullable="true" size="255" type="VARCHAR2" />
+        <column name="NEXT_ACTION_CD" size="255" type="VARCHAR2" />
+        <column name="SHORT_DESC" size="30" type="VARCHAR2" />
+        <column name="WORKFLOW_RULE_STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="APPROVER_GROUP_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="EMAIL_GROUP_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="RULE_GROUP" nullable="true" size="15" type="VARCHAR2" />
+        <column name="WARNING_MESSAGE" nullable="true" size="400" type="VARCHAR2" />
+        <primaryKey name="WO_WORKFLOW_RULE_PK">
+            <columnref name="WORKFLOW_RULE_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_FISCAL_CALENDER" serialVersionDataUID="4607962068270997240L"
+           serialVersionVectorUID="-6083826970711319175L" cache="true">
+        <column isPrimaryKey="true" name="FISCAL_CALENDER_ID" size="38"
+                type="NUMBER" />
+        <column name="BUS_ENTITY_ID" size="38" type="NUMBER" />
+        <column name="SHORT_DESC" size="30" type="VARCHAR2" />
+        <column name="PERIOD_CD" size="30" type="VARCHAR2" />
+        <column name="EFF_DATE" size="7" type="DATE" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="FISCAL_YEAR" nullable="true" size="5" type="NUMBER" />
+        <primaryKey name="WO_FISCAL_CALENDER_PK">
+            <columnref name="FISCAL_CALENDER_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_FISCAL_CALENDER_DETAIL" serialVersionDataUID="-1L"
+           serialVersionVectorUID="-1L">
+        <column isPrimaryKey="true" name="FISCAL_CALENDER_DETAIL_ID"
+                size="38" type="NUMBER" />
+        <column name="FISCAL_CALENDER_ID" size="38" type="NUMBER" />
+        <column name="PERIOD" size="10" type="NUMBER" />
+        <column name="MMDD" nullable="true" size="5" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_FISCAL_CALENDER_DETAIL_PK">
+            <columnref name="FISCAL_CALENDER_DETAIL_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_SITE_WORKFLOW" serialVersionDataUID="-5251004386957082525L" serialVersionVectorUID="-8307093589832187632L">
+        <column isPrimaryKey="true" name="SITE_WORKFLOW_ID" size="38" type="NUMBER"/>
+        <column name="WORKFLOW_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="SITE_ID" nullable="true" size="38" type="NUMBER"/>
+        <primaryKey name="WO_SITE_WORKFLOW_PK">
+            <columnref name="SITE_WORKFLOW_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_COST_CENTER" serialVersionDataUID="5375487497675175807L" serialVersionVectorUID="-4180025595635114452L" cache="true">
+        <column isPrimaryKey="true" name="COST_CENTER_ID" size="38" type="NUMBER"/>
+        <column name="SHORT_DESC" size="30" type="VARCHAR2"/>
+        <column name="COST_CENTER_STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="COST_CENTER_TYPE_CD" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ALLOCATE_FREIGHT" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="ALLOCATE_DISCOUNT" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="COST_CENTER_TAX_TYPE" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="STORE_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="COST_CENTER_CODE" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="NO_BUDGET" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_COST_CENTER_PK">
+            <columnref name="COST_CENTER_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_COST_CENTER_ASSOC" serialVersionDataUID="-7285607474955127147L" serialVersionVectorUID="5808811258628878071L">
+        <column isPrimaryKey="true" name="COST_CENTER_ASSOC_ID" size="38" type="NUMBER"/>
+        <column name="COST_CENTER_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" size="38" type="NUMBER"/>
+        <column name="COST_CENTER_ASSOC_CD" size="30" type="VARCHAR2"/>
+        <column name="BUDGET_THRESHOLD" nullable="true" size="10" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_COST_CENTER_ASSOC_PK">
+            <columnref name="COST_CENTER_ASSOC_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_COST_CENTER_RULE" serialVersionDataUID="1L" serialVersionVectorUID="1L">
+        <column isPrimaryKey="true" name="COST_CENTER_RULE_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="COST_CENTER_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="CATEGORY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="MATCH_TYPE_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="EFF_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="ITEM_ID" nullable="true" size="38" type="NUMBER"/>
+        <primaryKey name="WO_COST_CENTER_RULE_PK">
+            <columnref name="COST_CENTER_RULE_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_COST_CENTER_RULE_DETAIL" serialVersionDataUID="1L" serialVersionVectorUID="1L">
+        <column isPrimaryKey="true" name="COST_CENTER_RULE_DETAIL_ID" size="38" type="NUMBER"/>
+        <column name="COST_CENTER_RULE_ID" size="38" type="NUMBER"/>
+        <column name="PARAM_NAME" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="PARAM_VALUE" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_COST_CENTER_RULE_DETAIL_PK">
+            <columnref name="COST_CENTER_RULE_DETAIL_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_CONTACT" serialVersionDataUID="-2871545506624038717L" serialVersionVectorUID="-3996405930881054500L">
+        <column isPrimaryKey="true" name="CONTACT_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="FIRST_NAME" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="LAST_NAME" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="CONTACT_TYPE_CD" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="ADDRESS_ID" nullable="true" size="38" type="NUMBER"/>
+        <primaryKey name="WO_CONTACT_PK">
+            <columnref name="CONTACT_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_TRADING_PARTNER" serialVersionDataUID="-3935969572328048691L"
+           serialVersionVectorUID="6686343051195829369L">
+        <column isPrimaryKey="true" name="TRADING_PARTNER_ID" size="38"
+                type="NUMBER" />
+        <column name="SHORT_DESC" size="30" type="VARCHAR2" />
+        <column name="TRADING_TYPE_CD" size="30" type="VARCHAR2" />
+        <column name="TRADING_PARTNER_TYPE_CD" size="30" type="VARCHAR2" />
+        <column name="TRADING_PARTNER_STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="SKU_TYPE_CD" size="30" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="UOM_CONVERSION_TYPE_CD" nullable="true" size="255"
+                type="VARCHAR2" />
+        <column name="SITE_IDENTIFIER_TYPE_CD" nullable="true" size="255"
+                type="VARCHAR2" />
+        <column name="VALIDATE_CONTRACT_PRICE" nullable="true" size="255"
+                type="VARCHAR2" />
+        <column name="PO_NUMBER_TYPE" nullable="true" size="255" type="VARCHAR2" />
+        <column name="ACCOUNT_IDENTIFIER_INBOUND" nullable="true" size="255"
+                type="VARCHAR2" />
+        <primaryKey name="WO_TRADING_PARTNER_PK">
+            <columnref name="TRADING_PARTNER_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_TRADING_PARTNER_ASSOC" serialVersionDataUID="1136723880568143745L"
+           serialVersionVectorUID="7697818897203971803L">
+        <column isPrimaryKey="true" name="TRADING_PARTNER_ASSOC_ID" size="38"
+                type="NUMBER" />
+        <column name="TRADING_PARTNER_ID" size="38" type="NUMBER" />
+        <column name="BUS_ENTITY_ID" size="38" type="NUMBER" />
+        <column name="TRADING_PARTNER_ASSOC_CD" size="30" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" size="255" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" size="255" type="VARCHAR2" />
+        <column name="GROUP_SENDER_OVERRIDE" nullable="true" size="255"
+                type="VARCHAR2" />
+        <primaryKey name="WO_TRADING_PARTNER_ASSOC_PK">
+            <columnref name="TRADING_PARTNER_ASSOC_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_TRADING_PROFILE" serialVersionDataUID="-578088493060809213L"
+           serialVersionVectorUID="1352353854697879678L">
+        <column isPrimaryKey="true" name="TRADING_PROFILE_ID" size="38"
+                type="NUMBER" />
+        <column name="TRADING_PARTNER_ID" size="38" type="NUMBER" />
+        <column name="SHORT_DESC" nullable="true" size="40" type="VARCHAR2" />
+        <column name="AUTHORIZATION_QUALIFIER" size="2" type="VARCHAR2" />
+        <column name="AUTHORIZATION_" nullable="true" size="255" type="VARCHAR2" />
+        <column name="SECURITY_INFO_QUALIFIER" size="2" type="VARCHAR2" />
+        <column name="SECURITY_INFO" nullable="true" size="10" type="VARCHAR2" />
+        <column name="INTERCHANGE_SENDER_QUALIFIER" size="2" type="VARCHAR2" />
+        <column name="INTERCHANGE_SENDER" nullable="true" size="255"
+                type="VARCHAR2" />
+        <column name="INTERCHANGE_RECEIVER_QUALIFIER" size="2" type="VARCHAR2" />
+        <column name="INTERCHANGE_RECEIVER" nullable="true" size="255"
+                type="VARCHAR2" />
+        <column name="INTERCHANGE_STANDARDS_ID" size="1" type="VARCHAR2" />
+        <column name="INTERCHANGE_VERSION_NUM" size="5" type="VARCHAR2" />
+        <column name="INTERCHANGE_CONTROL_NUM" size="38" type="NUMBER" />
+        <column name="ACKNOWLEDGMENT_REQUESTED" size="1" type="VARCHAR2" />
+        <column name="TEST_INDICATOR" size="1" type="VARCHAR2" />
+        <column name="SEGMENT_TERMINATOR" nullable="true" size="1" type="VARCHAR2" />
+        <column name="ELEMENT_TERMINATOR" size="1" type="VARCHAR2" />
+        <column name="SUB_ELEMENT_TERMINATOR" size="1" type="VARCHAR2" />
+        <column name="GROUP_SENDER" nullable="true" size="255" type="VARCHAR2" />
+        <column name="GROUP_RECEIVER" nullable="true" size="255" type="VARCHAR2" />
+        <column name="GROUP_CONTROL_NUM" size="38" type="NUMBER" />
+        <column name="RESPONSIBLE_AGENCY_CODE" size="2" type="VARCHAR2" />
+        <column name="VERSION_NUM" size="12" type="VARCHAR2" />
+        <column name="TIME_ZONE" size="30" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_TRADING_PROFILE_PK">
+            <columnref name="TRADING_PROFILE_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_TRADING_PROFILE_CONFIG" serialVersionDataUID="5950342829943745191L"
+           serialVersionVectorUID="8024817051483654768L">
+        <column isPrimaryKey="true" name="TRADING_PROFILE_CONFIG_ID"
+                size="38" type="NUMBER" />
+        <column name="TRADING_PROFILE_ID" size="38" type="NUMBER" />
+        <column name="INCOMING_TRADING_PROFILE_ID" nullable="true" size="38"
+                type="NUMBER" />
+        <column name="SET_TYPE" size="50" type="VARCHAR2" />
+        <column name="DIRECTION" size="10" type="VARCHAR2" />
+        <column name="CLASSNAME" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="PATTERN" nullable="true" size="255" type="VARCHAR2" />
+        <primaryKey name="WO_TRADING_PROFILE_CONFIG_PK">
+            <columnref name="TRADING_PROFILE_CONFIG_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_TRADING_PROPERTY_MAP" serialVersionDataUID="729257399839720456L"
+           serialVersionVectorUID="5060514343998897176L">
+        <column isPrimaryKey="true" name="TRADING_PROPERTY_MAP_ID" size="32"
+                type="NUMBER" />
+        <column name="TRADING_PROFILE_ID" nullable="true" size="32" type="NUMBER" />
+        <column name="SET_TYPE" nullable="true" size="255" type="VARCHAR2" />
+        <column name="DIRECTION" nullable="true" size="255" type="VARCHAR2" />
+        <column name="ENTITY_PROPERTY" nullable="true" size="255" type="VARCHAR2" />
+        <column name="PROPERTY_TYPE_CD" nullable="true" size="255" type="VARCHAR2" />
+        <column name="QUALIFIER_CODE" nullable="true" size="255" type="VARCHAR2" />
+        <column name="HARD_VALUE" nullable="true" size="255" type="VARCHAR2" />
+        <column name="MANDATORY" nullable="true" size="255" type="VARCHAR2" />
+        <column name="ADD_BY" nullable="true" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" nullable="true" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="255" type="VARCHAR2" />
+        <column name="MOD_DATE" nullable="true" size="7" type="DATE" />
+        <column name="USE_CODE" nullable="true" size="255" type="VARCHAR2" />
+        <column name="ORDER_BY" nullable="true" size="32" type="NUMBER" />
+        <column name="TRADING_PROPERTY_MAP_CODE" nullable="true" size="255"
+                type="VARCHAR2" />
+        <column name="PATTERN" nullable="true" size="255" type="VARCHAR2" />
+        <primaryKey name="TRADING_PROPERTY_MAP_PK">
+            <columnref name="TRADING_PROPERTY_MAP_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_GENERIC_REPORT" serialVersionDataUID="8313729562043844208L"
+           serialVersionVectorUID="3062885707946987987L">
+        <column isPrimaryKey="true" name="GENERIC_REPORT_ID" size="38"
+                type="NUMBER" />
+        <column name="CATEGORY" nullable="true" size="50" type="VARCHAR2" />
+        <column name="NAME" nullable="true" size="2000" type="VARCHAR2" />
+        <column name="PARAMETER_TOKEN" nullable="true" size="10" type="VARCHAR2" />
+        <column name="REPORT_SCHEMA_CD" nullable="true" size="30" type="VARCHAR2" />
+        <column name="INTERFACE_TABLE" nullable="true" size="50" type="VARCHAR2" />
+        <column name="SQL_TEXT" nullable="true" size="4000" type="CLOB" />
+        <column name="SCRIPT_TEXT" nullable="true" size="4000" type="CLOB" />
+        <column name="ADD_DATE" nullable="true" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" nullable="true" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="GENERIC_REPORT_TYPE" nullable="true" size="255"
+                type="VARCHAR2" />
+        <column name="CLASSNAME" nullable="true" size="255" type="VARCHAR2" />
+        <column name="SUPPLEMENTARY_CONTROLS" nullable="true" size="1000"
+                type="VARCHAR2" />
+        <column name="RUNTIME_ENABLED" nullable="true" size="255" type="VARCHAR2" />
+        <column name="LONG_DESC" nullable="true" size="2000" type="VARCHAR2" />
+        <column name="USER_TYPES" nullable="true" size="1000" type="VARCHAR2" />
+        <primaryKey name="SYS_C0062780">
+            <columnref name="GENERIC_REPORT_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_LOGGING" serialVersionDataUID="1L" serialVersionVectorUID="1L">
+        <column isPrimaryKey="true" name="LOGGING_ID" size="38" type="NUMBER"/>
+        <column name="PARENT_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="PRIO" nullable="true" size="15" type="VARCHAR2"/>
+        <column name="IPRIO" nullable="true" size="38" type="NUMBER"/>
+        <column name="CATEGORY" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="THREAD" nullable="true" size="50" type="VARCHAR2"/>
+        <column name="MESSAGE" nullable="true" size="4000" type="VARCHAR2"/>
+        <column name="ADD_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="THROWABLE" nullable="true" size="4000" type="CLOB"/>
+        <column name="PROCESS_ID" nullable="true" size="38" type="NUMBER"/>
+        <primaryKey name="WO_LOGGING_PK">
+            <columnref name="LOGGING_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_INBOUND" serialVersionDataUID="5070238930732720542L" serialVersionVectorUID="7424407414775339120L">
+        <column isPrimaryKey="true" name="INBOUND_ID" size="38" type="NUMBER"/>
+        <column name="FILE_NAME" size="255" type="VARCHAR2"/>
+        <column name="PARTNER_KEY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="URL" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ENCRYPT_BINARY_DATA" nullable="true" size="4000" type="BLOB"/>
+        <column name="DECRYPT_BINARY_DATA" nullable="true" size="4000" type="BLOB"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_INBOUND_ID_PK">
+            <columnref name="INBOUND_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_INTERCHANGE" serialVersionDataUID="-4791323860643816533L" serialVersionVectorUID="2686239725291205966L">
+        <column isPrimaryKey="true" name="INTERCHANGE_ID" size="38" type="NUMBER"/>
+        <column name="TRADING_PROFILE_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="INTERCHANGE_TYPE" nullable="true" size="10" type="VARCHAR2"/>
+        <column name="INTERCHANGE_SENDER" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="INTERCHANGE_RECEIVER" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="INTERCHANGE_CONTROL_NUM" size="38" type="NUMBER"/>
+        <column name="TEST_IND" nullable="true" size="1" type="VARCHAR2"/>
+        <column name="FILE_NAME" nullable="true" size="1000" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_INTERCHANGE_PK">
+            <columnref name="INTERCHANGE_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_ELECTRONIC_TRANSACTION" serialVersionDataUID="-70246271345876742L" serialVersionVectorUID="4227400429501933415L">
+        <column isPrimaryKey="true" name="ELECTRONIC_TRANSACTION_ID" size="38" type="NUMBER"/>
+        <column name="INTERCHANGE_ID" size="38" type="NUMBER"/>
+        <column name="GROUP_TYPE" nullable="true" size="10" type="VARCHAR2"/>
+        <column name="GROUP_SENDER" nullable="true" size="15" type="VARCHAR2"/>
+        <column name="GROUP_RECEIVER" nullable="true" size="15" type="VARCHAR2"/>
+        <column name="GROUP_CONTROL_NUMBER" nullable="true" size="9" type="NUMBER"/>
+        <column name="SET_TYPE" size="255" type="VARCHAR2"/>
+        <column name="SET_CONTROL_NUMBER" nullable="true" size="9" type="NUMBER"/>
+        <column name="SET_STATUS" nullable="true" size="2" type="NUMBER"/>
+        <column name="SET_DATA" nullable="true" size="4000" type="VARCHAR2"/>
+        <column name="EXCEPTION" nullable="true" size="4000" type="VARCHAR2"/>
+        <column name="KEY_STRING" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="REFERENCE_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="REFERENCE_TABLE" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_ELECTRONIC_TRANSACTION_PK">
+            <columnref name="ELECTRONIC_TRANSACTION_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_CONTENT" serialVersionDataUID="-3781003057741152702L" serialVersionVectorUID="-7091772847873686957L">
+        <column isPrimaryKey="true" name="CONTENT_ID" size="38" type="NUMBER"/>
+        <column name="SHORT_DESC" size="30" type="VARCHAR2"/>
+        <column name="LONG_DESC" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="VERSION" nullable="true" size="38" type="NUMBER"/>
+        <column name="CONTENT_TYPE_CD" size="30" type="VARCHAR2"/>
+        <column name="CONTENT_STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="SOURCE_CD" size="30" type="VARCHAR2"/>
+        <column name="LOCALE_CD" size="30" type="VARCHAR2"/>
+        <column name="LANGUAGE_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="PATH" nullable="true" size="300" type="VARCHAR2"/>
+        <column name="CONTENT_USAGE_CD" size="30" type="VARCHAR2"/>
+        <column name="EFF_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="EXP_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="BINARY_DATA" nullable="true" size="4000" type="BLOB"/>
+        <primaryKey name="WO_CONTENT_PK">
+            <columnref name="CONTENT_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_ASSET" serialVersionDataUID="-8046228430174783619L" serialVersionVectorUID="5441553153318866879L">
+        <column isPrimaryKey="true" name="ASSET_ID" size="38" type="NUMBER"/>
+        <column name="SHORT_DESC" size="255" type="VARCHAR2"/>
+        <column name="ASSET_TYPE_CD" size="30" type="VARCHAR2"/>
+        <column name="PARENT_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="SERIAL_NUM" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ASSET_NUM" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MANUF_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="MANUF_NAME" nullable="true" size="64" type="VARCHAR2"/>
+        <column name="MANUF_SKU" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MANUF_TYPE_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="ADD_BY" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MODEL_NUMBER" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="MASTER_ASSET_ID" nullable="true" size="38" type="NUMBER"/>
+        <primaryKey name="ASSET_PK">
+            <columnref name="ASSET_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_ASSET_ASSOC" serialVersionDataUID="-1209177627874575284L" serialVersionVectorUID="4904843738494732428L">
+        <column isPrimaryKey="true" name="ASSET_ASSOC_ID" size="38" type="NUMBER"/>
+        <column name="ASSET_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="ASSET_ASSOC_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="ASSET_ASSOC_STATUS_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_ASSET_ASSOC_PK">
+            <columnref name="ASSET_ASSOC_ID"/>
+        </primaryKey>
+    </table>
+
+    <table name="WO_ASSET_PROPERTY" serialVersionDataUID="-7847825699366667390L" serialVersionVectorUID="-2394854559719831561L">
+        <column isPrimaryKey="true" name="ASSET_PROPERTY_ID" size="38" type="NUMBER"/>
+        <column name="ASSET_ID" size="38" type="NUMBER"/>
+        <column name="ASSET_PROPERTY_CD" size="30" type="VARCHAR2"/>
+        <column name="VALUE" nullable="true" size="2000" type="VARCHAR2"/>
+        <column name="ADD_BY" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <primaryKey name="WO_ASSET_PROPERTY_PK">
+            <columnref name="ASSET_PROPERTY_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_ASSET_WARRANTY" serialVersionDataUID="-5681408464589136133L" serialVersionVectorUID="2589856421722370458L">
+        <column isPrimaryKey="true" name="ASSET_WARRANTY_ID" size="38" type="NUMBER"/>
+        <column name="ASSET_ID" size="38" type="NUMBER"/>
+        <column name="WARRANTY_ID" size="38" type="NUMBER"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_ASSET_WARRANTY_PK">
+            <columnref name="ASSET_WARRANTY_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_WARRANTY" serialVersionDataUID="-6255342023768974406L" serialVersionVectorUID="-434224306957330228L">
+        <column isPrimaryKey="true" name="WARRANTY_ID" size="38" type="NUMBER"/>
+        <column name="WARRANTY_NUMBER" size="255" type="VARCHAR2"/>
+        <column name="SHORT_DESC" size="255" type="VARCHAR2"/>
+        <column name="LONG_DESC" nullable="true" size="2000" type="VARCHAR2"/>
+        <column name="BUSINESS_NAME" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="TYPE_CD" size="255" type="VARCHAR2"/>
+        <column name="DURATION" size="38" type="NUMBER"/>
+        <column name="COST" digits="6" nullable="true" size="36" type="NUMBER"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="DURATION_TYPE_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_WARRANTY_PK">
+            <columnref name="WARRANTY_ID"/>
+        </primaryKey>
+    </table>
+
+    <table name="WO_WORK_ORDER" serialVersionDataUID="-1L" serialVersionVectorUID="8008905351215323584L">
+        <column isPrimaryKey="true" name="WORK_ORDER_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="TYPE_CD" size="255" type="VARCHAR2"/>
+        <column name="STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="SHORT_DESC" size="255" type="VARCHAR2"/>
+        <column name="LONG_DESC" nullable="true" size="2000" type="VARCHAR2"/>
+        <column name="CATEGORY_CD" size="30" type="VARCHAR2"/>
+        <column name="PRIORITY" size="10" type="VARCHAR2"/>
+        <column name="ESTIMATE_HOURS" nullable="true" size="15" type="NUMBER"/>
+        <column digits="6" name="ESTIMATE_COST" nullable="true" size="36" type="NUMBER"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="REQUEST_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="ACTUAL_START_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="ACTUAL_FINISH_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="ACTION_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="ESTIMATE_START_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="ESTIMATE_FINISH_DATE" nullable="true" size="7" type="DATE"/>
+        <column name="COST_CENTER_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="WORK_ORDER_NUM" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="PO_NUMBER" nullable="true" size="30" type="VARCHAR2"/>
+        <column digits="3" name="NTE" nullable="true" size="15" type="NUMBER"/>
+        <primaryKey name="WO_WORK_ORDER_PK">
+            <columnref name="WORK_ORDER_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_WORK_ORDER_ASSET" serialVersionDataUID="-1636111484213176549L" serialVersionVectorUID="-7920791387556738149L">
+        <column isPrimaryKey="true" name="WORK_ORDER_ASSET_ID" size="38" type="NUMBER"/>
+        <column name="WORK_ORDER_ITEM_ID" size="38" type="NUMBER"/>
+        <column name="ASSET_ID" size="38" type="NUMBER"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_WORK_ORDER_ASSET_PK">
+            <columnref name="WORK_ORDER_ASSET_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_WORK_ORDER_ASSOC" serialVersionDataUID="-964684297252733902L" serialVersionVectorUID="9214145634876347625L">
+        <column isPrimaryKey="true" name="WORK_ORDER_ASSOC_ID" size="38" type="NUMBER"/>
+        <column name="WORK_ORDER_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" size="38" type="NUMBER"/>
+        <column name="WORK_ORDER_ASSOC_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="WORK_ORDER_ASSOC_STATUS_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="WORK_ORDER_ITEM_ID" nullable="true" size="38" type="NUMBER"/>
+        <primaryKey name="WO_WORK_ORDER_ASSOC_PK">
+            <columnref name="WORK_ORDER_ASSOC_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_ASSET_CONTENT" serialVersionDataUID="-3433951529793068191L" serialVersionVectorUID="6504869377592425806L">
+        <column isPrimaryKey="true" name="ASSET_CONTENT_ID" size="38" type="NUMBER"/>
+        <column name="ASSET_ID" size="38" type="NUMBER"/>
+        <column name="CONTENT_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="TYPE_CD" size="255" type="VARCHAR2"/>
+        <column name="URL" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_ASSET_CONTENT_PK">
+            <columnref name="ASSET_CONTENT_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_ASSET_MASTER_ASSOC" serialVersionDataUID="1L" serialVersionVectorUID="1L">
+        <column isPrimaryKey="true" name="ASSET_MASTER_ASSOC_ID" size="38" type="NUMBER"/>
+        <column name="PARENT_MASTER_ASSET_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="CHILD_MASTER_ASSET_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="ASSET_MASTER_ASSOC_STATUS_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_ASSET_MASTER_ASSOC_PK">
+            <columnref name="ASSET_MASTER_ASSOC_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_WORK_ORDER_DETAIL" serialVersionDataUID="1L" serialVersionVectorUID="1L">
+        <column isPrimaryKey="true" name="WORK_ORDER_DETAIL_ID" size="38" type="NUMBER"/>
+        <column name="WORK_ORDER_ID" size="38" type="NUMBER"/>
+        <column name="LINE_NUM" size="38" type="NUMBER"/>
+        <column name="STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="PAYMENT_TYPE_CD" size="30" type="VARCHAR2"/>
+        <column name="PART_NUMBER" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="SHORT_DESC" nullable="true" size="255" type="VARCHAR2"/>
+        <column digits="2" name="PART_PRICE" size="15" type="NUMBER"/>
+        <column name="QUANTITY" size="32" type="NUMBER"/>
+        <column digits="2" name="LABOR" nullable="true" size="15" type="NUMBER"/>
+        <column digits="2" name="TRAVEL" nullable="true" size="15" type="NUMBER"/>
+        <column name="COMMENTS" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WORK_ORDER_DETAIL_PK">
+            <columnref name="WORK_ORDER_DETAIL_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_WARRANTY_ASSOC" serialVersionDataUID="-2795108086449438490L" serialVersionVectorUID="-6481414726456427327L">
+        <column isPrimaryKey="true" name="WARRANTY_ASSOC_ID" size="38" type="NUMBER"/>
+        <column name="WARRANTY_ID" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="WARRANTY_ASSOC_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="WARRANTY_ASSOC_STATUS_CD" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_WARRANTY_ASSOC_PK">
+            <columnref name="WARRANTY_ASSOC_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_WORK_ORDER_ASSET" serialVersionDataUID="-1636111484213176549L" serialVersionVectorUID="-7920791387556738149L">
+        <column isPrimaryKey="true" name="WORK_ORDER_ASSET_ID" size="38" type="NUMBER"/>
+        <column name="WORK_ORDER_ITEM_ID" size="38" type="NUMBER"/>
+        <column name="ASSET_ID" size="38" type="NUMBER"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <primaryKey name="WO_WORK_ORDER_ASSET_PK">
+            <columnref name="WORK_ORDER_ASSET_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_WORK_ORDER_ITEM" serialVersionDataUID="-1L" serialVersionVectorUID="-595430602037423648L">
+        <column isPrimaryKey="true" name="WORK_ORDER_ITEM_ID" size="38" type="NUMBER"/>
+        <column name="WORK_ORDER_ID" size="38" type="NUMBER"/>
+        <column name="WARRANTY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="BUS_ENTITY_ID" nullable="true" size="38" type="NUMBER"/>
+        <column name="STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="SHORT_DESC" nullable="true" size="255" type="VARCHAR2"/>
+        <column name="LONG_DESC" nullable="true" size="2000" type="VARCHAR2"/>
+        <column name="SEQUENCE" nullable="true" size="38" type="NUMBER"/>
+        <column name="ADD_DATE" size="7" type="DATE"/>
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column name="MOD_DATE" size="7" type="DATE"/>
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2"/>
+        <column digits="6" name="ESTIMATE_LABOR" nullable="true" size="36" type="NUMBER"/>
+        <column digits="6" name="ESTIMATE_PART" nullable="true" size="36" type="NUMBER"/>
+        <column digits="6" name="ACTUAL_LABOR" nullable="true" size="36" type="NUMBER"/>
+        <column digits="6" name="ACTUAL_PART" nullable="true" size="36" type="NUMBER"/>
+        <primaryKey name="WO_WORK_ORDER_ITEM_PK">
+            <columnref name="WORK_ORDER_ITEM_ID"/>
+        </primaryKey>
+    </table>
+    <table name="WO_WARRANTY_CONTENT" serialVersionDataUID="-2533791569537187385L"
+           serialVersionVectorUID="-4905305504583420900L">
+        <column isPrimaryKey="true" name="WARRANTY_CONTENT_ID" size="38"
+                type="NUMBER" />
+        <column name="WARRANTY_ID" size="38" type="NUMBER" />
+        <column name="CONTENT_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="URL" nullable="true" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_WARRANTY_CONTENT_PK">
+            <columnref name="WARRANTY_CONTENT_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_WARRANTY_NOTE" serialVersionDataUID="1818393106011342660L"
+           serialVersionVectorUID="-6535765871498484339L">
+        <column isPrimaryKey="true" name="WARRANTY_NOTE_ID" size="38"
+                type="NUMBER" />
+        <column name="WARRANTY_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="ASSET_WARRANTY_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="SHORT_DESC" size="30" type="VARCHAR2" />
+        <column name="NOTE" size="2000" type="VARCHAR2" />
+        <column name="TYPE_CD" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_WARRANTY_NOTE_PK">
+            <columnref name="WARRANTY_NOTE_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_WARRANTY_STATUS_HIST" serialVersionDataUID="-4167025266041785421L"
+           serialVersionVectorUID="-2341051927896507842L">
+        <column isPrimaryKey="true" name="WARRANTY_STATUS_HIST_ID" size="38"
+                type="NUMBER" />
+        <column name="WARRANTY_ID" size="38" type="NUMBER" />
+        <column name="STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="STATUS_DATE" size="7" type="DATE" />
+        <column name="TYPE_CD" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_WARRANTY_STATUS_HIST_PK">
+            <columnref name="WARRANTY_STATUS_HIST_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_ORDER" serialVersionDataUID="-88341481870472213L"
+           serialVersionVectorUID="4613352073650535495L" cache="true">
+        <column isPrimaryKey="true" name="ORDER_ID" size="38" type="NUMBER" />
+        <column name="EXCEPTION_IND" nullable="true" size="1" type="VARCHAR2" />
+        <column name="ORDER_NUM" nullable="true" size="50" type="VARCHAR2" />
+        <column name="REF_ORDER_NUM" nullable="true" size="50" type="VARCHAR2" />
+        <column name="COST_CENTER_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="COST_CENTER_NAME" nullable="true" size="30" type="VARCHAR2" />
+        <column name="WORKFLOW_IND" nullable="true" size="30" type="VARCHAR2" />
+        <column name="WORKFLOW_STATUS_CD" nullable="true" size="30"
+                type="VARCHAR2" />
+        <column name="ACCOUNT_ERP_NUM" nullable="true" size="30" type="VARCHAR2" />
+        <column name="SITE_ERP_NUM" nullable="true" size="30" type="VARCHAR2" />
+        <column name="REQUEST_PO_NUM" nullable="true" size="255" type="VARCHAR2" />
+        <column name="USER_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="USER_FIRST_NAME" nullable="true" size="50" type="VARCHAR2" />
+        <column name="USER_LAST_NAME" nullable="true" size="50" type="VARCHAR2" />
+        <column name="ORDER_SITE_NAME" nullable="true" size="255" type="VARCHAR2" />
+        <column name="ORDER_CONTACT_NAME" nullable="true" size="80"
+                type="VARCHAR2" />
+        <column name="ORDER_CONTACT_PHONE_NUM" nullable="true" size="30"
+                type="VARCHAR2" />
+        <column name="ORDER_CONTACT_EMAIL" nullable="true" size="255"
+                type="VARCHAR2" />
+        <column name="ORDER_CONTACT_FAX_NUM" nullable="true" size="30"
+                type="VARCHAR2" />
+        <column name="CONTRACT_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="CONTRACT_SHORT_DESC" nullable="true" size="30"
+                type="VARCHAR2" />
+        <column name="ORDER_TYPE_CD" nullable="true" size="30" type="VARCHAR2" />
+        <column name="ORDER_SOURCE_CD" nullable="true" size="30" type="VARCHAR2" />
+        <column name="ORDER_STATUS_CD" nullable="true" size="30" type="VARCHAR2" />
+        <column name="TAX_NUM" nullable="true" size="15" type="VARCHAR2" />
+        <column digits="8" name="ORIGINAL_AMOUNT" nullable="true" size="22"
+                type="NUMBER" />
+        <column digits="8" name="TOTAL_PRICE" nullable="true" size="22"
+                type="NUMBER" />
+        <column digits="8" name="TOTAL_FREIGHT_COST" nullable="true"
+                size="22" type="NUMBER" />
+        <column digits="8" name="TOTAL_MISC_COST" nullable="true" size="22"
+                type="NUMBER" />
+        <column digits="8" name="TOTAL_TAX_COST" nullable="true" size="22"
+                type="NUMBER" />
+        <column digits="8" name="TOTAL_CLEANWISE_COST" nullable="true"
+                size="22" type="NUMBER" />
+        <column digits="3" name="GROSS_WEIGHT" nullable="true" size="15"
+                type="NUMBER" />
+        <column name="ORIGINAL_ORDER_DATE" nullable="true" size="7"
+                type="DATE" />
+        <column name="ORIGINAL_ORDER_TIME" nullable="true" size="7"
+                type="DATE" />
+        <column name="REVISED_ORDER_DATE" nullable="true" size="7"
+                type="DATE" />
+        <column name="REVISED_ORDER_TIME" nullable="true" size="7"
+                type="DATE" />
+        <column name="COMMENTS" nullable="true" size="1000" type="VARCHAR2" />
+        <column name="INCOMING_TRADING_PROFILE_ID" nullable="true"
+                size="38" type="NUMBER" />
+        <column name="LOCALE_CD" nullable="true" size="30" type="VARCHAR2" />
+        <column name="CURRENCY_CD" nullable="true" size="30" type="VARCHAR2" />
+        <column name="ERP_ORDER_NUM" nullable="true" size="8" type="NUMBER" />
+        <column name="ADD_DATE" nullable="true" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" nullable="true" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="SITE_ID" nullable="true" size="32" type="NUMBER" />
+        <column name="ACCOUNT_ID" nullable="true" size="32" type="NUMBER" />
+        <column name="STORE_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="ERP_SYSTEM_CD" nullable="true" size="30" type="VARCHAR2" />
+        <column name="PRE_ORDER_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="REF_ORDER_ID" nullable="true" size="32" type="NUMBER" />
+        <column digits="8" name="TOTAL_RUSH_CHARGE" nullable="true"
+                size="22" type="NUMBER" />
+        <column name="ORDER_BUDGET_TYPE_CD" nullable="true" size="255"
+                type="VARCHAR2" />
+        <column name="ERP_ORDER_DATE" nullable="true" size="7" type="DATE" />
+        <primaryKey name="WO_ORDER_PK">
+            <columnref name="ORDER_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_ORDER_ASSOC" serialVersionDataUID="-9187654978840304643L"
+           serialVersionVectorUID="-1002104137378412237L">
+        <column isPrimaryKey="true" name="ORDER_ASSOC_ID" size="38"
+                type="NUMBER" />
+        <column name="ORDER1_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="ORDER2_ID" size="38" type="NUMBER" />
+        <column name="ORDER_ASSOC_CD" nullable="true" size="30" type="VARCHAR2" />
+        <column name="ORDER_ASSOC_STATUS_CD" nullable="true" size="30"
+                type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="WORK_ORDER_ITEM_ID" nullable="true" size="38"
+                type="NUMBER" />
+        <primaryKey name="WO_ORDER_ASSOC_PK">
+            <columnref name="ORDER_ASSOC_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_ORDER_SCHEDULE" serialVersionDataUID="2696435617262120094L"
+           serialVersionVectorUID="7912901563745707606L">
+        <column isPrimaryKey="true" name="ORDER_SCHEDULE_ID" size="38"
+                type="NUMBER" />
+        <column name="RECORD_STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="ORDER_GUIDE_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="USER_ID" size="38" type="NUMBER" />
+        <column name="BUS_ENTITY_ID" size="38" type="NUMBER" />
+        <column name="ORDER_SCHEDULE_CD" size="30" type="VARCHAR2" />
+        <column name="ORDER_SCHEDULE_RULE_CD" size="30" type="VARCHAR2" />
+        <column name="CYCLE" nullable="true" size="38" type="NUMBER" />
+        <column name="EFF_DATE" size="7" type="DATE" />
+        <column name="EXP_DATE" nullable="true" size="7" type="DATE" />
+        <column name="CC_EMAIL" nullable="true" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="WORK_ORDER_ID" nullable="true" size="38" type="NUMBER" />
+        <primaryKey name="WO_ORDER_SCHEDULE_PK">
+            <columnref name="ORDER_SCHEDULE_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_WOI_STATUS_HIST" serialVersionDataUID="-2573653022855225980L"
+           serialVersionVectorUID="5267762820848882847L">
+        <column isPrimaryKey="true" name="WOI_STATUS_HIST_ID" size="38"
+                type="NUMBER" />
+        <column name="WORK_ORDER_ITEM_ID" size="38" type="NUMBER" />
+        <column name="STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="STATUS_DATE" size="7" type="DATE" />
+        <column name="TYPE_CD" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_WOI_STATUS_HIST_PK">
+            <columnref name="WOI_STATUS_HIST_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_WORK_ORDER_CONTENT" serialVersionDataUID="9119473467730990774L"
+           serialVersionVectorUID="-4984116927549382326L">
+        <column isPrimaryKey="true" name="WORK_ORDER_CONTENT_ID" size="38"
+                type="NUMBER" />
+        <column name="WORK_ORDER_ID" size="38" type="NUMBER" />
+        <column name="WORK_ORDER_ITEM_ID" nullable="true" size="38"
+                type="NUMBER" />
+        <column name="CONTENT_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="URL" nullable="true" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_WORK_ORDER_CONTENT_PK">
+            <columnref name="WORK_ORDER_CONTENT_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_WORK_ORDER_NOTE" serialVersionDataUID="6213508251811844317L"
+           serialVersionVectorUID="4604460666075925237L">
+        <column isPrimaryKey="true" name="WORK_ORDER_NOTE_ID" size="38"
+                type="NUMBER" />
+        <column name="WORK_ORDER_ID" size="38" type="NUMBER" />
+        <column name="SHORT_DESC" size="30" type="VARCHAR2" />
+        <column name="NOTE" size="2000" type="VARCHAR2" />
+        <column name="TYPE_CD" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_WORK_ORDER_NOTE_PK">
+            <columnref name="WORK_ORDER_NOTE_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_WORK_ORDER_PROPERTY" serialVersionDataUID="-1L"
+           serialVersionVectorUID="6440793477984166850L">
+        <column isPrimaryKey="true" name="WORK_ORDER_PROPERTY_ID" size="38"
+                type="NUMBER" />
+        <column name="WORK_ORDER_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="WORK_ORDER_ITEM_ID" nullable="true" size="38"
+                type="NUMBER" />
+        <column name="SHORT_DESC" nullable="true" size="30" type="VARCHAR2" />
+        <column name="PROPERTY_CD" size="30" type="VARCHAR2" />
+        <column name="STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="WO_VALUE" nullable="true" size="2000" type="VARCHAR2" />
+        <column name="ADD_BY" nullable="true" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="255" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <primaryKey name="WO_WORK_ORDER_PROPERTY_PK">
+            <columnref name="WORK_ORDER_PROPERTY_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_WORK_ORDER_STATUS_HIST" serialVersionDataUID="-7102462687608976889L"
+           serialVersionVectorUID="-4126016887959778593L">
+        <column isPrimaryKey="true" name="WORK_ORDER_STATUS_HIST_ID"
+                size="38" type="NUMBER" />
+        <column name="WORK_ORDER_ID" size="38" type="NUMBER" />
+        <column name="STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="STATUS_DATE" size="7" type="DATE" />
+        <column name="TYPE_CD" size="255" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <primaryKey name="WO_WORK_ORDER_STATUS_HIST_PK">
+            <columnref name="WORK_ORDER_STATUS_HIST_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_SITE_LEDGER" serialVersionDataUID="4947956401074184104L"
+           serialVersionVectorUID="-5308797275552330790L" cache="true">
+        <column isPrimaryKey="true" name="SITE_LEDGER_ID" size="38"
+                type="NUMBER" />
+        <column name="ORDER_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="SITE_ID" size="38" type="NUMBER" />
+        <column name="COST_CENTER_ID" size="38" type="NUMBER" />
+        <column digits="8" name="AMOUNT" size="20" type="NUMBER" />
+        <column name="ENTRY_TYPE_CD" size="30" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" nullable="true" size="30" type="VARCHAR2" />
+        <column name="BUDGET_YEAR" nullable="true" size="5" type="NUMBER" />
+        <column name="BUDGET_PERIOD" nullable="true" size="3" type="NUMBER" />
+        <column name="FISCAL_CALENDER_ID" nullable="true" size="38"
+                type="NUMBER" />
+        <column name="COMMENTS" nullable="true" size="100" type="VARCHAR2" />
+        <column name="WORK_ORDER_ID" nullable="true" size="38" type="NUMBER" />
+        <primaryKey name="WO_SITE_LEDGER_ID_PK">
+            <columnref name="SITE_LEDGER_ID" />
+        </primaryKey>
+    </table>
+     <table name="WO_SERVICE_TYPE" cache="true">
+        <column isPrimaryKey="true" name="SERVICE_TYPE_ID" size="38"
+            type="NUMBER" />
+        <column name="SHORT_DESC" size="255" type="VARCHAR2" />
+        <column name="SERVICE_TYPE_STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="ADMIN_NAME" nullable="true" size="150" type="VARCHAR2" />
+        <column name="STORE_ID" size="38" type="NUMBER" />
+        <column name="SERVICE_TYPE_CATEGORY_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="RECURRING_SERVICE" nullable="true" size="1" type="NUMBER" />
+        <column name="PERIODIC" nullable="true" size="1" type="NUMBER" />
+        <column name="FREEFORM" nullable="true" size="1" type="NUMBER" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" size="30" type="VARCHAR2" />
+        <primaryKey name="SERVICE_TYPE_PK">
+            <columnref name="SERVICE_TYPE_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_SERVICE_TYPE_ASSOC" cache="true">
+        <column isPrimaryKey="true" name="SERVICE_TYPE_ASSOC_ID" size="38"
+            type="NUMBER" />
+	<column name="SERVICE_TYPE_ID" size="38" type="NUMBER" />
+	<column name="ID2" size="38" type="NUMBER" />
+        <column name="ASSOC_STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="ASSOC_TYPE_CD" size="30" type="VARCHAR2" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" size="30" type="VARCHAR2" />
+        <primaryKey name="SERVICE_TYPE_ASSOC_PK">
+            <columnref name="SERVICE_TYPE_ASSOC_ID" />
+        </primaryKey>
+    </table>
+    <table name="WO_SERVICE_TYPE_CATEGORY" cache="true">
+        <column isPrimaryKey="true" name="SERVICE_TYPE_CATEGORY_ID" size="38"
+            type="NUMBER" />
+        <column name="SHORT_DESC" size="255" type="VARCHAR2" />
+        <column name="CATEGORY_STATUS_CD" size="30" type="VARCHAR2" />
+        <column name="ADMIN_NAME" nullable="true" size="150" type="VARCHAR2" />
+        <column name="STORE_ID" size="38" type="NUMBER" />
+        <column name="PARENT_CATEGORY_ID" nullable="true" size="38" type="NUMBER" />
+        <column name="ADD_DATE" size="7" type="DATE" />
+        <column name="ADD_BY" size="30" type="VARCHAR2" />
+        <column name="MOD_DATE" size="7" type="DATE" />
+        <column name="MOD_BY" size="30" type="VARCHAR2" />
+        <primaryKey name="SERVICE_TYPE_CATEGORY_PK">
+            <columnref name="SERVICE_TYPE_CATEGORY_ID" />
+        </primaryKey>
+    </table>
+
+    <index name="ADDRESS_CITY_I" table="WO_ADDRESS">
+        <columnref name="CITY" />
+    </index>
+    <index name="ADDRESS_POSTAL_CODE_I" table="WO_ADDRESS">
+        <columnref name="POSTAL_CODE" />
+    </index>
+    <index name="ADDRESS_STATE_I" table="WO_ADDRESS">
+        <columnref name="STATE_PROVINCE_CD" />
+    </index>
+    <index name="WO_ADDRESS_TYPE_CD_IDX" table="WO_ADDRESS">
+        <columnref name="ADDRESS_TYPE_CD" />
+    </index>
+    <index name="WO_ADDRESS_USER_ID_I" table="WO_ADDRESS">
+        <columnref name="USER_ID" />
+    </index>
+    <index name="WO_ADDRES_BUS_ENTITY_ID_I" table="WO_ADDRESS">
+        <columnref name="BUS_ENTITY_ID" />
+    </index>
+    <index name="COUNTRY_PROPERTY_L" table="WO_COUNTRY_PROPERTY">
+        <columnref name="COUNTRY_ID" />
+    </index>
+    <index name="BUS_ENTITY_I_TMP1" table="CLW_BUS_ENTITY">
+        <columnref name="ERP_NUM" />
+    </index>
+    <index name="BUS_ENTITY_TYPE_CD_I" table="CLW_BUS_ENTITY">
+        <columnref name="BUS_ENTITY_TYPE_CD" />
+    </index>
+    <index name="WO_BUS_ENTITY_I1" table="CLW_BUS_ENTITY">
+        <columnref name="SHORT_DESC" />
+    </index>
+    <index name="WO_EMAIL_BUS_ENTITY_ID_I" table="WO_EMAIL">
+        <columnref name="BUS_ENTITY_ID" />
+    </index>
+    <index name="WO_EMAIL_CID_IDX" table="WO_EMAIL">
+        <columnref name="CONTACT_ID" />
+    </index>
+    <index name="WO_EMAIL_USER_ID_I" table="WO_EMAIL">
+        <columnref name="USER_ID" />
+    </index>
+    <index name="WO_CONTACT_BEI_IDX" table="WO_CONTACT">
+        <columnref name="BUS_ENTITY_ID"/>
+    </index>
+    <index name="WO_LOCALE_MAP_7_IDX" table="WO_LOCALE_MAP">
+        <columnref name="LOCALE_ID"/>
+    </index>
+    <index name="WO_LOCALE_PROPERTY_8_IDX" table="WO_LOCALE_PROPERTY">
+        <columnref name="LOCALE_ID" />
+    </index>
+    <index name="WO_MESSAGE_RESOURCE_BID_IDX" table="WO_MESSAGE_RESOURCE">
+        <columnref name="BUS_ENTITY_ID" />
+    </index>
+    <index name="WO_MESSAGE_RESOURCE_LOC_IDX" table="WO_MESSAGE_RESOURCE">
+        <columnref name="LOCALE" />
+    </index>
+    <index name="WO_MSG_RES_NAME_I" table="WO_MESSAGE_RESOURCE">
+        <columnref name="NAME" />
+    </index>
+    <index name="WO_PHONE_21_IDX" table="WO_PHONE">
+        <columnref name="CONTACT_ID" />
+    </index>
+    <index name="WO_PHONE_USER_ID_I" table="WO_PHONE">
+        <columnref name="USER_ID" />
+    </index>
+    <index name="PHONE_I1" table="WO_PHONE">
+        <columnref name="BUS_ENTITY_ID" />
+    </index>
+    <index name="REF_CD_I1" table="WO_REF_CD">
+        <columnref name="REF_CD" />
+    </index>
+    <index name="REF_CD_I2" table="WO_REF_CD">
+        <columnref name="SHORT_DESC" />
+    </index>
+    <index name="REF_CD_I3" table="WO_REF_CD">
+        <columnref name="REF_CD_TYPE" />
+    </index>
+    <index name="USER_I2" table="WO_USER">
+        <columnref name="USER_NAME" />
+    </index>
+    <index name="WO_USER_ASSOC_CD_I" table="WO_USER_ASSOC">
+        <columnref name="USER_ASSOC_CD" />
+    </index>
+    <index name="USER_ASSOC_BUS_ENTITY_ID_I" table="WO_USER_ASSOC">
+        <columnref name="BUS_ENTITY_ID" />
+    </index>
+    <index name="USER_ASSOC_USER_ID_I" table="WO_USER_ASSOC">
+        <columnref name="USER_ID" />
+    </index>
+    <index name="BUS_ENTITY_ASSOC_I1" table="WO_BUS_ENTITY_ASSOC">
+        <columnref name="BUS_ENTITY1_ID" />
+    </index>
+    <index name="BUS_ENTITY_ASSOC_I2" table="WO_BUS_ENTITY_ASSOC">
+        <columnref name="BUS_ENTITY2_ID" />
+    </index>
+    <index name="WO_BUS_ENTITY_ASSOC_BES" table="WO_BUS_ENTITY_ASSOC">
+        <columnref keyseq="1" name="BUS_ENTITY2_ID" />
+        <columnref keyseq="2" name="BUS_ENTITY1_ID" />
+    </index>
+    <index name="EMAIL_TRACK_SUBJECT_I" table="WO_EMAIL_TRACKING">
+        <columnref name="SUBJECT"/>
+    </index>
+    <index name="EMAIL_TRACK_TO_ADDRESS_I" table="WO_EMAIL_TRACKING">
+        <columnref name="TO_ADDRESS"/>
+    </index>
+    <index name="WO_GROUP_ASSOC_BEI" table="WO_GROUP_ASSOC">
+        <columnref name="BUS_ENTITY_ID" />
+    </index>
+    <index name="WO_GROUP_ASSOC_GID" table="WO_GROUP_ASSOC">
+        <columnref name="GROUP_ID" />
+    </index>
+    <index name="WO_GROUP_ASSOC_REP_ID_I" table="WO_GROUP_ASSOC">
+        <columnref name="GENERIC_REPORT_ID" />
+    </index>
+    <index name="WO_GROUP_ASSOC_UID_I" table="WO_GROUP_ASSOC">
+        <columnref name="USER_ID" />
+    </index>
+    <index name="BUDGET_I1" table="WO_BUDGET">
+        <columnref name="BUS_ENTITY_ID"/>
+    </index>
+    <index name="WO_NOTE_9_IDX" table="WO_NOTE">
+        <columnref name="PROPERTY_ID" />
+    </index>
+    <index name="NOTE_BID_I" table="WO_NOTE">
+        <columnref name="BUS_ENTITY_ID" />
+    </index>
+    <index name="NOTE_ATTACH_NID_I" table="WO_NOTE_ATTACHMENT">
+        <columnref name="NOTE_ID" />
+    </index>
+    <index name="NOTE_TEXT_NID_I" table="WO_NOTE_TEXT">
+        <columnref name="NOTE_ID" />
+    </index>
+    <index name="WORKFLOW_I1" table="WO_WORKFLOW">
+        <columnref name="BUS_ENTITY_ID" />
+    </index>
+    <index name="WO_WORKFLOW_ASSOC_60_IDX" table="WO_WORKFLOW_ASSOC">
+        <columnref name="GROUP_ID" />
+    </index>
+    <index name="WO_WORKFLOW_ASSOC_61_IDX" table="WO_WORKFLOW_ASSOC">
+        <columnref name="USER_ID" />
+    </index>
+    <index name="WO_WORKFLOW_ASSOC_I1" table="WO_WORKFLOW_ASSOC">
+        <columnref name="WORKFLOW_ID" />
+    </index>
+    <index name="WO_WORKFLOW_ASSOC_I2" table="WO_WORKFLOW_ASSOC">
+        <columnref name="WORKFLOW_RULE_ID" />
+    </index>
+    <index name="WO_WORKFLOW_LOG_62_IDX" table="WO_WORKFLOW_LOG">
+        <columnref name="WORKFLOW_ID" />
+    </index>
+    <index name="WO_WORKFLOW_QUEUE_63_IDX" table="WO_WORKFLOW_QUEUE">
+        <columnref name="WORKFLOW_ID" />
+    </index>
+    <index name="WO_WORKFLOW_QUEUE_64_IDX" table="WO_WORKFLOW_QUEUE">
+        <columnref name="WORKFLOW_RULE_ID" />
+    </index>
+    <index name="WO_WORKFLOW_QUEUE_65_IDX" table="WO_WORKFLOW_QUEUE">
+        <columnref name="BUS_ENTITY_ID" />
+    </index>
+    <index name="WO_WORKFLOW_QUEUE_I1" table="WO_WORKFLOW_QUEUE">
+        <columnref name="ORDER_ID" />
+    </index>
+    <index name="WO_WORKFLOW_ID_I" table="WO_WORKFLOW_RULE">
+        <columnref name="WORKFLOW_ID" />
+    </index>
+    <index name="WO_WORKFLOW_RULE_66_IDX" table="WO_WORKFLOW_RULE">
+        <columnref name="APPROVER_GROUP_ID" />
+    </index>
+    <index name="WO_WORKFLOW_RULE_67_IDX" table="WO_WORKFLOW_RULE">
+        <columnref name="EMAIL_GROUP_ID" />
+    </index>
+    <index name="FISCAL_CAL_BID_I" table="WO_FISCAL_CALENDER">
+        <columnref name="BUS_ENTITY_ID" />
+    </index>
+    <index name="WO_FISCAL_CALENDER_DETAIL_I1" table="WO_FISCAL_CALENDER_DETAIL">
+        <columnref name="FISCAL_CALENDER_ID" />
+    </index>
+    <index name="WO_SITE_WORKFLOW_I1" table="WO_SITE_WORKFLOW">
+        <columnref name="SITE_ID"/>
+    </index>
+    <index name="WO_SITE_WORKFLOW_I2" table="WO_SITE_WORKFLOW">
+        <columnref name="WORKFLOW_ID"/>
+    </index>
+    <index name="WO_COST_CENTER_SID_IDX" table="WO_COST_CENTER">
+        <columnref name="STORE_ID"/>
+    </index>
+    <index name="WO_COST_CENTER_ASSOC_CCID_IDX" table="WO_COST_CENTER_ASSOC">
+        <columnref name="COST_CENTER_ID"/>
+    </index>
+    <index name="WO_TRADING_PARTNER_AS_5_IDX" table="WO_TRADING_PARTNER_ASSOC">
+        <columnref name="TRADING_PARTNER_ID" />
+    </index>
+    <index name="WO_TRADING_PARTNER_A_4_IDX" table="WO_TRADING_PARTNER_ASSOC">
+        <columnref name="BUS_ENTITY_ID" />
+    </index>
+    <index name="WO_TRADING_PROFILE_44_IDX" table="WO_TRADING_PROFILE">
+        <columnref name="TRADING_PARTNER_ID" />
+    </index>
+    <index name="WO_TRADING_PROFILE_CO_6_IDX" table="WO_TRADING_PROFILE_CONFIG">
+        <columnref name="INCOMING_TRADING_PROFILE_ID" />
+    </index>
+    <index name="WO_TRADING_PROFILE_CO_7_IDX" table="WO_TRADING_PROFILE_CONFIG">
+        <columnref name="TRADING_PROFILE_ID" />
+    </index>
+    <index name="WO_ELECTRONIC_TRANS_IDX01" table="WO_ELECTRONIC_TRANSACTION">
+        <columnref name="INTERCHANGE_ID"/>
+    </index>
+    <index name="WO_INTERCHANGE_IDX01" table="WO_INTERCHANGE">
+        <columnref keyseq="1" name="INTERCHANGE_RECEIVER"/>
+        <columnref keyseq="2" name="INTERCHANGE_SENDER"/>
+    </index>
+    <index name="WO_INTERCHANGE_TPI_IDX" table="WO_INTERCHANGE">
+        <columnref name="TRADING_PROFILE_ID"/>
+    </index>
+    <index name="EDI_TRANS_GROUP_CTRL_I" table="WO_ELECTRONIC_TRANSACTION">
+        <columnref name="GROUP_CONTROL_NUMBER"/>
+    </index>
+    <index name="WO_CONTENT_BEI_IDX" table="WO_CONTENT">
+        <columnref name="BUS_ENTITY_ID"/>
+    </index>
+    <index name="WO_ASSET_ASSOC_I1" table="WO_ASSET_ASSOC">
+        <columnref name="ASSET_ID"/>
+    </index>
+    <index name="WO_ASSET_ASSOC_I2" table="WO_ASSET_ASSOC">
+        <columnref name="BUS_ENTITY_ID"/>
+    </index>
+    <index name="WO_ASSET_PROPERTY_I1" table="WO_ASSET_PROPERTY">
+        <columnref name="ASSET_ID"/>
+    </index>
+    <index name="WO_ASSET_WARRANTY_AID_IDX" table="WO_ASSET_WARRANTY">
+        <columnref name="ASSET_ID"/>
+    </index>
+    <index name="WO_ASSET_WARRANTY_WARID_IDX" table="WO_ASSET_WARRANTY">
+        <columnref name="WARRANTY_ID"/>
+    </index>
+    <index name="WO_WORK_ORDER_68_IDX" table="WO_WORK_ORDER">
+        <columnref name="BUS_ENTITY_ID"/>
+    </index>
+    <index name="WO_WORK_ORDER_69_IDX" table="WO_WORK_ORDER">
+        <columnref name="COST_CENTER_ID"/>
+    </index>
+    <index name="WO_WORK_ORDER_ASSET_70_IDX" table="WO_WORK_ORDER_ASSET">
+        <columnref name="WORK_ORDER_ITEM_ID"/>
+    </index>
+    <index name="WO_WORK_ORDER_ASSET_71_IDX" table="WO_WORK_ORDER_ASSET">
+        <columnref name="ASSET_ID"/>
+    </index>
+    <index name="WO_WORK_ORDER_ASSOC_72_IDX" table="WO_WORK_ORDER_ASSOC">
+        <columnref name="WORK_ORDER_ID"/>
+    </index>
+    <index name="WO_WORK_ORDER_ASSOC_73_IDX" table="WO_WORK_ORDER_ASSOC">
+        <columnref name="BUS_ENTITY_ID"/>
+    </index>
+    <index name="WO_ASSET_CONTENT_ASSETID_IDX" table="WO_ASSET_CONTENT">
+        <columnref name="ASSET_ID"/>
+    </index>
+    <index name="WO_ASSET_CONTENT_CONTENT_IDX" table="WO_ASSET_CONTENT">
+        <columnref name="CONTENT_ID"/>
+    </index>
+    <index name="WO_ASSET_MASTER_ASSOC_I1" table="WO_ASSET_MASTER_ASSOC">
+        <columnref name="PARENT_MASTER_ASSET_ID"/>
+    </index>
+    <index name="WO_ASSET_MASTER_ASSOC_I2" table="WO_ASSET_MASTER_ASSOC">
+        <columnref name="CHILD_MASTER_ASSET_ID"/>
+    </index>
+    <index name="WO_WARRANTY_ASSOC_51_IDX" table="WO_WARRANTY_ASSOC">
+        <columnref name="WARRANTY_ID"/>
+    </index>
+    <index name="WO_WARRANTY_ASSOC_52_IDX" table="WO_WARRANTY_ASSOC">
+        <columnref name="BUS_ENTITY_ID"/>
+    </index>
+    <index name="WO_WORK_ORDER_ASSET_70_IDX" table="WO_WORK_ORDER_ASSET">
+        <columnref name="WORK_ORDER_ITEM_ID"/>
+    </index>
+    <index name="WO_WORK_ORDER_ASSET_71_IDX" table="WO_WORK_ORDER_ASSET">
+        <columnref name="ASSET_ID"/>
+    </index>
+    <index name="WO_WORK_ORDER_ITEM_77_IDX" table="WO_WORK_ORDER_ITEM">
+        <columnref name="WORK_ORDER_ID"/>
+    </index>
+    <index name="WO_WORK_ORDER_ITEM_78_IDX" table="WO_WORK_ORDER_ITEM">
+        <columnref name="WARRANTY_ID"/>
+    </index>
+    <index name="WO_WARRANTY_CONTENT_53_IDX" table="WO_WARRANTY_CONTENT">
+        <columnref name="CONTENT_ID" />
+    </index>
+    <index name="WO_WARRANTY_CONTENT_54_IDX" table="WO_WARRANTY_CONTENT">
+        <columnref name="WARRANTY_ID" />
+    </index>
+    <index name="WO_WARRANTY_NOTE_55_IDX" table="WO_WARRANTY_NOTE">
+        <columnref name="ASSET_WARRANTY_ID" />
+    </index>
+    <index name="WO_WARRANTY_NOTE_56_IDX" table="WO_WARRANTY_NOTE">
+        <columnref name="WARRANTY_ID" />
+    </index>
+    <index name="WO_WARRANTY_STATUS_HI_8_IDX" table="WO_WARRANTY_STATUS_HIST">
+        <columnref name="WARRANTY_ID" />
+    </index>
+
+
+    <fkey fkTable="WO_ADDRESS" name="ADDRESS_BUS_ENTITY_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID" />
+    </fkey>
+    <fkey fkTable="WO_ADDRESS" name="ADDRESS_USER_FK" pkName="WO_USER_PK" pkTable="WO_USER">
+        <fkeyref fkColumnName="USER_ID" pkColumnName="USER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_COUNTRY_PROPERTY" name="COUNTRY_PROPERTY_COUNTRY" pkName="WO_COUNTRY_PK" pkTable="WO_COUNTRY">
+        <fkeyref fkColumnName="COUNTRY_ID" pkColumnName="COUNTRY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_EMAIL" name="EMAIL_BUS_ENTITY_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_EMAIL" name="EMAIL_CONTACT_FK" pkName="WO_CONTACT_PK" pkTable="WO_CONTACT">
+        <fkeyref fkColumnName="CONTACT_ID" pkColumnName="CONTACT_ID" />
+    </fkey>
+    <fkey fkTable="WO_EMAIL" name="EMAIL_BUS_ENTITY_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_EMAIL" name="EMAIL_USER_FK" pkName="WO_USER_PK" pkTable="WO_USER">
+        <fkeyref fkColumnName="USER_ID" pkColumnName="USER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_CONTACT" name="CONTACT_BUS_ENTITY_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_LOCALE_MAP" name="LOCALE_MAP_LOCALE_FK" pkName="WO_LOCALE_PK" pkTable="WO_LOCALE">
+        <fkeyref fkColumnName="LOCALE_ID" pkColumnName="LOCALE_ID"/>
+    </fkey>
+    <fkey fkTable="WO_LOCALE_PROPERTY" name="LOCALE_PROPERTY_LOCALE_FK" pkName="WO_LOCALE_PK" pkTable="WO_LOCALE">
+        <fkeyref fkColumnName="LOCALE_ID" pkColumnName="LOCALE_ID"/>
+    </fkey>
+    <fkey fkTable="WO_MESSAGE_RESOURCE" name="MESSAGE_RESOURCE1_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_PHONE" name="PHONE_BUS_ENTITY_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_PHONE" name="PHONE_CONTACT_FK" pkName="WO_CONTACT_PK" pkTable="WO_CONTACT">
+        <fkeyref fkColumnName="CONTACT_ID" pkColumnName="CONTACT_ID"/>
+    </fkey>
+    <fkey fkTable="WO_PHONE" name="PHONE_USER_FK" pkName="WO_USER_PK" pkTable="WO_USER">
+        <fkeyref fkColumnName="USER_ID" pkColumnName="USER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_PROPERTY" name="PROPERTY_BUS_ENTITY_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_PROPERTY" name="PROPERTY_USER_FK" pkName="WO_USER_PK" pkTable="WO_USER">
+        <fkeyref fkColumnName="USER_ID" pkColumnName="USER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_USER_ASSOC" name="USER_ASSOC_BUS_ENTITY_FK2" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_USER_ASSOC" name="USER_ASSOC_USER_FK" pkName="WO_USER_PK" pkTable="WO_USER">
+        <fkeyref fkColumnName="USER_ID" pkColumnName="USER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_BUS_ENTITY_ASSOC" name="BUS_ENTITY_ASSOC_ENTITY1_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY1_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_BUS_ENTITY_ASSOC" name="BUS_ENTITY_ASSOC_ENTITY2_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY2_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_GROUP_ASSOC" name="GROUP_ASSOC_GROUP_FK" pkName="WO_GROUP_PK"
+          pkTable="WO_GROUP">
+        <fkeyref fkColumnName="GROUP_ID" pkColumnName="GROUP_ID" />
+    </fkey>
+    <fkey fkTable="WO_GROUP_ASSOC" name="GROUP_ASSOC_USER_FK" pkName="WO_USER_PK"
+          pkTable="WO_USER">
+        <fkeyref fkColumnName="USER_ID" pkColumnName="USER_ID" />
+    </fkey>
+    <fkey fkTable="WO_BUDGET" name="BUDGET_BUS_ENTITY_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_BUDGET_DETAIL" name="BUDGET_FK" pkName="WO_BUDGET_PK" pkTable="WO_BUDGET">
+        <fkeyref fkColumnName="BUDGET_ID" pkColumnName="BUDGET_ID"/>
+    </fkey>
+    <fkey fkTable="WO_NOTE" name="NOTE_BUS_ENTITY_FK" pkName="CLW_BUS_ENTITY_PK"
+          pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID" />
+    </fkey>
+    <fkey fkTable="WO_NOTE_ATTACHMENT" name="NOTE_ATTACH_NOTE_FK" pkName="WO_NOTE_PK"
+          pkTable="WO_NOTE">
+        <fkeyref fkColumnName="NOTE_ID" pkColumnName="NOTE_ID" />
+    </fkey>
+    <fkey fkTable="WO_NOTE_TEXT" name="NOTE_TEXT_NOTE_FK" pkName="WO_NOTE_PK"
+          pkTable="WO_NOTE">
+        <fkeyref fkColumnName="NOTE_ID" pkColumnName="NOTE_ID" />
+    </fkey>
+    <fkey fkTable="WO_NOTE" name="NOTE_PROPERTY_FK" pkName="WO_PROPERTY_PK"
+          pkTable="WO_PROPERTY">
+        <fkeyref fkColumnName="PROPERTY_ID" pkColumnName="PROPERTY_ID" />
+    </fkey>
+
+    <fkey fkTable="WO_SITE_WORKFLOW" name="WO_SITE_WORKFLOW_BUS_ENTITY_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+      <fkeyref fkColumnName="SITE_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_SITE_WORKFLOW" name="WO_SITE_WORKFLOW_FK" pkName="WO_WORKFLOW_PK" pkTable="WO_WORKFLOW">
+      <fkeyref fkColumnName="WORKFLOW_ID" pkColumnName="WORKFLOW_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW" name="WO_WORKFLOW_BUS_ENTITY_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+      <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_ASSOC" name="WO_WA_GROUP_FK" pkName="CLW_GROUP_PK" pkTable="CLW_GROUP">
+      <fkeyref fkColumnName="GROUP_ID" pkColumnName="GROUP_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_ASSOC" name="WO_WA_USER_FK" pkName="CLW_USER_PK" pkTable="CLW_USER">
+      <fkeyref fkColumnName="USER_ID" pkColumnName="USER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_ASSOC" name="WO_WA_WORKFLOW_FK" pkName="WO_WORKFLOW_PK" pkTable="WO_WORKFLOW">
+      <fkeyref fkColumnName="WORKFLOW_ID" pkColumnName="WORKFLOW_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_ASSOC" name="WO_WA_WORKFLOW_RULE_FK" pkName="WO_WORKFLOW_RULE_PK" pkTable="WO_WORKFLOW_RULE">
+      <fkeyref fkColumnName="WORKFLOW_RULE_ID" pkColumnName="WORKFLOW_RULE_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_QUEUE" name="WO_WORKFLOW_QUEUE_BUS_ENTITY_FK"
+          pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID" />
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_LOG" name="WO_WORKFLOW_LOG_WORKFLOW_FK" pkName="WO_WORKFLOW_PK" pkTable="WO_WORKFLOW">
+      <fkeyref fkColumnName="WORKFLOW_ID" pkColumnName="WORKFLOW_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_RULE" name="WO_WORKFLOW_RULE_WORKFLOW_FK" pkName="WO_WORKFLOW_PK" pkTable="WO_WORKFLOW">
+      <fkeyref fkColumnName="WORKFLOW_ID" pkColumnName="WORKFLOW_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_RULE" name="WO_APPROVER_GROUP_FK" pkName="CLW_GROUP_PK" pkTable="CLW_GROUP">
+      <fkeyref fkColumnName="APPROVER_GROUP_ID" pkColumnName="GROUP_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_RULE" name="WO_EMAIL_GROUP_FK" pkName="CLW_GROUP_PK" pkTable="CLW_GROUP">
+      <fkeyref fkColumnName="EMAIL_GROUP_ID" pkColumnName="GROUP_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_ST_QUEUE" name="WO_ST_QUEUE_CLW_BE_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+      <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_ST_QUEUE" name="WO_ST_QUEUE_WO_WORKFLOW_FK" pkName="WO_WORKFLOW_PK" pkTable="WO_WORKFLOW">
+      <fkeyref fkColumnName="WORKFLOW_ID" pkColumnName="WORKFLOW_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORKFLOW_ST_QUEUE" name="WO_ST_QUEUE_WO_WORKFLOW_RULE_FK" pkName="WO_WORKFLOW_RULE_PK" pkTable="WO_WORKFLOW_RULE">
+      <fkeyref fkColumnName="WORKFLOW_RULE_ID" pkColumnName="WORKFLOW_RULE_ID"/>
+    </fkey>
+
+    <fkey fkTable="WO_ORDER_PROPERTY" name="WO_WORKFLOW_RULE_FK" pkName="WO_WORKFLOW_RULE_PK"
+          pkTable="WO_WORKFLOW_RULE">
+        <fkeyref fkColumnName="WORKFLOW_RULE_ID" pkColumnName="WORKFLOW_RULE_ID" />
+    </fkey>
+
+    <fkey fkTable="WO_FISCAL_CALENDER_DETAIL" name="FISCAL_CALENDER_FK"
+          pkName="WO_FISCAL_CALENDER_PK" pkTable="WO_FISCAL_CALENDER">
+        <fkeyref fkColumnName="FISCAL_CALENDER_ID" pkColumnName="FISCAL_CALENDER_ID" />
+    </fkey>
+
+    <fkey fkTable="WO_COST_CENTER" name="COST_CENTER_STORE_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="STORE_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_BUDGET" name="BUDGET_COST_CENTER_FK" pkName="WO_COST_CENTER_PK" pkTable="WO_COST_CENTER">
+        <fkeyref fkColumnName="COST_CENTER_ID" pkColumnName="COST_CENTER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_COST_CENTER_ASSOC" name="CCA_COST_CENTER_FK" pkName="WO_COST_CENTER_PK" pkTable="WO_COST_CENTER">
+        <fkeyref fkColumnName="COST_CENTER_ID" pkColumnName="COST_CENTER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_TRADING_PARTNER_ASSOC" name="TPA_BUS_ENTITY_FK"
+          pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID" />
+    </fkey>
+    <fkey fkTable="WO_TRADING_PARTNER_ASSOC" name="TPA_TRADING_PARTNER_FK"
+          pkName="WO_TRADING_PARTNER_PK" pkTable="WO_TRADING_PARTNER">
+        <fkeyref fkColumnName="TRADING_PARTNER_ID" pkColumnName="TRADING_PARTNER_ID" />
+    </fkey>
+    <fkey fkTable="WO_TRADING_PROFILE" name="TRADING_PROFILE_PARTNER_FK"
+          pkName="WO_TRADING_PARTNER_PK" pkTable="WO_TRADING_PARTNER">
+        <fkeyref fkColumnName="TRADING_PARTNER_ID" pkColumnName="TRADING_PARTNER_ID" />
+    </fkey>
+    <fkey fkTable="WO_TRADING_PROFILE_CONFIG" name="TRADING_PROFILE_CONFIG_FK"
+          pkName="WO_TRADING_PROFILE_PK" pkTable="WO_TRADING_PROFILE">
+        <fkeyref fkColumnName="TRADING_PROFILE_ID" pkColumnName="TRADING_PROFILE_ID" />
+    </fkey>
+    <fkey fkTable="WO_TRADING_PROFILE_CONFIG" name="TRADING_PROFILE_CONFIG2_FK" pkName="WO_TRADING_PROFILE_PK" pkTable="WO_TRADING_PROFILE">
+        <fkeyref fkColumnName="INCOMING_TRADING_PROFILE_ID"
+                 pkColumnName="TRADING_PROFILE_ID" />
+    </fkey>
+    <fkey fkTable="WO_ELECTRONIC_TRANSACTION" name="INTERCHANGE_TRANSACTION_FK" pkName="WO_INTERCHANGE_PK" pkTable="WO_INTERCHANGE">
+        <fkeyref fkColumnName="INTERCHANGE_ID" pkColumnName="INTERCHANGE_ID"/>
+    </fkey>
+    <fkey fkTable="WO_INTERCHANGE" name="INTERCHANGE_PROFILE_FK" pkName="WO_TRADING_PROFILE_PK" pkTable="WO_TRADING_PROFILE">
+        <fkeyref fkColumnName="TRADING_PROFILE_ID" pkColumnName="TRADING_PROFILE_ID"/>
+    </fkey>
+    <fkey fkTable="WO_CONTENT" name="CONTENT_BUS_ENTITY_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_ASSET_ASSOC" name="WO_ASSET_ASSOC_ASSET_FK" pkName="ASSET_PK" pkTable="WO_ASSET">
+        <fkeyref fkColumnName="ASSET_ID" pkColumnName="ASSET_ID"/>
+    </fkey>
+    <fkey fkTable="WO_ASSET_ASSOC" name="WO_ASSET_ASSOC_BUS_ENT_FK" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_ASSET_PROPERTY" name="WO_ASSET_PROP_ASSET_FK" pkName="ASSET_PK" pkTable="WO_ASSET">
+        <fkeyref fkColumnName="ASSET_ID" pkColumnName="ASSET_ID"/>
+    </fkey>
+    <fkey fkTable="WO_ASSET_WARRANTY" name="WO_ASSET_WARRANTY_FK2" pkName="ASSET_PK" pkTable="WO_ASSET">
+        <fkeyref fkColumnName="ASSET_ID" pkColumnName="ASSET_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORK_ORDER_ASSET" name="WO_WORK_ORDER_ASSET_FK2" pkName="ASSET_PK" pkTable="WO_ASSET">
+        <fkeyref fkColumnName="ASSET_ID" pkColumnName="ASSET_ID"/>
+    </fkey>
+    <fkey fkTable="WO_ASSET_WARRANTY" name="WO_ASSET_WARRANTY_FK1" pkName="WO_WARRANTY_PK" pkTable="WO_WARRANTY">
+        <fkeyref fkColumnName="WARRANTY_ID" pkColumnName="WARRANTY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WARRANTY_ASSOC" name="WO_WARRANTY_ASSOC_FK1" pkName="WO_WARRANTY_PK" pkTable="WO_WARRANTY">
+        <fkeyref fkColumnName="WARRANTY_ID" pkColumnName="WARRANTY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WARRANTY_CONTENT" name="WO_WARRANTY_CONTENT_FK2" pkName="WO_WARRANTY_PK" pkTable="WO_WARRANTY">
+        <fkeyref fkColumnName="WARRANTY_ID" pkColumnName="WARRANTY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WARRANTY_NOTE" name="WO_WARRANTY_NOTE_FK2" pkName="WO_WARRANTY_PK" pkTable="WO_WARRANTY">
+        <fkeyref fkColumnName="WARRANTY_ID" pkColumnName="WARRANTY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WARRANTY_STATUS_HIST" name="WO_WARRANTY_STATUS_HIST_FK" pkName="WO_WARRANTY_PK" pkTable="WO_WARRANTY">
+        <fkeyref fkColumnName="WARRANTY_ID" pkColumnName="WARRANTY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORK_ORDER_ITEM" name="WO_WORK_ORDER_ITEM_FK2" pkName="WO_WARRANTY_PK" pkTable="WO_WARRANTY">
+        <fkeyref fkColumnName="WARRANTY_ID" pkColumnName="WARRANTY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORK_ORDER" name="WO_WORK_ORDER_FK1" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORK_ORDER_ASSOC" name="WO_WORK_ORDER_ASSOC_FK2" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORK_ORDER" name="WORK_ORDER_COST_CENTER_ID_FK" pkName="WO_COST_CENTER_PK" pkTable="WO_COST_CENTER">
+        <fkeyref fkColumnName="COST_CENTER_ID" pkColumnName="COST_CENTER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORK_ORDER_ASSOC" name="WO_WORK_ORDER_ASSOC_FK1" pkName="WO_WORK_ORDER_PK" pkTable="WO_WORK_ORDER">
+        <fkeyref fkColumnName="WORK_ORDER_ID" pkColumnName="WORK_ORDER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_ASSET_CONTENT" name="WO_ASSET_CONTENT_FK2" pkName="ASSET_PK" pkTable="WO_ASSET">
+        <fkeyref fkColumnName="ASSET_ID" pkColumnName="ASSET_ID"/>
+    </fkey>
+    <fkey fkTable="WO_ASSET_CONTENT" name="WO_ASSET_CONTENT_FK1" pkName="WO_CONTENT_PK" pkTable="WO_CONTENT">
+        <fkeyref fkColumnName="CONTENT_ID" pkColumnName="CONTENT_ID"/>
+    </fkey>
+    <fkey fkTable="WO_ASSET_MASTER_ASSOC" name="WO_ASSET_MASTER_ASSOC_FK1" pkName="ASSET_PK" pkTable="WO_ASSET">
+        <fkeyref fkColumnName="PARENT_MASTER_ASSET_ID" pkColumnName="ASSET_ID"/>
+    </fkey>
+    <fkey fkTable="WO_ASSET_MASTER_ASSOC" name="WO_ASSET_MASTER_ASSOC_FK2" pkName="ASSET_PK" pkTable="WO_ASSET">
+        <fkeyref fkColumnName="CHILD_MASTER_ASSET_ID" pkColumnName="ASSET_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORK_ORDER_DETAIL" name="WORK_ORDER_ID_FK" pkName="WO_WORK_ORDER_PK" pkTable="WO_WORK_ORDER">
+        <fkeyref fkColumnName="WORK_ORDER_ID" pkColumnName="WORK_ORDER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WARRANTY_ASSOC" name="WO_WARRANTY_ASSOC_FK2" pkName="CLW_BUS_ENTITY_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="BUS_ENTITY_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WARRANTY_ASSOC" name="WO_WARRANTY_ASSOC_FK1" pkName="WO_WARRANTY_PK" pkTable="WO_WARRANTY">
+        <fkeyref fkColumnName="WARRANTY_ID" pkColumnName="WARRANTY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORK_ORDER_ASSET" name="WO_WORK_ORDER_ASSET_FK2" pkName="ASSET_PK" pkTable="WO_ASSET">
+        <fkeyref fkColumnName="ASSET_ID" pkColumnName="ASSET_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORK_ORDER_ITEM" name="WO_WORK_ORDER_ITEM_FK2" pkName="WO_WARRANTY_PK" pkTable="WO_WARRANTY">
+        <fkeyref fkColumnName="WARRANTY_ID" pkColumnName="WARRANTY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORK_ORDER_ITEM" name="WO_WORK_ORDER_ITEM_FK1" pkName="WO_WORK_ORDER_PK" pkTable="WO_WORK_ORDER">
+        <fkeyref fkColumnName="WORK_ORDER_ID" pkColumnName="WORK_ORDER_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WORK_ORDER_ASSET" name="WO_WORK_ORDER_ASSET_FK1" pkName="WO_WORK_ORDER_ITEM_PK" pkTable="WO_WORK_ORDER_ITEM">
+        <fkeyref fkColumnName="WORK_ORDER_ITEM_ID" pkColumnName="WORK_ORDER_ITEM_ID"/>
+    </fkey>
+    <fkey fkTable="WO_WARRANTY_NOTE" name="WO_WARRANTY_NOTE_FK1" pkName="WO_ASSET_WARRANTY_PK"
+          pkTable="WO_ASSET_WARRANTY">
+        <fkeyref fkColumnName="ASSET_WARRANTY_ID" pkColumnName="ASSET_WARRANTY_ID" />
+    </fkey>
+    <fkey fkTable="WO_WARRANTY_CONTENT" name="WO_WARRANTY_CONTENT_FK1"
+          pkName="WO_CONTENT_PK" pkTable="WO_CONTENT">
+        <fkeyref fkColumnName="CONTENT_ID" pkColumnName="CONTENT_ID" />
+    </fkey>
+    <fkey fkTable="WO_SERVICE_TYPE" name="WO_SERVICE_TYPE_FK1" pkName="WO_SERVICE_TYPE_STORE_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="STORE_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_SERVICE_TYPE" name="WO_SERVICE_TYPE_FK2" pkName="WO_SERVICE_TYPE_CATEGORY_PK" pkTable="WO_SERVICE_TYPE_CATEGORY">
+        <fkeyref fkColumnName="SERVICE_TYPE_CATEGORY_ID" pkColumnName="SERVICE_TYPE_CATEGORY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_SERVICE_TYPE_ASSOC" name="WO_SERVICE_TYPE_ASSOC_FK1" pkName="WO_SERVICE_TYPE_PK2" pkTable="WO_SERVICE_TYPE">
+        <fkeyref fkColumnName="SERVICE_TYPE_ID" pkColumnName="SERVICE_TYPE_ID"/>
+    </fkey>
+    <fkey fkTable="WO_SERVICE_TYPE_CATEGORY" name="WO_SERVICE_TYPE_CATEGORY_FK1" pkName="WO_SERVICE_TYPE_CATEGORY_STORE_PK" pkTable="CLW_BUS_ENTITY">
+        <fkeyref fkColumnName="STORE_ID" pkColumnName="BUS_ENTITY_ID"/>
+    </fkey>
+    <fkey fkTable="WO_SERVICE_TYPE_CATEGORY" name="WO_SERVICE_TYPE_CATEGORY_FK2" pkName="WO_SERVICE_TYPE_CATEGORY_PARENT_PK" pkTable="WO_SERVICE_TYPE_CATEGORY">
+        <fkeyref fkColumnName="PARENT_CATEGORY_ID" pkColumnName="SERVICE_TYPE_CATEGORY_ID"/>
+    </fkey>
+
+
+    <sequence name="WO_ADDRESS_SEQ"/>
+    <sequence name="WO_COUNTRY_SEQ"/>
+    <sequence name="WO_COUNTRY_PROPERTY_SEQ"/>
+    <sequence name="WO_CURRENCY_SEQ"/>
+    <sequence name="WO_EMAIL_SEQ"/>
+    <sequence name="WO_CONTACT_SEQ"/>
+    <sequence name="WO_LOCALE_SEQ"/>
+    <sequence name="WO_LOCALE_MAP_SEQ"/>
+    <sequence name="WO_LOCALE_PROPERTY_SEQ"/>
+    <sequence name="WO_MESSAGE_RESOURCE_SEQ"/>
+    <sequence name="WO_PHONE_SEQ"/>
+    <sequence name="WO_PROPERTY_SEQ"/>
+    <sequence name="WO_REF_CD_SEQ"/>
+    <sequence name="WO_USER_SEQ"/>
+    <sequence name="WO_USER_ASSOC_SEQ"/>
+    <sequence name="WO_BUS_ENTITY_ASSOC_SEQ"/>
+    <sequence name="WO_EMAIL_TRACKING_SEQ"/>
+    <sequence name="WO_GROUP_ASSOC_SEQ"/>
+    <sequence name="WO_GROUP_SEQ"/>
+    <sequence name="WO_BUDGET_SEQ"/>
+    <sequence name="WO_BUDGET_DETAIL_SEQ"/>
+    <sequence name="WO_NOTE_SEQ" />
+    <sequence name="WO_NOTE_ATTACHMENT_SEQ" />
+    <sequence name="WO_NOTE_TEXT_SEQ" />
+    <sequence name="WO_WORKFLOW_SEQ" />
+    <sequence name="WO_WORKFLOW_ASSOC_SEQ" />
+    <sequence name="WO_WORKFLOW_RULE_SEQ" />
+    <sequence name="WO_WORKFLOW_LOG_SEQ" />
+    <sequence name="WO_WORKFLOW_QUEUE_SEQ" />
+    <sequence name="WO_FISCAL_CALENDER_SEQ" />
+    <sequence name="WO_FISCAL_CALENDER_DETAIL_SEQ" />
+    <sequence name="WO_SITE_WORKFLOW_SEQ"/>
+    <sequence name="WO_COST_CENTER_ASSOC_SEQ"/>
+    <sequence name="WO_COST_CENTER_SEQ"/>
+    <sequence name="WO_TRADING_PARTNER_ASSOC_SEQ"/>
+    <sequence name="WO_TRADING_PARTNER_SEQ" />
+    <sequence name="WO_TRADING_PROFILE_CONFIG_SEQ" />
+    <sequence name="WO_TRADING_PROFILE_SEQ" />
+    <sequence name="WO_TRADING_PROPERTY_MAP_SEQ" />
+    <sequence name="WO_GENERIC_REPORT_SEQ"/>
+    <sequence name="WO_INBOUND_SEQ"/>
+    <sequence name="WO_INTERCHANGE_SEQ"/>
+    <sequence name="WO_ELECTRONIC_TRANSACTION_SEQ"/>
+    <sequence name="WO_CONTENT_SEQ"/>
+    <sequence name="WO_ASSET_SEQ"/>
+    <sequence name="WO_ASSET_ASSOC_SEQ"/>
+    <sequence name="WO_ASSET_PROPERTY_SEQ"/>
+    <sequence name="WO_ASSET_WARRANTY_SEQ"/>
+    <sequence name="WO_WARRANTY_SEQ"/>
+    <sequence name="WO_WORK_ORDER_ASSET_SEQ"/>
+    <sequence name="WO_WORK_ORDER_SEQ"/>
+    <sequence name="WO_ASSET_CONTENT_SEQ"/>
+    <sequence name="WO_ASSET_MASTER_ASSOC_SEQ"/>
+    <sequence name="WO_WORK_ORDER_DETAIL_SEQ"/>
+    <sequence name="WO_WARRANTY_ASSOC_SEQ"/>
+    <sequence name="WO_WORK_ORDER_ITEM_SEQ"/>
+    <sequence name="WO_WARRANTY_CONTENT_SEQ" />
+    <sequence name="WO_WARRANTY_NOTE_SEQ" />
+    <sequence name="WO_WARRANTY_STATUS_HIST_SEQ" />
+    <sequence name="WO_WORK_ORDER_ASSOC_SEQ" />
+    <sequence name="WO_WORK_ORDER_CONTENT_SEQ" />
+    <sequence name="WO_WORK_ORDER_NOTE_SEQ" />
+    <sequence name="WO_WORK_ORDER_PROPERTY_SEQ" />
+    <sequence name="WO_WORK_ORDER_STATUS_HIST_SEQ" />
+    <sequence name="WO_WOI_STATUS_HIST_SEQ" />
+    <sequence name="WO_SITE_LEDGER_SEQ"/>
+    <sequence name="WO_SERVICE_TYPE_SEQ"/>
+    <sequence name="WO_SERVICE_TYPE_ASSOC_SEQ"/>
+    <sequence name="WO_SERVICE_TYPE_CATEGORY_SEQ"/>
+</database>

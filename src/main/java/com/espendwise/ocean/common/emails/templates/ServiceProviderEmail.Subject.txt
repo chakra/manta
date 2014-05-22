@@ -1,0 +1,1 @@
+SERVICE REQUEST for ${serviceType.fullName}- Service Ticket ${serviceTicketNumber}<#if sentDate!=''>  -  Sent ${sentDate}</#if>

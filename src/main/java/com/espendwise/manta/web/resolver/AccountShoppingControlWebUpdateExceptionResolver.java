@@ -1,0 +1,7 @@
+package com.espendwise.manta.web.resolver;
+
+import com.espendwise.manta.util.validation.resolvers.AbstractAccountShoppingControlUpdateExceptionResolver;
+
+public class AccountShoppingControlWebUpdateExceptionResolver extends AbstractAccountShoppingControlUpdateExceptionResolver {
+
+}

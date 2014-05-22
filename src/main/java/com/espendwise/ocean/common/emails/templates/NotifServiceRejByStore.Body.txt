@@ -1,0 +1,44 @@
+<hr>
+<br>
+This is an automated email.  Do not reply to this email.<br>
+<br>
+${modByUser.firstName} ${modByUser.lastName} on behalf of location ${location.siteName} 
+<#if user.phone??><#if user.phone != ""> at ${user.phone} </#if></#if> has rejected the service ${serviceType.name}
+
+<#if serviceType.recurringService>
+<#else>
+	<#assign minSchDate = "null">
+	<#list zones as zone>
+	  <#if zone.scheduledDate??>
+	  <#if zone.status?? && zone.status = "Rejected by Store">
+	    <#if minSchDate="null">
+	       <#assign minSchDate = zone.scheduledDate>
+	    <#else>
+	      <#if minSchDate?date("MM/dd/yyyy") &gt; zone.scheduledDate?date("MM/dd/yyyy")><#assign minSchDate = zone.scheduledDate></#if>
+	    </#if>
+	  </#if>
+	  </#if>
+	</#list>
+	 on ${minSchDate}, 
+	 for
+</#if>
+
+<a href="${link.serviceTicket}">Service Ticket ${serviceTicketNumber}</a> for the following reason(s):<br>
+<#list zones as zone>
+  <#if zone.status?? && zone.status = "Rejected by Store">
+     <#if ticketWithZones??>
+        Work zone: "${zone.name}"
+     </#if>
+     <#if zone.rejectionReason??>
+       - ${zone.rejectionReason}
+     <#else>
+       - reason not set
+     </#if>
+     <br>
+  </#if>
+</#list>
+<br>
+  Thank you.
+<br>
+<br>
+<hr>

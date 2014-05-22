@@ -1,0 +1,85 @@
+<!-- ======================================================================================= -->
+<!-- To increment major number include the below line where required in build.xml of main app-->
+<!-- <ant antfile="build.xml" dir="build_version" target="major" />			                 -->
+<!-- To increment minor number include the below line where required in build.xml of main app-->
+<!-- <ant antfile="build.xml" dir="build_version" target="minor" />			                 -->
+<!-- To increment build number include the below line where required in build.xml of main app-->
+<!-- <ant antfile="build.xml" dir="build_version" target="build" />			                 -->
+<!-- To increment local number include the below line where required in build.xml of main app-->
+<!-- <ant antfile="build.xml" dir="build_version" target="local" />			                 -->
+<!-- ======================================================================================= -->
+<project name="build_version" default="current-number">
+
+<!-- =================================================================== -->
+<!-- specify the file containing properties used by this script          -->
+<!-- =================================================================== -->
+
+<property file="build_info.properties"/>
+
+<!-- ======================================================================================= -->
+<!-- Appending build number with major.minor.build.local									 -->
+<!-- ======================================================================================= -->
+
+<property name="build.number" value="${build.major.number}.${build.minor.number}.${build.build.number}.${build.local.number}"/>
+
+<property name="build.branch" value="${build.branch.number}"/>
+
+<!-- ======================================================================================= -->
+<!-- Echo current build bumber 																 -->
+<!-- ======================================================================================= -->
+
+<target name="current-number">
+	<echo message="Current build number:${build.number}" />
+</target>
+
+<!-- ======================================================================================= -->
+<!-- Increment major number																	 -->
+<!-- Whenever the major number is incremented, the minor,build and local numbers are set to 0-->
+<!-- ======================================================================================= -->
+
+<target name="major">
+    <propertyfile  file="build_info.properties">
+            <entry key="build.major.number" type="int" operation="+" value="1" pattern="00"/>
+            <entry key="build.minor.number" type="int" value="0" pattern="00"/>
+            <entry key="build.build.number" type="int" value="0" pattern="00"/>
+    		<entry key="build.local.number" type="int" value="0" pattern="00"/>
+    </propertyfile>
+</target>
+
+<!-- ======================================================================================= -->
+<!-- Increment minor number																	 -->
+<!-- Whenever the minor number is incremented, the build and local numbers are set to 0      -->
+<!-- ======================================================================================= -->
+
+<target name="minor">
+    <propertyfile  file="build_info.properties">
+           <entry key="build.minor.number" type="int" operation="+" value="1" pattern="00"/>
+           <entry key="build.build.number" type="int" value="0" pattern="00"/>
+	       <entry key="build.local.number" type="int" value="0" pattern="00"/>
+    </propertyfile>
+</target>
+
+<!-- ======================================================================================= -->
+<!-- Increment build number																	 -->
+<!-- Whenever the build number is incremented, the local number is set to 0                  -->
+<!-- ======================================================================================= -->
+
+<target name="build">
+    <propertyfile  file="build_info.properties">
+            <entry key="build.build.number" type="int" operation="+" value="1" pattern="00"/>
+            <entry key="build.local.number" type="int" value="0" pattern="00"/>
+    </propertyfile>
+</target>
+
+<!-- ======================================================================================= -->
+<!-- Increment local number																	 -->
+<!-- ======================================================================================= -->
+
+<target name="local">
+    <propertyfile  file="build_info.properties">
+            <entry key="build.local.number" type="int" operation="+" value="1" pattern="00"/>
+    </propertyfile>
+</target>
+
+</project>
+

@@ -1,0 +1,51 @@
+<hr>
+<br>
+This is an automated email. Do not reply to this email.
+<br>
+<br>
+Dear Service Vendor,<br>
+<br>
+Below please find a service request;<br>
+<br>
+Service Ticket Number: <a href="${link.serviceTicket}"> ${serviceTicketNumber}</a><br>
+Service Request:  ${serviceType.name}<br>
+Scheduled Date: ${scheduleDate}<br>
+PO Number: <#if pONumber??> ${pONumber} </#if><br>
+Comments: ${comments}<br>
+<br>
+LOCATION<br>
+Account: ${account.name}<br>
+Location: ${location.siteName}<br>
+Location Number: <#if location.siteBudgetReferenceNumber??> ${location.siteBudgetReferenceNumber} </#if><br>
+Address 1: ${location.address.address1}<br>
+Address 2:  ${location.address.address2}<br>
+Address 3:  ${location.address.address3}<br>
+City:  ${location.address.city}<br>
+State:  ${location.address.state}<br>
+Postal Code:  ${location.address.postalCode}<br>
+<#if asset??>
+<#list location.customAssetLocationFields as locationField>
+${locationField.label} : ${locationField.value}
+</#list>
+</#if><br>
+CONTACT<br>
+Contact Name: ${contact.firstName!""} ${contact.lastName!""}<br>
+Address 1:  ${contact.address.address1!""}<br>
+Address 2:  ${contact.address.address2!""}<br>
+Address 3:  ${contact.address.address3!""}<br>
+City:  ${contact.address.city!""}<br>
+State: ${contact.address.state!""}<br>
+Postal Code:  ${contact.address.postalCode!""}<br>
+Telephone Number:  ${contact.phoneNumber!""}<br>
+Mobile Number:  ${contact.mobileNumber!""}<br>
+Email:  ${contact.emailAddress!""}<br>
+<#if asset??><br><br>
+ASSET<br>
+Asset Name:  ${asset.name}
+Asset Number: ${asset.number}
+Serial Number:  ${asset.serialNumber}
+</#if>
+<br>
+Thank you.<br>
+<br>
+<hr>

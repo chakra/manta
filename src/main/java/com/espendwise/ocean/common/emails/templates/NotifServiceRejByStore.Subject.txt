@@ -1,0 +1,1 @@
+SERVICE REJECTED BY LOCATION  for ${serviceType.name} - Service Ticket ${serviceTicketNumber} - Sent ${sentDate}

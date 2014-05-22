@@ -1,0 +1,13 @@
+<hr>
+<br>
+This is an automated email.  Do not reply to this email.<br/>
+<br/>
+The purpose of this email is to inform you that on ${scheduleDate}, ${serviceVendor.vendorName}
+is coming to perform the following service: ${serviceType.name}, for 
+<a href="${link.serviceTicket}">Service Ticket ${serviceTicketNumber}</a>, 
+for Location ${location.siteName}.<br/>
+<br/>
+<a href="${link.confirmationkNo}">No, please do not perform the service on this date and call me to reschedule.</a><br/>
+<br/>
+Thank you.<br/>
+<br/>

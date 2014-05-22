@@ -1,0 +1,165 @@
+</html>
+<#if account??>
+	<#if account.name??>account.name = ${account.name}</#if><br>
+</#if><br>
+
+<#if addBy??>addBy = ${addBy}</#if><br>
+<#if addDate??>addDate = ${addDate}</#if><br>
+<#if additionalCharges??>additionalCharges = ${additionalCharges}</#if><br>
+
+<#if asset??>
+	<#if asset.name??>asset.name = ${asset.name}</#if><br>
+	<#if asset.number??>asset.number = ${asset.number}</#if><br>
+	<#if asset.serialNumber??>asset.serialNumber = ${asset.serialNumber}</#if><br>
+</#if><br>
+
+<#if comments??>comments = ${comments}</#if><br>
+
+<#if contact??>
+	<#if contact.address??>
+		<#if contact.address.address1??>contact.address.address1 = ${contact.address.address1}</#if><br>
+		<#if contact.address.address2??>contact.address.address2 = ${contact.address.address2}</#if><br>
+		<#if contact.address.address3??>contact.address.address3 = ${contact.address.address3}</#if><br>
+		<#if contact.address.city??>contact.address.city = ${contact.address.city}</#if><br>
+		<#if contact.address.postalCode??>contact.address.postalCode = ${contact.address.postalCode}</#if><br>
+		<#if contact.address.state??>contact.address.state = ${contact.address.state}</#if><br>
+	</#if><br>
+	<#if contact.emailAddress??>contact.emailAddress = ${contact.emailAddress}</#if><br>
+	<#if contact.firstName??>contact.firstName = ${contact.firstName}</#if><br>
+	<#if contact.lastName??>contact.lastName = ${contact.lastName}</#if><br>
+	<#if contact.mobileNumber??>contact.mobileNumber = ${contact.mobileNumber}</#if><br>
+	<#if contact.phoneNumber??>contact.phoneNumber = ${contact.phoneNumber}</#if><br>
+</#if><br>
+
+<#if contract??>
+  <#if contract.ratePerZone??>contract.ratePerZone = <#if contract.ratePerZone>yes<#else>no</#if></#if><br>
+</#if><br>
+
+<#if link??>
+  <#if link.confirmationkNo??>link.confirmationkNo = <a href="${link.confirmationkNo}">No, please do not perform the service on this date and call me to reschedule.</a></#if><br>
+  <#if link.confirmationYes??>link.confirmationYes = <a href="${link.confirmationYes}">Yes, please perform the service on this date.</a></#if><br>
+  <#if link.serviceTicket??>link.serviceTicket = <a href="${link.serviceTicket}">Service Ticket ${serviceTicketNumber}</a></#if><br>
+</#if><br>
+
+<#if location??>
+	<#if location.address??>
+		<#if location.address.address1??>location.address.address1 = ${location.address.address1}</#if><br>
+		<#if location.address.address2??>location.address.address2 = ${location.address.address2}</#if><br>
+		<#if location.address.address3??>location.address.address3 = ${location.address.address3}</#if><br>
+		<#if location.address.city??>location.address.city = ${location.address.city}</#if><br>
+		<#if location.address.postalCode??>location.address.postalCode = ${location.address.postalCode}</#if><br>
+		<#if location.address.state??>location.address.state = ${location.address.state}</#if><br>
+	</#if>
+	<#if asset??>
+		<#if location.customAssetLocationFields??>
+			<#list location.customAssetLocationFields as custField>
+				<#if custField.label??>location.customAssetLocationFields.label = ${custField.label}</#if><br>
+				<#if custField.value??>location.customAssetLocationFields.value = ${custField.value}</#if><br>
+			</#list>
+		</#if>
+	</#if>
+
+	<#if location.siteBudgetReferenceNumber??>location.siteBudgetReferenceNumber = ${location.siteBudgetReferenceNumber}</#if><br>
+	<#if location.siteName??>location.siteName = ${location.siteName}</#if><br>
+</#if><br>
+
+
+<#if modByUser??>
+	<#if modByUser.firstName??>modByUser.firstName = ${modByUser.firstName}</#if><br>
+	<#if modByUser.lastName??>modByUser.lastName = ${modByUser.lastName}</#if><br>
+	<#if modByUser.phone??>modByUser.phone = ${modByUser.phone}</#if><br>
+</#if>
+<#if pONumber??>pONumber = ${pONumber}</#if><br>
+
+<#if contract.ratePerZone == false>
+	<#assign rateZone = zones[0]> 
+	<#assign ratesSize=(rateZone.rates?size)>
+	<#if ratesSize gt 1>
+		RATES:<br>
+	</#if>
+	<#list rateZone.rates as rate>
+		${rate.name}: ${rate.value} ${rate.rateType}<br> 
+	</#list><br>
+</#if>
+
+<#if contract.ratePerZone == true>
+	<#list zones as zone>
+		<br>
+		<#if ticketWithZones??>
+		ZONE "${zone.name}"<br>
+		</#if>
+		<#list zone.rates as rate>
+			${rate.name}: ${rate.value} ${rate.rateType}<br> 
+		</#list><br>
+	</#list><br>
+</#if>
+
+
+<#if scheduleDate??>scheduleDate = ${scheduleDate}</#if><br>
+<#if sentDate??>sentDate = ${sentDate}</#if><br>
+<#if sentTime??>sentTime = ${sentTime}</#if><br>
+
+<#if serviceType.freeform>
+<#else>
+	<#if serviceProvider??>
+		<#if serviceProvider.emailAddress??>serviceProvider.emailAddress = ${serviceProvider.emailAddress}</#if><br>
+		<#if serviceProvider.firstName??>serviceProvider.firstName = ${serviceProvider.firstName}</#if><br>
+		<#if serviceProvider.lastName??>serviceProvider.lastName = ${serviceProvider.lastName}</#if><br>
+		<#if serviceProvider.name??>serviceProvider.name = ${serviceProvider.name}</#if><br>
+		<#if serviceProvider.telephoneNumber??>serviceProvider.telephoneNumber = ${serviceProvider.telephoneNumber}</#if><br>
+	</#if><br>
+</#if>
+
+<#if serviceTicketNumber??>serviceTicketNumber = ${serviceTicketNumber}</#if><br>
+
+<#if serviceType??>
+	<#if serviceType.adminName??>serviceType.adminName = ${serviceType.adminName}</#if><br>
+	<#if serviceType.fullName??>serviceType.fullName = ${serviceType.fullName}</#if><br>
+	<#if serviceType.name??>serviceType.name = ${serviceType.name}</#if><br>
+	<#if serviceType.periodic??>serviceType.periodic = <#if serviceType.periodic>yes<#else>no</#if></#if><br>
+	<#if serviceType.recurringService??>serviceType.recurringService = <#if serviceType.recurringService>yes<#else>no</#if></#if><br>
+</#if><br>
+
+<#if serviceVendor??>serviceVendor = ${serviceVendor}</#if><br>
+<#if status??>status = ${status}</#if><br>
+<#if ticketWithZones??>ticketWithZones = <#if ticketWithZones>yes<#else>no</#if></#if><br>
+
+<#if user??>
+	<#if user.firstName??>user.firstName = ${user.firstName}</#if><br>
+	<#if user.lastName??>user.lastName = ${user.lastName}</#if><br>
+	<#if user.phone??>user.phone = ${user.phone}</#if><br>
+</#if><br>
+
+<#if zones??>
+	WORK ZONES<br>
+	<#list zones as zone>
+		<#if zone.name??>zone.name = ${zone.name}</#if><br>
+		<#if zone.rates??>
+			<#list zone.rates as rate>
+				<#if rate.name??>zone.rates.name = ${rate.name}</#if><br>
+				<#if rate.rateType??>zone.rates.rateType = ${rate.rateType}</#if><br>
+				<#if rate.value??>zone.rates.value = ${rate.value}</#if><br>
+			</#list>
+		</#if><br>
+
+		<#if zone.records??>
+			<#list zone.records as record>
+				<#if record??>
+					<#if record.recurringNumber??>zone.records.recurringNumber = ${record.recurringNumber}</#if><br>
+					<#if record.fields??>
+					<#list record.fields as zoneField>
+						<#if zoneField.label??>zone.records.fields.label = ${zoneField.label}</#if><br>
+						<#if zoneField.value??>zone.records.fields.value = ${zoneField.value}</#if><br>		 
+					</#list>
+				</#if>
+				</#if><br>
+			</#list>
+		</#if><br>
+
+		<#if zone.rejectionReason??>zone.rejectionReason = ${zone.rejectionReason}</#if><br>
+		<#if zone.scheduledDate??>zone.scheduledDate = ${zone.scheduledDate}</#if><br>
+		<#if zone.status??>zone.status = ${zone.status}</#if><br><br>
+	</#list>
+</#if><br>
+
+</html>

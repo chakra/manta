@@ -1,0 +1,15 @@
+a.blueBtnLarge {display: block; float: left; background: right top no-repeat url("../images/blueBtnLarge-Right.gif"); height: 33px;  margin-left: 10px;line-height: 12px !important}
+a.blueBtnLarge span {display: block; background: left top no-repeat url("../images/blueBtnLarge-Left.gif"); height: 24px; font-size: 13px; color: #fff; padding: 9px 12px 0 12px;cursor: pointer}
+a.blueBtnLarge:hover { background-position: right -33px; text-decoration: none }
+
+a.blueBtnLarge:hover span {background-position: left -33px}
+div#coverLayer { position: absolute; top: 0; left: 0; z-index: 9997; visibility: hidden; background: #000; filter: alpha(opacity = 50);  opacity: .5 }
+div.popUpWindow {  position: absolute !important; top: 0; left: 0; visibility: hidden ;   z-index: 9999;}
+div.popUpLocate { width: 984px;}
+div.popUpLocate div.popUpTop { background: left top no-repeat url("../images/popup/popUpWide1024-Top.png"); display: block;  width: 1024px;  height: 6px;font-size: 1px}
+
+div.popUpLocate div.popUpContent {   background: left bottom repeat-y url("../images/popup/popUpWide1024-Bg.png"); display: block; width: 984px; padding: 18px 20px 8px 20px }
+div.popUpLocate div.popUpBottom,div.popUpBottom {background: left top no-repeat url("../images/popup/popUpWide1024-Bottom.png"); display: block; width: 1024px;  height: 9px;  font-size: 1px}
+body.popUpLocate {  padding: 10px 20px 10px 20px; background: #fcfcfc }
+div.buttonRow a.closePopUpBtn {   float: right;margin-right: 10px}
+div.popUpLocate iframe{  width: 984px;   margin-bottom: 10px ; height: 325px;}

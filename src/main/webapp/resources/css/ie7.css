@@ -1,0 +1,5 @@
+div.tabsContent div.tabs { position:relative; z-index: 1003;}
+div.tabsContent div.content {top: 0;}
+div.tabsContent div.tabs div.tab span.tab-active {top:2px;}
+
+
