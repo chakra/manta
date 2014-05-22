@@ -1,0 +1,52 @@
+<project name="do_once" default="main">
+
+   <property environment="env"/>
+   <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+      <classpath>
+         <pathelement location="${env.ANT_HOME}/ant-contrib-1.0b3-bin/ant-contrib/ant-contrib-1.0b3.jar"/>
+      </classpath>
+   </taskdef>
+
+<!-- ====================================================================== -->
+   <target name="before"
+           description="One-off tasks to perform before the installation starts">
+
+      <echo message="No 'do-once before' tasks to perform"/>
+
+   </target>
+
+<!-- ====================================================================== -->
+   <target name="main"
+           description="One-off tasks to perform in the midst of installation">
+
+      <echo message="No 'do-once main' tasks to perform"/>
+
+<!--
+      <property name="propsFile" value="./xapp/webapp/tomcat/bin/manta.properties"/>
+
+      <if>
+         <available file="${propsFile}"/>
+         <then>
+            <propertyfile file="${propsFile}">
+               <entry key="storage.url" default="http://tim.dev.espendwise.internal/e3/e3.php"/>
+               <entry key="storage.user" default="e3client"/>
+               <entry key="storage.password" default="Groton!POt@T0z"/>
+               <entry key="storage.logo1.content.prefix" value="IMAGE_"/>
+            </propertyfile>
+         </then>
+         <else>
+            <fail message="Properties file ${propsFile} not found"/>
+         </else>
+      </if>
+-->
+   </target>
+
+<!-- ====================================================================== -->
+   <target name="after"
+           description="One-off tasks to perform after the installation is complete">
+
+      <echo message="No 'do-once after' tasks to perform"/>
+
+   </target>
+
+</project>

@@ -1,0 +1,10 @@
+<html>
+*************************************************************************************<br>
+This is an automated email. Do not reply to this email.<br>
+<br>
+${modByUser.firstName} ${modByUser.lastName} has entered a service request for ${serviceType.name} that requires your approval.  To approve or reject this request please go to <a href="${link.serviceTicket}">Service Ticket ${serviceTicketNumber}</a>.<br>
+<br>
+Thank you.<br>
+<br>
+*************************************************************************************<br>
+</html>

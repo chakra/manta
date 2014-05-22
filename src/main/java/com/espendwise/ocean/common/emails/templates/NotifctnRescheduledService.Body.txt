@@ -1,0 +1,9 @@
+<hr>
+This is an automated email.  Do not reply to this email.
+<br><br/>
+${modByUser.firstName} ${modByUser.lastName} on behalf of location ${location.siteName} has requested that you call ${modByUser.phone} to reschedule <a href="${link.serviceTicket}">Service Ticket ${serviceTicketNumber}</a> for ${serviceType.name} 
+to be performed on ${scheduleDate}.<br/>
+<br/>
+Thank you.<br/>
+<br/>
+<hr>

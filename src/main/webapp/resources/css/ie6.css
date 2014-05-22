@@ -1,0 +1,7 @@
+﻿div#menu { width:expression((document.compatMode && document.compatMode == 'CSS1Compat') ?(document.documentElement.clientWidth < 280? "280px":"auto"):(document.body.clientWidth < 280?"280px":"auto"));text-align: left;}
+
+div.tabsContent div.tabs { position:relative; z-index: 1003;}
+div.tabsContent div.content {top: 0;}
+div.tabsContent div.tabs div.tab span.tab-active {top:2px}
+
+

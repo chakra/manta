@@ -1,0 +1,1 @@
+SERVICE REMINDER for ${serviceType.name} - Service will be performed on ${scheduleDate} for Location ${location.siteName} - Sent ${sentDate}

@@ -1,0 +1,21 @@
+<html>
+************************************************************************************************
+</br>
+This is an automated email. Do not reply to this email.
+<br>
+<br>
+Dear Service  <#if serviceType.freeform>Vendor<#else>Provider</#if>
+<br><br>
+<#if serviceType.recurringService>
+Attached please find a service request for ${serviceType.fullName} Service Ticket ${serviceTicketNumber} (for ${account.name} for location ${location.siteName}) for your review.
+<#else>
+Attached please find a service request; Service Ticket ${serviceTicketNumber} (from ${account.name} for location ${location.siteName}) for your review.
+</#if>
+<br>
+<br>
+You will need Adobe Acrobat Reader or equivalent to open the attached file. Please respond as appropriate.
+<br><br>
+Thank you
+<br><br>                 
+************************************************************************************************
+</html>

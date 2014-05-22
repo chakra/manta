@@ -1,0 +1,36 @@
+package com.espendwise.ocean.common.emails;
+
+
+public interface EmailTypes {
+
+    public enum ServiceTicketEmails implements EmailType {
+        SERVICE_PROVIDER_EMAIL,
+        SERVICE_VENDOR_EMAIL,
+        NOTIFCTN_SCHEDULED_SERVICE,
+        NOTIFCTN_SERVICE_ACCEPTED,
+        NOTIFCTN_SERVICE_ACCEPTED_AUTO,
+        NOTIF_SERVICE_ACCEPTED_AUTO_V,
+        NOTIF_SERVICE_REJ_BY_PROVIDER,
+        NOTIF_SERVICE_REJ_BY_STORE,
+        NOTIF_SERVICE_COMPLETED,
+        NOTIFCTN_RESCHEDULED_SERVICE,
+        NOTIFCTN_REQUESTED_SERVICE_APPROVAL,
+        NOTIFCTN_SERVICE_REMINDER,
+        NOTIFCTN_INVOICE_REJECTED,
+        NO_SHOW_SMS,
+        NOTIFCTN_NO_SHOW,
+		DEFAULT_EMAIL_TEXT		
+    }
+
+    public enum OrderEmails implements EmailType {
+        ORDER_CONFIRMATION_EMAIL_TEMPLATE,
+        SHIPPING_NOTIFICATION_EMAIL_TEMPLATE,
+        PENDING_APPROVAL_EMAIL_TEMPLATE,
+        REJECTED_ORDER_EMAIL_TEMPLATE,
+        MODIFIED_ORDER_EMAIL_TEMPLATE,
+    }
+    
+    public enum InvoiceEmails implements EmailType {
+    	NOTIF_INVOICE_REJECTED,
+    }
+}

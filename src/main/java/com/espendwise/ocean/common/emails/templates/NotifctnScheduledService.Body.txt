@@ -1,0 +1,12 @@
+<hr>
+This is an automated email.  Do not reply to this email.<br/>
+<br/>
+${serviceVendor.vendorName} has scheduled the following service ${serviceType.name} for ${scheduleDate}.  Please acknowledge that this date is acceptable:<br/>
+<br/>
+<a href="${link.confirmationYes}">Yes, please perform the service on this date.</a><br/>
+<br/>
+<a href="${link.confirmationkNo}">No, please do not perform the service on this date and call me to reschedule.</a><br/>
+<br/>
+Thank you.<br/>
+<br/>
+<hr>

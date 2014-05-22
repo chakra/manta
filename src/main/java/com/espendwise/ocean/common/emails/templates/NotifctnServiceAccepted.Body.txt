@@ -1,0 +1,124 @@
+<hr>
+<br>
+This is an automated email.  Do not reply to this email.<br>
+<br>
+${modByUser.firstName} ${modByUser.lastName} on behalf of location ${location.siteName} has accepted your scheduled date for <a href="${link.serviceTicket}">Service Ticket ${serviceTicketNumber}</a> for ${serviceType.name} to be performed on ${scheduleDate}.<br>
+<br>
+Service Ticket Number: ${serviceTicketNumber}<br>
+Location: ${location.siteName}<br>
+Location Number: ${location.siteBudgetReferenceNumber}<br>
+Service Request:  ${serviceType.name}<br>
+PO Number: <#if pONumber??>${pONumber}</#if><br>
+<#if contract.ratePerZone == false>
+	<#assign rateZone = zones[0]> 
+	<#assign ratesSize=(rateZone.rates?size)>
+	<#if ratesSize gt 1>
+		RATE(s):<br>
+	</#if>
+	<#list rateZone.rates as rate>
+		${rate.name}: ${rate.value} ${rate.rateType}<br> 
+	</#list><br>
+</#if>
+<#if contract.ratePerZone == true>
+	RATE(s)<br>
+	<#list zones as zone>
+		<br>
+		<#if ticketWithZones??>
+		ZONE "${zone.name}"<br>
+		</#if>
+		<#list zone.rates as rate>
+			${rate.name}: ${rate.value} ${rate.rateType}<br> 
+		</#list><br>
+	</#list><br>
+</#if>
+<#-- Rate: [insert Contract Rate] <br> -->Additional Charges: ${additionalCharges}<br>
+Service Ticket Status: ${status}<br>
+Requested By: ${addByUser.firstName} ${addByUser.lastName}<br>
+Requested Date/Time:   ${addDate}<br>
+Comments:  ${comments}<br><br>
+
+ZONE(s) <br>
+<#list zones as zone>
+<#if zone.name??>Zone Name: ${zone.name}</#if><br>
+Scheduled Date: ${zone.scheduledDate}<br>
+Status:  ${zone.status}<br>
+
+<#if zone.records??>
+	<#list zone.records as record>
+		<#if record??>
+		    <#if serviceType.recurringService>
+			<#if record.recurringNumber??>Recurring Number: ${record.recurringNumber}</#if><br>
+			</#if>
+			<#if record.fields??>
+			<#list record.fields as zoneField>
+				<#if zoneField.label??>${zoneField.label}</#if>:
+				<#if zoneField.value??>${zoneField.value}</#if><br>		 
+			</#list>
+		</#if>
+		</#if><br>
+	</#list>
+</#if>
+</#list>
+
+<#if serviceType.freeform>
+SERVICE VENDOR<br>
+	Service Vendor:  ${serviceVendor.vendorName}<br>
+	Contact Name: ${serviceVendor.contactName}<br>
+	Contact Phone: ${serviceVendor.phone}<br>
+	Contact Mobile: ${serviceVendor.mobile}<br>
+	Contact Email: ${serviceVendor.contactEmail}<br>
+<#else>
+SERVICE PROVIDER<br>
+	Service Provider:  ${serviceProvider.name}<br>
+	Contact Name: ${serviceProvider.firstName} ${serviceProvider.lastName}<br>
+	Contact Phone: ${serviceProvider.telephoneNumber}<br>
+	Contact Email: ${serviceProvider.emailAddress}<br>
+</#if><br>
+
+LOCATION<br>
+<#if location??>
+	<#if location.address??>
+Location: ${location.siteName}<br>
+Address 1: ${location.address.address1}<br>
+Address 2: ${location.address.address2}<br>
+Address 3: ${location.address.address3}<br>
+City:  ${location.address.city}<br>
+State:  ${location.address.state}<br>
+Postal Code:  ${location.address.postalCode}<br>
+	</#if>
+	<#if asset??>
+		<#if location.customAssetLocationFields??>
+			<#list location.customAssetLocationFields as custField>
+				<#if custField.label??>location.customAssetLocationFields.label = ${custField.label}</#if> = 
+				<#if custField.value??>location.customAssetLocationFields.value = ${custField.value}</#if><br>
+			</#list>
+		</#if>
+	</#if>
+</#if><br>
+
+CONTACT
+<#if contact??><br>
+Contact Name: ${contact.firstName} ${contact.lastName}<br>
+	<#if contact.address??>
+Address 1:  ${contact.address.address1}<br>
+Address 2:  ${contact.address.address2}<br>
+Address 3:  ${contact.address.address3}<br>
+City:  ${contact.address.city}<br>
+State:  ${contact.address.state}<br>
+Postal Code:  ${contact.address.postalCode}
+	</#if><br>
+Telephone Number:  ${contact.phoneNumber}<br>
+Mobile Number:  ${contact.mobileNumber}<br>
+Email:  ${contact.emailAddress}<br>
+</#if><br>
+
+<#if asset??>
+ASSET
+Asset Name:  ${asset.name}<br>
+Asset Number:  ${asset.number}<br>
+Serial Number:  ${asset.serialNumber}<br>
+</#if>
+
+Thank you.
+<br>
+<hr>

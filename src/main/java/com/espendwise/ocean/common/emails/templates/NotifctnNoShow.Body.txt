@@ -1,0 +1,15 @@
+<hr>
+
+<br></br>
+
+This is an automated email. Do not reply to this email.
+<br></br>
+This note is to inform you that no one has checked in for 
+the service ${serviceType.name} for ${account.name}, location ${location.address.address1}. 
+<br></br>
+For full details go to <a href="${link.serviceTicket}">Service Ticket ${serviceTicketNumber}</a>.
+<br></br>
+Please respond as appropriate.  Thank you.
+<br></br>
+
+<hr>

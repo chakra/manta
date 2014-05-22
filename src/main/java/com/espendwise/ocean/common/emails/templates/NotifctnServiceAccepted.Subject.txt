@@ -1,0 +1,1 @@
+SCHEDULE ACCEPTED for ${serviceType.name} - Service Ticket ${serviceTicketNumber} for ${scheduleDate} - Sent ${sentDate}

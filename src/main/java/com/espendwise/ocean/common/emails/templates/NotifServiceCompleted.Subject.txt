@@ -1,0 +1,1 @@
+COMPLETED SERVICE - Service Ticket ${serviceTicketNumber} for ${location.address.address1} has been completed - Sent ${sentDate}

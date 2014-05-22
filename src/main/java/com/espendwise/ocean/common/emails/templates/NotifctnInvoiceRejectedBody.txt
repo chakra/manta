@@ -1,0 +1,6 @@
+Invoice Number: ${invoiceNumber}
+Invoice Date:	${invoiceDate}
+PO Number:	${pONumber}
+Service Ticket Number(s): <#list tickets as ticket> ${ticket.ticketNumber}
+</#list>
+Invoice Note:	${note}

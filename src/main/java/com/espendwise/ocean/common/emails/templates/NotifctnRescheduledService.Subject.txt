@@ -1,0 +1,1 @@
+CALL TO RESCHEDULE SERVICE for ${serviceType.name} - Service Ticket ${serviceTicketNumber} Scheduled for ${scheduleDate} - Sent ${sentDate}

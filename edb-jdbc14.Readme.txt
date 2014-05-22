@@ -1,0 +1,3 @@
+The edb jar is the enterprise db driver.  This is left here as it is assumed that a refactoring to ant will occur and it should be put in the standard lib/tools dir when this is done.
+To get the mvn build to work you need to add this to your maven local using the pom known names by running the following from the command line:
+mvn install:install-file -Dfile=edb-jdbc14.jar -DgroupId=edb -DartifactId=edb -Dpackaging=jar -Dversion=9.0

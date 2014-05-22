@@ -1,0 +1,11 @@
+<hr>
+<br>
+This is an automated email.  Do not reply to this email.<br/>
+<br/>
+This is a reminder that ${serviceVendor.vendorName} is coming to perform a ${serviceType.name} service on ${scheduleDate}.<br/>
+<br>
+<a href="${link.confirmationkNo}">No, please do not perform the service on this date and call me to reschedule.</a><br>
+<br/>
+Thank you.<br/>
+<br/>
+<hr>
