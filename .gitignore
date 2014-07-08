@@ -1,0 +1,7 @@
+target
+local.properties
+
+src/main/java/com/espendwise/manta/model/data
+src/main/java/com/espendwise/manta/model/entity
+src/main/java/com/espendwise/manta/model/fullentity
+src/main/java/com/espendwise/manta/model/view
