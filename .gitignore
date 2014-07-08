@@ -1,5 +1,16 @@
 target
 local.properties
+buildVersion/build_info.properties
+tools/ocean/eSpendwiseOceanCommon.jar
+
+
+src/main/resources/META-INF/datas.hbm.xml
+src/main/resources/META-INF/full.entities.hbm.xml
+src/main/resources/META-INF/persistence.xml
+src/main/resources/META-INF/spring/app-data-access.xml
+src/main/resources/META-INF/spring/database.properties
+src/main/resources/messages_xx-piglatin.properties
+
 
 src/main/java/com/espendwise/manta/model/data
 src/main/java/com/espendwise/manta/model/entity
