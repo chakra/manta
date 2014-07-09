@@ -1,8 +1,6 @@
 target
 local.properties
-buildVersion/build_info.properties
 tools/ocean/eSpendwiseOceanCommon.jar
-
 
 src/main/resources/META-INF/datas.hbm.xml
 src/main/resources/META-INF/full.entities.hbm.xml
