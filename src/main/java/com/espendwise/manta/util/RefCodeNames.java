@@ -1211,6 +1211,8 @@ public interface RefCodeNames {
 	    	ACCESS_SERVICES = "Access to Services",
 	    	ACCESS_SHOPPING = "Access to Shopping",
 	    	ACCESS_CONTENT = "Access to Content",
+			ACCESS_DASHBOARD = "Access to Dashboard",
+            ACCESS_ORDERS = "Access to Orders",
 	    	RUNTIME_INVOICE_TAB = "Runtime Invoice Tab",
 
 	    	//SHOPPING
