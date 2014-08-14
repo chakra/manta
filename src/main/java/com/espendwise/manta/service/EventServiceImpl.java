@@ -43,7 +43,7 @@ public class EventServiceImpl extends DataAccessService implements EventService 
 		SimpleDateFormat dateFormat = new SimpleDateFormat(I18nUtil.getDatePattern() + " " + I18nUtil.getTimePattern());
 		String sendTime = dateFormat.format(new Date());				
 		
-		String toEmailAddress = "orderline.notifications@ipaper.com";
+		String toEmailAddress = "orderline.notifications@veritivcorp.com";
 		String subject = "BATCH ORDER REQUEST for " + storeName + " - Sent " + sendTime;
 		StringBuffer automatedMessage = new StringBuffer();
 		automatedMessage.append("This is an automated email.  Do not reply to this email.")
@@ -122,7 +122,7 @@ public class EventServiceImpl extends DataAccessService implements EventService 
 		SimpleDateFormat dateFormat = new SimpleDateFormat(I18nUtil.getDatePattern() + " " + I18nUtil.getTimePattern());
 		String sendTime = dateFormat.format(new Date());				
 		
-		String toEmailAddress = "orderline.notifications@ipaper.com";
+		String toEmailAddress = "orderline.notifications@veritivcorp.com";
 		String subject = "CATALOG REQUEST for " + storeName + " - Sent " + sendTime;
 		StringBuffer automatedMessage = new StringBuffer();
 		automatedMessage.append("This is an automated email.  Do not reply to this email.")
