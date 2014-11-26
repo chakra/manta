@@ -628,7 +628,8 @@ public class DbConstantResource implements InitializingBean, BeanFactoryAware {
     	applicationFunctionsToTypeMap.put(RefCodeNames.APPLICATION_FUNCTIONS.CUST_REQ_RESHIPMENT_ORDER_NUM, RefCodeNames.APPLICATION_FUNCTIONS_TYPE.SHOPPING);
     	applicationFunctionsToTypeMap.put(RefCodeNames.APPLICATION_FUNCTIONS.TRACKING_MAINTENANCE, RefCodeNames.APPLICATION_FUNCTIONS_TYPE.SHOPPING);
     	applicationFunctionsToTypeMap.put(RefCodeNames.APPLICATION_FUNCTIONS.CHANGE_ORDER_BUDGET_PERIOD, RefCodeNames.APPLICATION_FUNCTIONS_TYPE.SHOPPING);
-    	
+    	applicationFunctionsToTypeMap.put(RefCodeNames.APPLICATION_FUNCTIONS.EDIT_MESSAGES, RefCodeNames.APPLICATION_FUNCTIONS_TYPE.SHOPPING);
+        
     	applicationFunctionsToTypeMap.put(RefCodeNames.APPLICATION_FUNCTIONS.SHOP_ACCESS, RefCodeNames.APPLICATION_FUNCTIONS_TYPE.XPEDX);
     	applicationFunctionsToTypeMap.put(RefCodeNames.APPLICATION_FUNCTIONS.AUTO_DISTRO_ACCESS, RefCodeNames.APPLICATION_FUNCTIONS_TYPE.XPEDX);
     	applicationFunctionsToTypeMap.put(RefCodeNames.APPLICATION_FUNCTIONS.TRACK_ORDER_ACCESS, RefCodeNames.APPLICATION_FUNCTIONS_TYPE.XPEDX);

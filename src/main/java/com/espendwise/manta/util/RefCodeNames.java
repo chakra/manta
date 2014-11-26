@@ -1247,6 +1247,7 @@ public interface RefCodeNames {
 	    	CUST_REQ_RESHIPMENT_ORDER_NUM ="Cust Req Reshipment Order Num",
 	    	TRACKING_MAINTENANCE = "Tracking Maintenance",
 	    	CHANGE_ORDER_BUDGET_PERIOD = "Change Order Budget Period",
+	    	EDIT_MESSAGES = "Edit Messages",
 
 	    	//XPEDX
 	    	SHOP_ACCESS = "Access to Shop Pages",
