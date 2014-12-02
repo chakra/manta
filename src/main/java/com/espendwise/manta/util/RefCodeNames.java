@@ -2007,4 +2007,9 @@ public interface RefCodeNames {
         public static final String VALID = "VALID";
         public static final String INVALID = "INVALID";
     }
+    
+    public interface MESSAGE_MANAGED_BY {
+        public static final String ADMINISTRATOR = "ADMINISTRATOR";
+        public static final String CUSTOMER = "CUSTOMER";
+    }
 }
