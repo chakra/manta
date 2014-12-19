@@ -16,6 +16,8 @@ import com.espendwise.manta.web.validator.BatchOrderLoaderFormValidator;
 public class BatchOrderLoaderForm extends WebForm implements Resetable, Initializable {
 	private boolean init;
 	private MultipartFile uploadedFile = null;
+    private String accountId;
+    private String accountName;
 	private boolean applyToBudget;
 	private boolean sendConfirmation;
 	private String processOn;
@@ -38,6 +40,8 @@ public class BatchOrderLoaderForm extends WebForm implements Resetable, Initiali
     @Override
     public void reset() {
         uploadedFile = null;
+        accountId = null;
+        accountName = null;
         applyToBudget = false;
         sendConfirmation = false;
         processOn = null;
@@ -51,6 +55,8 @@ public class BatchOrderLoaderForm extends WebForm implements Resetable, Initiali
     public String toString() {
         return "ProfilePasswordMgrForm{" +
                 ", uploadedFile=" + (uploadedFile == null ? "" : uploadedFile.getOriginalFilename()) + 
+                ", accountId=" + accountId +
+                ", accountName=" + accountName +
                 ", applyToBudget=" + applyToBudget +
                 ", sendConfirmation=" + sendConfirmation +
                 ", processOn=" + processOn +
@@ -66,6 +72,22 @@ public class BatchOrderLoaderForm extends WebForm implements Resetable, Initiali
 	public MultipartFile getUploadedFile() {
 		return uploadedFile;
 	}
+	
+	public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+    
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
 
 	public void setApplyToBudget(boolean applyToBudget) {
 		this.applyToBudget = applyToBudget;

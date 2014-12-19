@@ -1322,6 +1322,8 @@
         <id name="eventId" type="java.lang.Long"/>
         <property name="storeId" type="java.lang.Long"/>
         <property name="storeName" type="string"/>
+        <property name="accountId" type="java.lang.Long"/>
+        <property name="accountName" type="string"/>
         <property name="fileName" type="string"/>
         <property name="orderCount" type="int"/>
         <property name="applyToBudget" type="string"/>

@@ -99,6 +99,7 @@ public class BatchOrderLoaderController extends BaseController {
         // validate file contents with stjohn service
         BatchOrderValidationRequestData requestData = new BatchOrderValidationRequestData();
         requestData.setStoreId(new Integer(getStoreId().intValue()));
+        requestData.setAccountId(new Integer(loaderForm.getAccountId()));
         requestData.setFileName(loaderForm.getUploadedFile().getOriginalFilename());
         requestData.setDataContents(EventDAOImpl.objectToBytes(loaderForm.getUploadedFile().getBytes()));
         Map returnValues = (Map) requestStjohnService(requestData, "/service/validateBatchOrder", webErrors);
@@ -124,6 +125,8 @@ public class BatchOrderLoaderController extends BaseController {
 		batchOrder.setDateFormat(I18nUtil.getDatePattern());
 		batchOrder.setProcessWhen(loaderForm.getProcessWhen());
 		batchOrder.setFileBinaryData(loaderForm.getUploadedFile().getBytes());
+		batchOrder.setAccountId(Long.valueOf(loaderForm.getAccountId()));
+		
 		batchOrders.add(batchOrder);
 		try {
 			batchOrder = eventService.saveBatchOrder(batchOrder, getAppUser().getLocale());

@@ -13,7 +13,18 @@
 <c:set var="cancelAction" value="$('form:#batchOrderLoaderResult').submit(); return false;"/>
 <c:set var="displayAllAction" value="window.location.href='${baseUrl}/batchOrder/loader/displayAll'; return false; "/>
 <c:set var="exportErrorsAction" value="window.location.href='${baseUrl}/batchOrder/loader/exportErrors'; return false; "/>
-
+<c:set var="finallyHandler" value="function(value) {f_setFocus('siteName');}"/>
+<app:locateLayer var="accountLayer"
+                 titleLabel="admin.global.filter.label.locateAccount.title"
+                 closeLabel='admin.global.button.close'
+                 layer='${baseUrl}/locate/account/single'
+                 action="${baseUrl}/locate/account/selected"
+                 idGetter="accountId"
+                 nameGetter="accountName"
+                 targetNames="accountName"
+                 targetIds="accountId"
+                 finallyHandler="${finallyHandler}"/>
+                 
 <app:dateIncludes/>
 
 <div class="canvas">
@@ -34,7 +45,16 @@
 	                <tr>
 	                    <td class="cell label first"><label><app:message code="batchOrder.loader.label.selectFile"/><span class="colon">:</span></label><span class="reqind">*</span></td>
 	                    <td class="cell value"><form:input tabindex="1" path="uploadedFile" type="file" size="32"/></td> 
-	                </tr>					
+	                </tr>
+                    <tr>
+                        <td class="cell label first"><label><app:message code="admin.global.filter.label.accountName"/><span class="colon">:</span></label><span class="reqind">*</span></td>
+                        <td class="cell value">
+                        <div class="value">
+                            <form:input cssClass="inputShort readonly" readonly="true" path="accountName"/><form:hidden path="accountId"/>
+                            <button  style="margin-left:20px" onclick="${accountLayer}"><app:message code="admin.global.filter.label.searchAccount"/></button>
+                        </div>
+                        </td> 
+                    </tr>
 					<tr>
 	                    <td class="cell label first" colspan="2">
 							<form:checkbox tabindex="2" cssClass="checkbox" path="applyToBudget"/>
@@ -97,8 +117,9 @@
                	<col width="10%"/>
                	<col width="10%"/>
                	<col width="10%"/>                
-                <col width="15%"/>
-                <col width="15%"/>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="10%"/>
             	<col width="15%"/>
             </colgroup>
             <thead class="header">
@@ -110,6 +131,7 @@
                 <th class="cell cell-text"><a class="sort" href="${sortUrl}/sendConfirmation"><app:message code="batchOrder.loader.label.sendConfirmation" /></a></th>
                 <th class="cell cell-text"><a class="sort" href="${sortUrl}/processOn"><app:message code="batchOrder.loader.label.processOn" /></a></th>
                 <th class="cell cell-text"><a class="sort" href="${sortUrl}/processWhen"><app:message code="batchOrder.loader.label.processWhen" /></a></th>
+                <th class="cell cell-text"><a class="sort" href="${sortUrl}/processWhen"><app:message code="admin.global.filter.label.accountId" /></a></th>
                 <th class="cell cell-text cell-element">
                     <a href="javascript:checkAll('id', 'batchOrders.selectableObjects', true)"><app:message code="admin.global.filter.label.selectAll" /></a><br>
                     <a href="javascript:checkAll('id', 'batchOrders.selectableObjects', false)"><app:message code="admin.global.filter.label.clearAll" /></a>
@@ -126,6 +148,7 @@
 	                <td class="cell cell-text"><c:out value="${batchOrder.value.sendConfirmation}"/> </td>
 	                <td class="cell cell-text"><c:out value="${batchOrder.value.processOn}"/> </td>
 	                <td class="cell cell-text"><c:out value="${batchOrder.value.processWhen}"/> </td>
+                    <td class="cell cell-text"><c:out value="${batchOrder.value.accountId}"/> </td>
                     <td class="cell cell-element">
                       <form:checkbox cssClass="checkbox" id="batchOrder_${batchOrder.value.eventId}" path="batchOrders.selectableObjects[${i.index}].selected"/>
                     </td>
