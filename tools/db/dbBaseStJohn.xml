@@ -5149,6 +5149,7 @@
 		<column name="MESSAGE_ABSTRACT" nullable="true" size="200" type="VARCHAR2"/>
 		<column name="MESSAGE_BODY" nullable="true" size="4000" type="VARCHAR2"/>
 		<column name="STORE_MESSAGE_STATUS_CD" size="30" type="VARCHAR2"/>
+        <column name="MESSAGE_MANAGED_BY" size="30" type="VARCHAR2"/>
 		<column name="ADD_BY" nullable="true" size="255" type="VARCHAR2"/>
 		<column name="ADD_DATE" size="7" type="DATE"/>
 		<column name="MOD_BY" nullable="true" size="255" type="VARCHAR2"/>

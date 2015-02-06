@@ -104,21 +104,26 @@ public class EventDAOImpl extends DAOImpl implements EventDAO {
 	             batchOrderView.getFileBinaryData(),
 	             5);
 		create(eventProperty);
+		eventProperty = createEventPropertyData(eventData.getEventId(), "accountId",
+                 PROCESS_VARIABLE, 
+                 batchOrderView.getAccountId().intValue(),
+                 6);
+		create(eventProperty);
 		eventProperty = createEventPropertyData(eventData.getEventId(), "processOn",
 	             PROCESS_VARIABLE, batchOrderView.getProcessOn(),
-	             6);
+	             7);
 		create(eventProperty);
 		eventProperty = createEventPropertyData(eventData.getEventId(), "processWhen",
 	             PROCESS_VARIABLE, batchOrderView.getProcessWhen(),
-	             7);
+	             8);
 		create(eventProperty);
 		eventProperty = createEventPropertyData(eventData.getEventId(), "orderCount",
 	             PROCESS_VARIABLE, batchOrderView.getOrderCount(),
-	             8);
+	            9);
 		create(eventProperty);
 		eventProperty = createEventPropertyData(eventData.getEventId(), "dateFormat",
 	             PROCESS_VARIABLE, batchOrderView.getDateFormat(),
-	             9);
+	             10);
 		create(eventProperty);
 		return batchOrderView;
 	}
@@ -190,13 +195,14 @@ public class EventDAOImpl extends DAOImpl implements EventDAO {
 		
 		Query query = em.createNativeQuery("select e.event_id, \n" +
 				"(select max(string_val) from clw_event_property where short_desc = 'fileName' and event_id = e.event_id) fileName, \n" +
-				"(select max(number_val) from clw_event_property where short_desc = 'orderCount' and event_id = e.event_id) orderCount, \n" +
+                "(select max(number_val) from clw_event_property where short_desc = 'orderCount' and event_id = e.event_id) orderCount, \n" +
 				"(select max(string_val) from clw_event_property where short_desc = 'applyToBudget' and event_id = e.event_id) applyToBudget, \n" +
 				"(select max(string_val) from clw_event_property where short_desc = 'sendConfirmation' and event_id = e.event_id) sendConfirmation, \n" +
 				"(select max(string_val) from clw_event_property where short_desc = 'processOn' and event_id = e.event_id) processOn, \n" +
 				"(select max(string_val) from clw_event_property where short_desc = 'processWhen' and event_id = e.event_id) processWhen, \n" +
-				"(select max(string_val) from clw_event_property where short_desc = 'dateFormat' and event_id = e.event_id) dateFormat \n" +
-				"from clw_event e, clw_event_property p, clw_event_property s \n" +
+				"(select max(string_val) from clw_event_property where short_desc = 'dateFormat' and event_id = e.event_id) dateFormat, \n" +
+				"(select max(number_val) from clw_event_property where short_desc = 'accountId' and event_id = e.event_id) accountId \n" +
+                "from clw_event e, clw_event_property p, clw_event_property s \n" +
 				"where e.event_id = p.event_id \n" +
 				"and p.type = 'PROCESS_TEMPLATE_ID' \n" +
 				"and p.number_val = (:templateId) \n" +
@@ -229,6 +235,7 @@ public class EventDAOImpl extends DAOImpl implements EventDAO {
 				Date date = sdf1.parse(batchOrder.getProcessOn());
 				batchOrder.setProcessOn(sdf.format(date));				
 			}
+			batchOrder.setAccountId(result[8]==null ? null : ((BigDecimal)result[8]).longValue());            
 			batchOrders.add(batchOrder);
 		}
 		

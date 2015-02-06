@@ -1,14 +1,12 @@
 package com.espendwise.webservice.restful.value;
 
-
-import com.espendwise.ocean.common.webaccess.LoginData;
-
 import java.io.Serializable;
 
 
 public class BatchOrderValidationRequestData extends BaseRequestData implements Serializable, Cloneable {
     private static final long serialVersionUID = -5660836849901793035L;
     private Integer storeId; 
+    private Integer accountId; 
     private String fileName;
     private byte[] dataContents;
     
@@ -38,6 +36,14 @@ public class BatchOrderValidationRequestData extends BaseRequestData implements 
 	public byte[] getDataContents() {
 		return dataContents;
 	}
+	
+	public Integer getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
+    }
     
     @Override
     public Object clone() {
@@ -46,6 +52,7 @@ public class BatchOrderValidationRequestData extends BaseRequestData implements 
             myClone.setAccessToken(this.accessToken);
             myClone.setLoginData(this.loginData);
             myClone.setStoreId(this.storeId);
+            myClone.setAccountId(this.accountId);
             myClone.setFileName(this.fileName);
             myClone.setDataContents(this.dataContents);
 
@@ -70,6 +77,7 @@ public class BatchOrderValidationRequestData extends BaseRequestData implements 
                 ((BatchOrderValidationRequestData)exp).setAccessToken(this.accessToken);
                 ((BatchOrderValidationRequestData)exp).setLoginData(this.loginData);
                 ((BatchOrderValidationRequestData)exp).setStoreId(this.storeId);
+                ((BatchOrderValidationRequestData)exp).setAccountId(this.accountId);
                 ((BatchOrderValidationRequestData)exp).setFileName(this.fileName);
                 ((BatchOrderValidationRequestData)exp).setDataContents(this.dataContents);
             
@@ -81,7 +89,7 @@ public class BatchOrderValidationRequestData extends BaseRequestData implements 
         }
         
         return exp;
-    }
+    }    
 }
 
 

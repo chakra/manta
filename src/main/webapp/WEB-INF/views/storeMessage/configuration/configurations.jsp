@@ -13,11 +13,25 @@
 <c:set var="updateAllAction" value="$('form#storeMessageAccounts').attr('action','${baseUrl}/accounts/update/all');;$('form:#storeMessageAccounts').submit(); return false; "/>
 <c:set var="updateUrl" value="${baseUrl}/accounts/update"/>
 <c:set var="updateAction" value="$('form:#storeMessageAccounts').submit(); return false;"/>
+<c:set var="customerManagedMessage" value="${storeMessageConfiguration.messageManagedByCustomer}"/>
 
 <div class="canvas">
-
     <div class="search">
-
+        <c:if test="${customerManagedMessage}">
+        <table width="100%">
+            <tr>
+                <td align="left">
+                    <label><span class="reqind"><app:message code="admin.message.configuration.text.customerManagedMessage" /></span></label><label class="value"></label>
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+        </c:if>
+        <c:if test="${storeMessageConfiguration.messageManagedByCustomer != true}">
         <form:form id="search" modelAttribute="storeMessageConfigurationFilter" method="GET" action="${searchUrl}" focus="filterValue">
             <div class="filter" >
                 <table>
@@ -47,7 +61,7 @@
                 </table>
             </div>
         </form:form>
-
+        </c:if>
         <form:form   id="storeMessageAccounts"  modelAttribute="storeMessageConfiguration" method="POST" action="${updateUrl}">
         <c:if test="${storeMessageConfiguration.result != null}">
                 <hr/>
@@ -59,7 +73,7 @@
                         </td>
                         <td align="right">
                         	<c:if test="${fn:length(storeMessageConfiguration.result) > 0}">
-                            <form:button onclick="${updateAction}"><app:message code="admin.global.button.save" /></form:button>
+                            <form:button onclick="${updateAction}" disabled="${customerManagedMessage}"><app:message code="admin.global.button.save" /></form:button>
                             </c:if>
                         </td>
                     </tr>
@@ -95,7 +109,7 @@
                             <td class="cell cell-number"><c:out value="${account.value.busEntityId}"/> </td>
                             <td class="cell cell-text"><c:out value="${account.value.shortDesc}"/> </td>
                             <td class="cell cell-text"><app:message code="refcodes.BUS_ENTITY_STATUS_CD.${account.value.busEntityStatusCd}" text="${account.value.busEntityStatusCd}"/></td>
-                            <td class="cell cell-element"><form:checkbox cssClass="checkbox" path="accounts.selectableObjects[${i.index}].selected"/></td>
+                            <td class="cell cell-element"><form:checkbox cssClass="checkbox" path="accounts.selectableObjects[${i.index}].selected" disabled="${customerManagedMessage}"/></td>
                             <td>&nbsp;</td>
                         </tr>
                     </c:forEach>
@@ -104,7 +118,7 @@
                         <td colspan="4">&nbsp;</td>
                         <td align="right">
                         	<c:if test="${fn:length(storeMessageConfiguration.result) > 0}">
-                            <form:button onclick="${updateAction}"><app:message code="admin.global.button.save" /></form:button>
+                            <form:button onclick="${updateAction}" disabled="${customerManagedMessage}"><app:message code="admin.global.button.save" /></form:button>
                             </c:if>
                         </td><td></td>
                     </tr>

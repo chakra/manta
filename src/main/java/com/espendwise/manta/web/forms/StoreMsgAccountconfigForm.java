@@ -10,6 +10,7 @@ public class StoreMsgAccountconfigForm extends AbstractFilterResult<SelectableOb
 
     private SelectableObjects<BusEntityData> accounts;
     private Long storeMessageId;
+    private Boolean messageManagedByCustomer;
 
     public StoreMsgAccountconfigForm() {
         super();
@@ -26,6 +27,14 @@ public class StoreMsgAccountconfigForm extends AbstractFilterResult<SelectableOb
 
     public void setStoreMessageId(Long storeMessageId) {
         this.storeMessageId = storeMessageId;
+    }
+
+    public Boolean getMessageManagedByCustomer() {
+        return messageManagedByCustomer;
+    }
+
+    public void setMessageManagedByCustomer(Boolean messageManagedByCustomer) {
+        this.messageManagedByCustomer = messageManagedByCustomer;
     }
 
     public SelectableObjects<BusEntityData> getAccounts() {
@@ -45,5 +54,6 @@ public class StoreMsgAccountconfigForm extends AbstractFilterResult<SelectableOb
     public void reset() {
         super.reset();
         accounts = null;
+        messageManagedByCustomer = null;
     }
 }

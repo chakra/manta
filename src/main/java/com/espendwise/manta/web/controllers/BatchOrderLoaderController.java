@@ -17,6 +17,8 @@ import com.espendwise.manta.util.Utility;
 import com.espendwise.manta.util.alert.ArgumentedMessage;
 import com.espendwise.manta.util.arguments.Args;
 import com.espendwise.manta.util.arguments.MessageI18nArgument;
+import com.espendwise.manta.util.arguments.NumberArgument;
+import com.espendwise.manta.util.arguments.StringArgument;
 import com.espendwise.manta.web.forms.BatchOrderLoaderForm;
 import com.espendwise.manta.web.forms.BatchOrderLoaderResultForm;
 import com.espendwise.manta.web.resolver.DatabaseWebUpdateExceptionResolver;
@@ -78,7 +80,6 @@ public class BatchOrderLoaderController extends BaseController {
         return "batchOrder/loader";
     }
 
-    @SuccessMessage
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String save(WebRequest request, @ModelAttribute(SessionKey.BATCH_ORDER_LOADER) BatchOrderLoaderForm loaderForm, 
     		@ModelAttribute(SessionKey.BATCH_ORDER_LOADER_RESULT) BatchOrderLoaderResultForm resultForm, Model model) throws Exception {
@@ -98,6 +99,7 @@ public class BatchOrderLoaderController extends BaseController {
         // validate file contents with stjohn service
         BatchOrderValidationRequestData requestData = new BatchOrderValidationRequestData();
         requestData.setStoreId(new Integer(getStoreId().intValue()));
+        requestData.setAccountId(new Integer(loaderForm.getAccountId()));
         requestData.setFileName(loaderForm.getUploadedFile().getOriginalFilename());
         requestData.setDataContents(EventDAOImpl.objectToBytes(loaderForm.getUploadedFile().getBytes()));
         Map returnValues = (Map) requestStjohnService(requestData, "/service/validateBatchOrder", webErrors);
@@ -123,6 +125,8 @@ public class BatchOrderLoaderController extends BaseController {
 		batchOrder.setDateFormat(I18nUtil.getDatePattern());
 		batchOrder.setProcessWhen(loaderForm.getProcessWhen());
 		batchOrder.setFileBinaryData(loaderForm.getUploadedFile().getBytes());
+		batchOrder.setAccountId(Long.valueOf(loaderForm.getAccountId()));
+		
 		batchOrders.add(batchOrder);
 		try {
 			batchOrder = eventService.saveBatchOrder(batchOrder, getAppUser().getLocale());
@@ -136,10 +140,13 @@ public class BatchOrderLoaderController extends BaseController {
     				new ArrayList<BatchOrderView>(),
                     AppComparator.BATCH_ORDER_VIEW_COMPARATOR);
     		resultForm.setBatchOrders(selectableObj);
-        
-
+    	WebAction.success(request, new SuccessActionMessage(), WebRequest.SCOPE_REQUEST);
+    	String qtyIgnoreList = (String) returnValues.get("qtyIgnoreList");
+    	if (qtyIgnoreList != null){
+    	    WebAction.success(request, new SuccessActionMessage("batchOrder.loader.lineIgnoredDueToQtyNotGreaterThan0",
+                    new StringArgument[]{new StringArgument(qtyIgnoreList)}), WebRequest.SCOPE_REQUEST);
+    	}
         logger.info("save()=> END.");
-
         return "batchOrder/loader";
     }
     

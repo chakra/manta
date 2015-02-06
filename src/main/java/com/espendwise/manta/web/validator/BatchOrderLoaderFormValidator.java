@@ -36,7 +36,12 @@ public class BatchOrderLoaderFormValidator extends AbstractFormValidator {
         vr = shortDescValidator.validate(fileName, new TextErrorWebResolver("batchOrder.loader.label.selectFile"));
         if (vr != null) {
             errors.putErrors(vr.getResult());
-        }        
+        }
+        
+        vr = shortDescValidator.validate(form.getAccountId(), new TextErrorWebResolver("admin.global.filter.label.accountName"));
+        if (vr != null) {
+            errors.putErrors(vr.getResult());
+        }
         
         String datePattern = I18nUtil.getDatePattern();
         String processOn = AppI18nUtil.getDatePatternPrompt().equals(form.getProcessOn()) ? "" : form.getProcessOn();
@@ -80,7 +85,7 @@ public class BatchOrderLoaderFormValidator extends AbstractFormValidator {
         vr = shortDescValidator.validate(form.getProcessWhen(), new TextErrorWebResolver("batchOrder.loader.label.processWhen"));
         if (vr != null) {
             errors.putErrors(vr.getResult());
-        }    
+        }        
         
         return new MessageValidationResult(errors.get());
 

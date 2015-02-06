@@ -20,12 +20,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
 
 import com.espendwise.manta.model.data.BusEntityData;
+import com.espendwise.manta.model.data.StoreMessageData;
 import com.espendwise.manta.service.AccountService;
 import com.espendwise.manta.service.StoreMessageService;
 import com.espendwise.manta.spi.AutoClean;
 import com.espendwise.manta.spi.SuccessMessage;
 import com.espendwise.manta.util.AppComparator;
 import com.espendwise.manta.util.Constants;
+import com.espendwise.manta.util.RefCodeNames;
 import com.espendwise.manta.util.SelectableObjects;
 import com.espendwise.manta.util.SelectableObjects.SelectableObject;
 import com.espendwise.manta.util.UpdateRequest;
@@ -62,8 +64,21 @@ public class StoreMessageConfigurationController extends BaseController {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
-    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/view", method = RequestMethod.GET)
     public String view(@ModelAttribute(SessionKey.STORE_MESSAGE_CONFIGURATION_FILTER) SimpleConfigurationFilterForm filterForm) {
+        return "storeMessage/configuration";
+    }*/
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public String view(WebRequest request,
+            @PathVariable Long storeMessageId,
+            @ModelAttribute(SessionKey.STORE_MESSAGE_CONFIGURATION) StoreMsgAccountconfigForm form,
+            @ModelAttribute(SessionKey.STORE_MESSAGE_CONFIGURATION_FILTER) SimpleConfigurationFilterForm filterForm) throws Exception {
+        if(storeMessageId > 0){
+            StoreMessageData message = storeMessageService.findStoreMessage(getStoreId(), storeMessageId);
+            if (RefCodeNames.MESSAGE_MANAGED_BY.CUSTOMER.equals(message.getMessageManagedBy())){
+                return findAccounts(request, storeMessageId, form, filterForm);
+            }
+        }
         return "storeMessage/configuration";
     }
 
@@ -92,6 +107,23 @@ public class StoreMessageConfigurationController extends BaseController {
         Long userId = getUserId();
 
         StoreMsgAccountConfigCriteria criteria = new StoreMsgAccountConfigCriteria(storeId, storeMessageId);
+        StoreMessageData message = storeMessageService.findStoreMessage(getStoreId(), storeMessageId);
+        boolean messageManagedByCustomer = RefCodeNames.MESSAGE_MANAGED_BY.CUSTOMER.equals(message.getMessageManagedBy());
+        
+        form.setMessageManagedByCustomer(messageManagedByCustomer);
+        logger.info("findAccounts()=>  MessageManagedBy: " + message.getMessageManagedBy());
+        if (messageManagedByCustomer){
+            List<BusEntityData> configured = storeMessageService.findConfiguratedAccounts(criteria);
+            SelectableObjects<BusEntityData> selableobj = new SelectableObjects<BusEntityData>(
+                    configured,
+                    configured,
+                    AppComparator.BUS_ENTITY_ID_COMPARATOR
+            );
+
+            form.setAccounts(selableobj);
+            logger.info("findAccounts()=> END.");
+            return "storeMessage/configuration";
+        } 
 
         criteria.setActiveOnly(!filterForm.getShowInactive());
         criteria.setFilterType(filterForm.getFilterType());
@@ -106,7 +138,6 @@ public class StoreMessageConfigurationController extends BaseController {
         List<BusEntityData> configured = storeMessageService.findConfiguratedAccounts(criteria);
 
         StoreAccountCriteria accountCriteria = new StoreAccountCriteria();
-
         accountCriteria.setStoreId(storeId);
         accountCriteria.setUserId(userId);
         accountCriteria.setActiveOnly(!filterForm.getShowInactive());
@@ -128,12 +159,8 @@ public class StoreMessageConfigurationController extends BaseController {
         );
 
         form.setAccounts(selableobj);
-
         WebSort.sort(form, BusEntityData.SHORT_DESC);
-
-
         logger.info("findAccounts()=> END.");
-
         return "storeMessage/configuration";
 
     }

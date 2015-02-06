@@ -1247,6 +1247,7 @@ public interface RefCodeNames {
 	    	CUST_REQ_RESHIPMENT_ORDER_NUM ="Cust Req Reshipment Order Num",
 	    	TRACKING_MAINTENANCE = "Tracking Maintenance",
 	    	CHANGE_ORDER_BUDGET_PERIOD = "Change Order Budget Period",
+	    	EDIT_MESSAGES = "Edit Messages",
 
 	    	//XPEDX
 	    	SHOP_ACCESS = "Access to Shop Pages",
@@ -2005,5 +2006,10 @@ public interface RefCodeNames {
     public interface RECORD_STATUS_CD {
         public static final String VALID = "VALID";
         public static final String INVALID = "INVALID";
+    }
+    
+    public interface MESSAGE_MANAGED_BY {
+        public static final String ADMINISTRATOR = "ADMINISTRATOR";
+        public static final String CUSTOMER = "CUSTOMER";
     }
 }

@@ -908,6 +908,14 @@ database.datasources.count=2
             </fileset>
         </jar>
     </target>
+	
+	<target name="jsp" description="Copy the only jsp files to a deployment area." >
+		<copy todir="${server.webdeploy}/${app.name}/WEB-INF/views">
+            <fileset dir="${manta.project.web}/WEB-INF/views">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+	</target>
 
 </project>
 
